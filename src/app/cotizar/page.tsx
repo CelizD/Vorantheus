@@ -71,7 +71,6 @@ export default async function CotizarPage({ searchParams }: CotizarPageProps) {
 
       {/* Hero */}
       <section className="pt-32 pb-8 bg-navy relative overflow-hidden">
-        <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric/30 bg-electric/10 text-electric text-sm font-medium mb-6">
             Gratis y sin compromiso
