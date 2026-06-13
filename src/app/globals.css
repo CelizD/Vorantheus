@@ -10,6 +10,14 @@ body {
   background-color: #050816;
   color: #ffffff;
   font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Tighter optical tracking on big headings */
+h1, h2 {
+  letter-spacing: -0.02em;
 }
 
 /* Custom scrollbar */

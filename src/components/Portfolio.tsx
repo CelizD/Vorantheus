@@ -2,8 +2,17 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { portfolioItems, categories } from '@/data/portfolio'
+
+// Map the design-token gradient strings from the data to concrete tints.
+const gradientTints: Record<string, string> = {
+  'from-electric via-voBlue to-navy': 'from-[#0B84F3]/40 via-[#2563EB]/25 to-[#071B3A]',
+  'from-voPurple via-electric to-voBlue': 'from-[#7C3AED]/40 via-[#0B84F3]/25 to-[#2563EB]/30',
+  'from-voBlue via-voPurple to-electric': 'from-[#2563EB]/40 via-[#7C3AED]/25 to-[#0B84F3]/30',
+  'from-electric to-voPurple': 'from-[#0B84F3]/40 to-[#7C3AED]/30',
+  'from-navy via-voBlue to-electric': 'from-[#071B3A] via-[#2563EB]/25 to-[#0B84F3]/40',
+}
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState('Todos')
@@ -14,53 +23,41 @@ export default function Portfolio() {
       : portfolioItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section id="portafolio" className="py-24 bg-carbon relative overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-20" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-electric/5 rounded-full blur-3xl" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portafolio" className="section-dark">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="max-w-2xl mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric/30 bg-electric/10 text-electric text-sm font-medium mb-4">
-            Trabajos destacados
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Nuestro <span className="gradient-text">portafolio</span>
+          <span className="tag">Portafolio</span>
+          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+            Proyectos que hablan por sí solos.
           </h2>
-          <p className="max-w-2xl mx-auto text-voGray text-lg leading-relaxed">
-            Proyectos reales para clientes reales. Cada uno construido con dedicación,
-            tecnología moderna y resultados comprobados.
+          <p className="mt-6 text-xl text-white/50 leading-relaxed">
+            Sistemas, apps y tiendas en línea construidos con tecnología moderna y resultados reales.
           </p>
         </motion.div>
 
-        {/* Filter tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="flex flex-wrap gap-2 justify-center mb-12"
-        >
+        {/* Filter pills */}
+        <div className="flex flex-wrap gap-2 mb-12">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
                 activeCategory === cat
-                  ? 'bg-electric text-white shadow-electric'
-                  : 'glass-card border border-white/10 text-voGray hover:text-white hover:border-electric/30'
+                  ? 'bg-white text-black font-medium'
+                  : 'border border-white/[0.12] text-white/60 hover:text-white hover:border-white/30'
               }`}
             >
               {cat}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Grid */}
         <AnimatePresence mode="wait">
@@ -77,58 +74,38 @@ export default function Portfolio() {
                 key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="glass-card rounded-2xl overflow-hidden border border-white/8 hover:border-electric/30 hover:shadow-electric transition-all duration-300 group"
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                className="group rounded-3xl overflow-hidden bg-white/[0.02] border border-white/[0.07] hover:border-white/[0.16] transition-all duration-300"
               >
-                {/* Image placeholder */}
-                <div
-                  className={`h-52 bg-gradient-to-br ${item.imageColor} relative overflow-hidden`}
-                >
-                  <div className="absolute inset-0 grid-bg opacity-30" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-4xl font-black text-white/20 tracking-widest uppercase">
-                      {item.title}
-                    </span>
+                {/* Thumbnail */}
+                <div className={`relative aspect-[16/10] bg-gradient-to-br ${gradientTints[item.imageColor] || 'from-[#0B84F3]/40 to-[#7C3AED]/30'} overflow-hidden`}>
+                  {/* subtle window chrome */}
+                  <div className="absolute top-4 left-4 flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-white/30" />
+                    <span className="w-2 h-2 rounded-full bg-white/20" />
+                    <span className="w-2 h-2 rounded-full bg-white/15" />
                   </div>
-                  {/* Category badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-white text-xs font-medium border border-white/20">
-                      {item.category}
-                    </span>
-                  </div>
-                  {/* Year badge */}
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-full bg-electric/80 text-white text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-full bg-black/30 backdrop-blur-sm text-white/70 text-[11px] font-medium border border-white/10">
                       {item.year}
                     </span>
                   </div>
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-electric/0 group-hover:bg-electric/10 transition-colors duration-300 flex items-center justify-center">
-                    <ExternalLink className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-3xl font-black text-white/80 tracking-wide">{item.title}</span>
+                  </div>
+                  <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/0 group-hover:bg-white flex items-center justify-center transition-all duration-300">
+                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black opacity-0 group-hover:opacity-100 transition-all duration-300" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col gap-4">
-                  <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                    </div>
-                    <p className="text-electric text-sm font-medium">{item.client}</p>
-                  </div>
-
-                  <p className="text-voGray text-sm leading-relaxed line-clamp-3">
-                    {item.description}
-                  </p>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {item.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-voGray text-xs font-medium"
-                      >
+                <div className="p-6">
+                  <p className="text-xs text-[#0B84F3] font-medium uppercase tracking-widest mb-2">{item.category}</p>
+                  <h3 className="text-lg font-bold text-white mb-2">{item.client}</h3>
+                  <p className="text-white/45 text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.technologies.slice(0, 4).map((tech) => (
+                      <span key={tech} className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-white/40 text-[11px]">
                         {tech}
                       </span>
                     ))}
@@ -138,23 +115,6 @@ export default function Portfolio() {
             ))}
           </motion.div>
         </AnimatePresence>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16"
-        >
-          <p className="text-voGray mb-4">¿Quieres que tu proyecto sea el próximo?</p>
-          <a
-            href="/cotizar"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-electric hover:bg-voBlue text-white font-bold rounded-2xl shadow-electric hover:shadow-electric-lg transition-all duration-300 hover:scale-105"
-          >
-            Comenzar mi proyecto
-          </a>
-        </motion.div>
       </div>
     </section>
   )

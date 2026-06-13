@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Globe, ShoppingCart, Database, Smartphone, Layout, Bot, Wrench, Check, ArrowRight, LucideIcon } from 'lucide-react'
 import { services } from '@/data/services'
+import { Mockup } from '@/components/mockups'
 
 const iconMap: Record<string, LucideIcon> = {
   Globe,
@@ -15,16 +16,20 @@ const iconMap: Record<string, LucideIcon> = {
   Wrench,
 }
 
-// Colors for the gradient placeholder boxes
-const boxGradients = [
-  'from-[#0B84F3]/40 via-[#0B84F3]/20 to-[#7C3AED]/30',
-  'from-[#7C3AED]/40 via-[#7C3AED]/20 to-[#0B84F3]/30',
-  'from-[#0B84F3]/30 via-[#071B3A]/60 to-[#7C3AED]/40',
-  'from-[#7C3AED]/30 via-[#071B3A]/60 to-[#0B84F3]/40',
-]
-
-// The 4 main featured services
-const featuredServiceIds = ['paginas-web', 'tiendas-en-linea', 'sistemas-administrativos', 'aplicaciones-moviles']
+// The 4 main featured services, each paired with a CSS product mockup + glow tint
+const featuredServiceIds = ['paginas-web', 'tiendas-en-linea', 'sistemas-administrativos', 'aplicaciones-moviles'] as const
+const mockupFor: Record<string, 'browser' | 'store' | 'dashboard' | 'phone'> = {
+  'paginas-web': 'browser',
+  'tiendas-en-linea': 'store',
+  'sistemas-administrativos': 'dashboard',
+  'aplicaciones-moviles': 'phone',
+}
+const glowFor: Record<string, string> = {
+  'paginas-web': 'bg-[#0B84F3]/15',
+  'tiendas-en-linea': 'bg-[#7C3AED]/15',
+  'sistemas-administrativos': 'bg-[#0B84F3]/15',
+  'aplicaciones-moviles': 'bg-[#7C3AED]/15',
+}
 // The 3 smaller supplemental services
 const supplementalServiceIds = ['landing-pages', 'automatizacion-ia', 'mantenimiento']
 
@@ -32,12 +37,9 @@ interface FeatureSectionProps {
   service: (typeof services)[0]
   index: number
   reversed: boolean
-  gradientClass: string
 }
 
-function FeatureSection({ service, index, reversed, gradientClass }: FeatureSectionProps) {
-  const Icon = iconMap[service.icon] || Globe
-
+function FeatureSection({ service, index, reversed }: FeatureSectionProps) {
   const textBlock = (
     <div className="flex flex-col gap-6 justify-center">
       <div>
@@ -72,14 +74,11 @@ function FeatureSection({ service, index, reversed, gradientClass }: FeatureSect
   )
 
   const visualBlock = (
-    <div
-      className={`rounded-3xl bg-gradient-to-br ${gradientClass} min-h-[340px] lg:min-h-[420px] flex items-center justify-center border border-white/[0.06]`}
-    >
-      <div className="flex flex-col items-center gap-4 text-white/20">
-        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-          <Icon className="w-10 h-10 text-white/40" />
-        </div>
-        <span className="text-xs tracking-widest uppercase text-white/20">{service.title}</span>
+    <div className="relative flex items-center justify-center min-h-[340px] lg:min-h-[420px]">
+      {/* glow */}
+      <div className={`absolute inset-8 ${glowFor[service.id] || 'bg-[#0B84F3]/15'} blur-3xl rounded-full pointer-events-none`} />
+      <div className="relative">
+        <Mockup type={mockupFor[service.id] || 'browser'} />
       </div>
     </div>
   )
@@ -136,7 +135,6 @@ export default function Services() {
             service={service}
             index={index}
             reversed={index % 2 !== 0}
-            gradientClass={boxGradients[index % boxGradients.length]}
           />
         ))}
       </div>
