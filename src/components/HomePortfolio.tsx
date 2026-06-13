@@ -77,7 +77,7 @@ export default function HomePortfolio() {
                 <div>
                   <p className="text-xs text-[#0B84F3] font-medium uppercase tracking-widest mb-1.5">{item.category}</p>
                   <h3 className="text-xl font-bold text-white mb-2">{item.client}</h3>
-                  <p className="text-white/45 text-sm leading-relaxed">{item.description.slice(0, 100)}…</p>
+                  <p className="text-white/45 text-sm leading-relaxed">{item.impact}</p>
                 </div>
                 <div className="flex flex-wrap gap-1.5 shrink-0 max-w-[120px] justify-end">
                   {item.technologies.slice(0, 2).map((tech) => (

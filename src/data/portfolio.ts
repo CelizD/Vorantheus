@@ -7,6 +7,7 @@ export interface PortfolioItem {
   technologies: string[]
   imageColor: string
   year: string
+  impact: string
   url?: string
 }
 
@@ -21,6 +22,7 @@ export const portfolioItems: PortfolioItem[] = [
     technologies: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'React Query'],
     imageColor: 'from-electric via-voBlue to-navy',
     year: '2024',
+    impact: 'Centralización de inventario, ventas, compras y facturación en una operación interna más controlada.',
   },
   {
     id: 'vybra',
@@ -32,6 +34,7 @@ export const portfolioItems: PortfolioItem[] = [
     technologies: ['Next.js', 'Stripe', 'Supabase', 'React Native', 'AWS S3'],
     imageColor: 'from-voPurple via-electric to-voBlue',
     year: '2024',
+    impact: 'Monetización directa y herramientas de análisis para artistas independientes.',
   },
   {
     id: 'vinclea',
@@ -43,6 +46,7 @@ export const portfolioItems: PortfolioItem[] = [
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Stripe Connect', 'Redis'],
     imageColor: 'from-voBlue via-voPurple to-electric',
     year: '2023',
+    impact: 'Flujo completo para conectar clientes, profesionales, pagos protegidos y reputación.',
   },
   {
     id: 'florapp',
@@ -54,6 +58,7 @@ export const portfolioItems: PortfolioItem[] = [
     technologies: ['React Native', 'Expo', 'Node.js', 'MongoDB', 'Google Maps API'],
     imageColor: 'from-electric to-voPurple',
     year: '2023',
+    impact: 'Pedidos móviles, suscripciones y seguimiento de entregas para una operación más clara.',
   },
   {
     id: 'linetflores',
@@ -65,6 +70,7 @@ export const portfolioItems: PortfolioItem[] = [
     technologies: ['Next.js', 'Tailwind CSS', 'Stripe', 'Supabase', 'Framer Motion'],
     imageColor: 'from-navy via-voBlue to-electric',
     year: '2024',
+    impact: 'Catálogo, compras e inventario administrable para vender colecciones en línea.',
   },
 ]
 

@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad | Vorantheus',
   description: 'Política de privacidad y manejo de datos personales de Vorantheus.',
+  alternates: { canonical: '/privacidad' },
+  robots: { index: true, follow: true },
 }
 
 export default function PrivacidadPage() {
@@ -36,8 +39,8 @@ export default function PrivacidadPage() {
               </p>
               <p className="text-voGray leading-relaxed">
                 Para cualquier consulta relacionada con esta política, puede contactarnos en:
-                <a href="mailto:privacidad@vorantheus.com" className="text-electric ml-1 hover:text-white transition-colors">
-                  privacidad@vorantheus.com
+                <a href={`mailto:${siteConfig.privacyEmail}`} className="text-electric ml-1 hover:text-white transition-colors">
+                  {siteConfig.privacyEmail}
                 </a>
               </p>
             </div>
@@ -145,7 +148,7 @@ export default function PrivacidadPage() {
                 ].map((item) => (
                   <div
                     key={item.letra}
-                    className="rounded-xl bg-white/5 border border-white/8 p-4 flex gap-3"
+                    className="rounded-xl bg-white/5 border border-white/[0.08] p-4 flex gap-3"
                   >
                     <div className="w-10 h-10 rounded-lg bg-electric/20 flex items-center justify-center text-electric font-black shrink-0">
                       {item.letra}
@@ -159,8 +162,8 @@ export default function PrivacidadPage() {
               </div>
               <p className="text-voGray leading-relaxed mt-4 text-sm">
                 Para ejercer cualquiera de estos derechos, envíe un correo a{' '}
-                <a href="mailto:privacidad@vorantheus.com" className="text-electric hover:text-white transition-colors">
-                  privacidad@vorantheus.com
+                <a href={`mailto:${siteConfig.privacyEmail}`} className="text-electric hover:text-white transition-colors">
+                  {siteConfig.privacyEmail}
                 </a>{' '}
                 con su nombre, descripción del derecho que desea ejercer y copia de identificación oficial.
                 Responderemos en un plazo máximo de 20 días hábiles.

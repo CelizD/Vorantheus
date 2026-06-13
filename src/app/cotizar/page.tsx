@@ -8,6 +8,12 @@ export const metadata: Metadata = {
   title: 'Cotizar Proyecto | Vorantheus',
   description:
     'Solicita una cotización gratuita para tu proyecto de software. Respondemos en menos de 24 horas con una propuesta personalizada.',
+  alternates: { canonical: '/cotizar' },
+  openGraph: {
+    title: 'Cotizar Proyecto | Vorantheus',
+    description: 'Cuentanos tu idea y recibe una propuesta personalizada en menos de 24 horas.',
+    url: '/cotizar',
+  },
 }
 
 const benefits = [
@@ -33,7 +39,32 @@ const benefits = [
   },
 ]
 
-export default function CotizarPage() {
+type CotizarPageProps = {
+  searchParams?: Promise<Record<string, string | string[] | undefined>>
+}
+
+function getSearchParam(
+  params: Record<string, string | string[] | undefined> | undefined,
+  key: string,
+) {
+  const value = params?.[key]
+  const rawValue = Array.isArray(value) ? value[0] : value
+
+  if (!rawValue) return undefined
+
+  try {
+    return decodeURIComponent(rawValue)
+  } catch {
+    return rawValue
+  }
+}
+
+export default async function CotizarPage({ searchParams }: CotizarPageProps) {
+  const params = await searchParams
+  const initialTipoProyecto = getSearchParam(params, 'tipo')
+  const initialPresupuesto = getSearchParam(params, 'presupuesto')
+  const initialOrigen = getSearchParam(params, 'origen') || 'cotizar'
+
   return (
     <main className="min-h-screen bg-carbon">
       <Navbar />
@@ -64,7 +95,7 @@ export default function CotizarPage() {
               return (
                 <div
                   key={benefit.title}
-                  className="glass-card rounded-2xl p-5 border border-white/8 flex flex-col gap-3"
+                  className="glass-card rounded-2xl p-5 border border-white/[0.08] flex flex-col gap-3"
                 >
                   <div className="w-10 h-10 rounded-xl bg-electric/10 flex items-center justify-center">
                     <Icon className="w-5 h-5 text-electric" />
@@ -81,7 +112,11 @@ export default function CotizarPage() {
       </section>
 
       {/* Form */}
-      <QuoteForm />
+      <QuoteForm
+        initialTipoProyecto={initialTipoProyecto}
+        initialPresupuesto={initialPresupuesto}
+        initialOrigen={initialOrigen}
+      />
 
       <Footer />
     </main>

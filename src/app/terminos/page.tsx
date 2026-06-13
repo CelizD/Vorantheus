@@ -1,11 +1,14 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { siteConfig } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Términos y Condiciones | Vorantheus',
   description:
     'Términos y condiciones de servicio de Vorantheus para la prestación de servicios de desarrollo de software.',
+  alternates: { canonical: '/terminos' },
+  robots: { index: true, follow: true },
 }
 
 export default function TerminosPage() {
@@ -276,8 +279,8 @@ export default function TerminosPage() {
               </p>
               <p className="text-voGray text-sm mt-3">
                 Contacto legal:{' '}
-                <a href="mailto:legal@vorantheus.com" className="text-electric hover:text-white transition-colors">
-                  legal@vorantheus.com
+                <a href={`mailto:${siteConfig.legalEmail}`} className="text-electric hover:text-white transition-colors">
+                  {siteConfig.legalEmail}
                 </a>
               </p>
             </div>

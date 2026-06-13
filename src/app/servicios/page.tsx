@@ -13,11 +13,18 @@ import {
   ArrowRight,
 } from 'lucide-react'
 import Link from 'next/link'
+import { serviceQuoteTypes } from '@/lib/quote-schema'
 
 export const metadata: Metadata = {
   title: 'Servicios | Vorantheus',
   description:
     'Descubre todos los servicios de desarrollo de software que ofrece Vorantheus: páginas web, landing pages, e-commerce, sistemas administrativos, apps móviles, automatización con IA y mantenimiento.',
+  alternates: { canonical: '/servicios' },
+  openGraph: {
+    title: 'Servicios | Vorantheus',
+    description: 'Desarrollo web, e-commerce, sistemas, apps y automatizacion con IA para negocios.',
+    url: '/servicios',
+  },
 }
 
 const serviceDetails = [
@@ -233,6 +240,10 @@ export default function ServiciosPage() {
             {serviceDetails.map((service, index) => {
               const Icon = service.icon
               const isEven = index % 2 === 0
+              const quoteHref = `/cotizar?tipo=${encodeURIComponent(
+                serviceQuoteTypes[service.id] || service.title,
+              )}&origen=servicios-detalle:${service.id}`
+
               return (
                 <div
                   key={service.id}
@@ -269,7 +280,7 @@ export default function ServiciosPage() {
                     </div>
 
                     <Link
-                      href="/cotizar"
+                      href={quoteHref}
                       className="inline-flex items-center gap-2 px-6 py-3 bg-electric hover:bg-voBlue text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-electric"
                     >
                       Cotizar este servicio

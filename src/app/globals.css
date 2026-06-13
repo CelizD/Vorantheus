@@ -15,9 +15,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Tighter optical tracking on big headings */
 h1, h2 {
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 /* Custom scrollbar */
@@ -71,6 +70,23 @@ h1, h2 {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.prose-dark h2,
+.prose-dark h3 {
+  color: #ffffff;
+}
+
+.prose-dark p,
+.prose-dark li {
+  color: #94A3B8;
 }
 
 /* Tag pill label */

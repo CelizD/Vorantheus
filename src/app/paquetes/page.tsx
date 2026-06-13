@@ -4,11 +4,18 @@ import Pricing from '@/components/Pricing'
 import Footer from '@/components/Footer'
 import { Check, X, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { serviceQuoteTypes } from '@/lib/quote-schema'
 
 export const metadata: Metadata = {
   title: 'Paquetes y Precios | Vorantheus',
   description:
     'Conoce los paquetes y precios de Vorantheus para desarrollo web, apps y sistemas. Planes flexibles para todo tipo de negocios. Cotización gratuita.',
+  alternates: { canonical: '/paquetes' },
+  openGraph: {
+    title: 'Paquetes y Precios | Vorantheus',
+    description: 'Planes claros para paginas web, apps, sistemas y mantenimiento mensual.',
+    url: '/paquetes',
+  },
 }
 
 const comparisonFeatures = [
@@ -72,6 +79,8 @@ const monthlyPlans = [
     ],
   },
 ]
+
+const maintenanceQuoteType = encodeURIComponent(serviceQuoteTypes.mantenimiento)
 
 function FeatureValue({ value }: { value: string | boolean }) {
   if (value === true) {
@@ -192,7 +201,7 @@ export default function PaquetesPage() {
                   ))}
                 </ul>
                 <Link
-                  href="/cotizar"
+                  href={`/cotizar?tipo=${maintenanceQuoteType}&origen=mantenimiento:${encodeURIComponent(plan.name.toLowerCase())}`}
                   className={`mt-6 flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
                     plan.highlighted
                       ? 'bg-electric hover:bg-voBlue text-white shadow-electric'

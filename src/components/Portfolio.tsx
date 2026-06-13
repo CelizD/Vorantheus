@@ -48,6 +48,7 @@ export default function Portfolio() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
+              aria-pressed={activeCategory === cat}
               className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
                 activeCategory === cat
                   ? 'bg-white text-black font-medium'
@@ -103,6 +104,9 @@ export default function Portfolio() {
                   <p className="text-xs text-[#0B84F3] font-medium uppercase tracking-widest mb-2">{item.category}</p>
                   <h3 className="text-lg font-bold text-white mb-2">{item.client}</h3>
                   <p className="text-white/45 text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
+                  <p className="text-white/65 text-sm leading-relaxed mb-4">
+                    <span className="text-white font-medium">Impacto:</span> {item.impact}
+                  </p>
                   <div className="flex flex-wrap gap-1.5">
                     {item.technologies.slice(0, 4).map((tech) => (
                       <span key={tech} className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-white/40 text-[11px]">

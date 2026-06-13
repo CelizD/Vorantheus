@@ -1,13 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { siteConfig } from '@/lib/site'
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-})
+const gaId = process.env.NEXT_PUBLIC_GA_ID
 
 export const metadata: Metadata = {
   title: 'Vorantheus | Software profesional para hacer crecer tu negocio',
@@ -28,7 +25,10 @@ export const metadata: Metadata = {
   authors: [{ name: 'Vorantheus' }],
   creator: 'Vorantheus',
   publisher: 'Vorantheus',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'es_MX',
@@ -60,8 +60,24 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={inter.variable}>
-      <body className={`${inter.className} antialiased`}>
+    <html lang="es">
+      <body className="antialiased">
+        {gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+              `}
+            </Script>
+          </>
+        ) : null}
         {children}
         <WhatsAppButton />
       </body>

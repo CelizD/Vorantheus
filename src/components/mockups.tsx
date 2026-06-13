@@ -169,7 +169,7 @@ export function PhoneMockup() {
           {/* Tab bar */}
           <div className="mt-4 flex items-center justify-around pt-3 border-t border-white/[0.06]">
             {[0, 1, 2, 3].map((i) => (
-              <div key={i} className={`h-4 w-4 rounded-md ${i === 0 ? 'bg-[#0B84F3]' : 'bg-white/12'}`} />
+              <div key={i} className={`h-4 w-4 rounded-md ${i === 0 ? 'bg-[#0B84F3]' : 'bg-white/[0.12]'}`} />
             ))}
           </div>
         </div>

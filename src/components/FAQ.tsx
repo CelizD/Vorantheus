@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus } from 'lucide-react'
 import { faqs } from '@/data/faqs'
+import { getWhatsAppUrl } from '@/lib/site'
 
 function FAQItem({
   question,
@@ -101,7 +102,7 @@ export default function FAQ() {
         >
           <span>¿Tienes otra pregunta?</span>
           <a
-            href={`https://wa.me/5219991234567`}
+            href={getWhatsAppUrl('Hola, tengo una pregunta antes de cotizar mi proyecto.')}
             target="_blank"
             rel="noopener noreferrer"
             className="text-[#0B84F3] hover:text-white transition-colors duration-200 font-medium"

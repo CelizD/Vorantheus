@@ -4,8 +4,20 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import { packages, Package } from '@/data/packages'
+import { serviceQuoteTypes } from '@/lib/quote-schema'
+
+const packageQuoteTypes: Record<string, string> = {
+  basico: serviceQuoteTypes['paginas-web'],
+  profesional: serviceQuoteTypes['paginas-web'],
+  enterprise: serviceQuoteTypes['sistemas-administrativos'],
+  'mantenimiento-mensual': serviceQuoteTypes.mantenimiento,
+}
 
 function PricingCard({ pkg, index }: { pkg: Package; index: number }) {
+  const quoteHref = `/cotizar?tipo=${encodeURIComponent(
+    packageQuoteTypes[pkg.id] || 'Otro / No estoy seguro',
+  )}&origen=paquetes:${pkg.id}`
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -74,7 +86,7 @@ function PricingCard({ pkg, index }: { pkg: Package; index: number }) {
 
       {/* CTA */}
       <Link
-        href="/cotizar"
+        href={quoteHref}
         className={`flex items-center justify-center px-6 py-3.5 rounded-2xl font-semibold text-sm transition-all duration-200 ${
           pkg.highlighted
             ? 'bg-[#050816] hover:bg-[#0D1117] text-white'

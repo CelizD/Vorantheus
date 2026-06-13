@@ -81,7 +81,9 @@ export default function Navbar() {
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="lg:hidden p-2 rounded-lg text-white/60 hover:text-white transition-colors duration-200"
-                aria-label="Toggle menu"
+                aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+                aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
               >
                 {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
@@ -94,6 +96,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -103,7 +106,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(false)}
               className="absolute top-4 right-6 p-2 text-white/60 hover:text-white transition-colors"
-              aria-label="Close menu"
+              aria-label="Cerrar menú"
             >
               <X className="w-6 h-6" />
             </button>

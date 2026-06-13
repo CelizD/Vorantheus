@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Globe, ShoppingCart, Database, Smartphone, Layout, Bot, Wrench, Check, ArrowRight, LucideIcon } from 'lucide-react'
 import { services } from '@/data/services'
 import { Mockup } from '@/components/mockups'
+import { serviceQuoteTypes } from '@/lib/quote-schema'
 
 const iconMap: Record<string, LucideIcon> = {
   Globe,
@@ -35,11 +36,14 @@ const supplementalServiceIds = ['landing-pages', 'automatizacion-ia', 'mantenimi
 
 interface FeatureSectionProps {
   service: (typeof services)[0]
-  index: number
   reversed: boolean
 }
 
-function FeatureSection({ service, index, reversed }: FeatureSectionProps) {
+function FeatureSection({ service, reversed }: FeatureSectionProps) {
+  const quoteHref = `/cotizar?tipo=${encodeURIComponent(
+    serviceQuoteTypes[service.id] || service.title,
+  )}&origen=servicios:${service.id}`
+
   const textBlock = (
     <div className="flex flex-col gap-6 justify-center">
       <div>
@@ -63,7 +67,7 @@ function FeatureSection({ service, index, reversed }: FeatureSectionProps) {
       </ul>
       <div>
         <Link
-          href="/cotizar"
+          href={quoteHref}
           className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0B84F3] hover:text-white transition-colors duration-200"
         >
           Cotizar este servicio
@@ -133,7 +137,6 @@ export default function Services() {
           <FeatureSection
             key={service.id}
             service={service}
-            index={index}
             reversed={index % 2 !== 0}
           />
         ))}
@@ -154,6 +157,10 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {supplementalServices.map((service, index) => {
               const Icon = iconMap[service.icon] || Globe
+              const quoteHref = `/cotizar?tipo=${encodeURIComponent(
+                serviceQuoteTypes[service.id] || service.title,
+              )}&origen=servicios:${service.id}`
+
               return (
                 <motion.div
                   key={service.id}
@@ -171,7 +178,7 @@ export default function Services() {
                     <p className="text-sm text-white/50 leading-relaxed">{service.description}</p>
                   </div>
                   <Link
-                    href="/cotizar"
+                    href={quoteHref}
                     className="mt-auto text-sm text-[#0B84F3] hover:text-white transition-colors duration-200 inline-flex items-center gap-1"
                   >
                     Saber más <ArrowRight className="w-3.5 h-3.5" />

@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: 'Portafolio | Vorantheus',
   description:
     'Conoce los proyectos de software que hemos desarrollado: ELASTRON, VYBRA, Vinclea, FlorApp, LinetFlores y más. Sistemas, apps, e-commerce y automatización.',
+  alternates: { canonical: '/portafolio' },
+  openGraph: {
+    title: 'Portafolio | Vorantheus',
+    description: 'Casos de software, sistemas, apps y e-commerce desarrollados por Vorantheus.',
+    url: '/portafolio',
+  },
 }
 
 export default function PortafolioPage() {

@@ -41,7 +41,7 @@ const tiles = [
 
 export default function HomeServices() {
   return (
-    <section className="section-dark border-t border-white/[0.06]">
+    <section id="servicios" className="section-dark border-t border-white/[0.06]">
       {/* Section label */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 flex items-end justify-between">
         <motion.div

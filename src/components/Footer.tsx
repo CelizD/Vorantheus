@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getWhatsAppUrl, siteConfig } from '@/lib/site'
 
 const servicesLinks = [
   { label: 'Páginas web', href: '/servicios' },
@@ -75,22 +76,22 @@ export default function Footer() {
             <p className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Contacto</p>
             <ul className="flex flex-col gap-3">
               <li>
-                <a href="mailto:hola@vorantheus.com" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
-                  hola@vorantheus.com
+                <a href={`mailto:${siteConfig.email}`} className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                  {siteConfig.email}
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/5219991234567" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
-                  +52 1 999 123 4567
+                <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                  {siteConfig.whatsappDisplay}
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com/vorantheus" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="https://facebook.com/vorantheus" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
                   Facebook
                 </a>
               </li>
@@ -101,7 +102,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-6 border-t border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/25 text-xs">
-            © 2025 Vorantheus. Todos los derechos reservados. Mérida, Yucatán, México.
+            © 2026 Vorantheus. Todos los derechos reservados. {siteConfig.location}.
           </p>
           <div className="flex items-center gap-6">
             {legalLinks.map((link) => (

@@ -1,14 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { getWhatsAppUrl } from '@/lib/site'
 
 export default function WhatsAppButton() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '5219991234567'
-  const message = encodeURIComponent('Hola, me interesa conocer más sobre sus servicios de desarrollo de software.')
+  const message = 'Hola, me interesa conocer mas sobre sus servicios de desarrollo de software.'
 
   return (
     <motion.a
-      href={`https://wa.me/${whatsappNumber}?text=${message}`}
+      href={getWhatsAppUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

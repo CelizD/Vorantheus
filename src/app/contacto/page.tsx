@@ -9,6 +9,12 @@ export const metadata: Metadata = {
   title: 'Contacto | Vorantheus',
   description:
     'Contáctanos por WhatsApp, correo electrónico o redes sociales. Respondemos en menos de 24 horas. Primera consulta gratuita.',
+  alternates: { canonical: '/contacto' },
+  openGraph: {
+    title: 'Contacto | Vorantheus',
+    description: 'Hablemos de tu proyecto de software. Primera consulta gratuita.',
+    url: '/contacto',
+  },
 }
 
 export default function ContactoPage() {
