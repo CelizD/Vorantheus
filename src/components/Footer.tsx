@@ -26,30 +26,37 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#030711] border-t border-white/[0.06]">
+    <footer className="bg-[#0A0A0A] border-t border-white/[0.05]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main columns */}
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-5 h-5 rounded-sm bg-[#0B84F3] flex items-center justify-center">
+              <div className="w-5 h-5 rounded-sm bg-[#0071E3] flex items-center justify-center">
                 <div className="w-2 h-2 rounded-sm bg-white" />
               </div>
-              <span className="text-sm font-bold tracking-widest text-white uppercase">Vorantheus</span>
+              <span className="text-sm font-bold tracking-widest text-white/80 uppercase">
+                Vorantheus
+              </span>
             </Link>
-            <p className="text-white/35 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/30 text-sm leading-relaxed max-w-xs">
               Software profesional para hacer crecer tu negocio. Páginas web, apps, sistemas y automatizaciones con IA.
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <p className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Servicios</p>
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">
+              Servicios
+            </p>
             <ul className="flex flex-col gap-3">
               {servicesLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                  <Link
+                    href={link.href}
+                    className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -59,11 +66,16 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <p className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Empresa</p>
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">
+              Empresa
+            </p>
             <ul className="flex flex-col gap-3">
               {companyLinks.map((link) => (
                 <li key={link.label}>
-                  <Link href={link.href} className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                  <Link
+                    href={link.href}
+                    className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -73,25 +85,45 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="text-white text-xs font-semibold uppercase tracking-widest mb-5">Contacto</p>
+            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">
+              Contacto
+            </p>
             <ul className="flex flex-col gap-3">
               <li>
-                <a href={`mailto:${siteConfig.email}`} className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                >
                   {siteConfig.email}
                 </a>
               </li>
               <li>
-                <a href={getWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                >
                   {siteConfig.whatsappDisplay}
                 </a>
               </li>
               <li>
-                <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                >
                   Instagram
                 </a>
               </li>
               <li>
-                <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white text-sm transition-colors duration-200">
+                <a
+                  href={siteConfig.social.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                >
                   Facebook
                 </a>
               </li>
@@ -106,7 +138,11 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6">
             {legalLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-white/25 hover:text-white/60 text-xs transition-colors duration-200">
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-white/25 hover:text-white/60 text-xs transition-colors duration-200"
+              >
                 {link.label}
               </Link>
             ))}

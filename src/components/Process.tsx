@@ -55,7 +55,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="proceso" className="section-mid">
+    <section id="proceso" className="section-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
         {/* Header */}
         <motion.div
@@ -66,10 +66,13 @@ export default function Process() {
           className="max-w-2xl mb-24"
         >
           <span className="tag">Metodología probada</span>
-          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+          <h2
+            className="mt-6 text-5xl sm:text-6xl font-black text-ink tracking-tight leading-tight"
+            style={{ letterSpacing: '-0.02em' }}
+          >
             Así trabajamos.
           </h2>
-          <p className="mt-6 text-xl text-white/50 leading-relaxed">
+          <p className="mt-6 text-xl text-muted leading-relaxed">
             Un proceso estructurado que garantiza transparencia, calidad y entrega a tiempo. Sabes en todo momento en qué etapa está tu proyecto.
           </p>
         </motion.div>
@@ -83,11 +86,11 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: index * 0.04 }}
-              className="group relative grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 py-10 border-b border-white/[0.06] last:border-0"
+              className="group relative grid grid-cols-1 lg:grid-cols-[120px_1fr] gap-6 lg:gap-16 py-10 border-b border-black/[0.07] last:border-0"
             >
               {/* Step number */}
               <div className="flex items-start gap-5 lg:block">
-                <span className="text-xs font-bold tracking-widest text-[#0B84F3] uppercase">
+                <span className="text-xs font-bold tracking-widest text-[#0071E3] uppercase">
                   Paso {step.number}
                 </span>
               </div>
@@ -95,13 +98,13 @@ export default function Process() {
               {/* Content */}
               <div className="relative">
                 {/* Large background number */}
-                <span className="absolute -top-6 right-0 text-[120px] leading-none font-black text-white/[0.03] select-none pointer-events-none hidden lg:block">
+                <span className="absolute -top-6 right-0 text-[120px] leading-none font-black text-black/[0.03] select-none pointer-events-none hidden lg:block">
                   {step.number}
                 </span>
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#0B84F3] transition-colors duration-200">
+                <h3 className="text-2xl font-bold text-ink mb-3 group-hover:text-[#0071E3] transition-colors duration-200">
                   {step.title}
                 </h3>
-                <p className="text-[#94A3B8] leading-relaxed max-w-2xl">
+                <p className="text-muted leading-relaxed max-w-2xl">
                   {step.description}
                 </p>
               </div>

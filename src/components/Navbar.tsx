@@ -40,18 +40,18 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-[#050816]/95 backdrop-blur-xl border-b border-white/[0.06]'
-            : 'bg-[#050816]/60 backdrop-blur-md border-b border-white/[0.04]'
+            ? 'bg-white/95 backdrop-blur-2xl border-b border-black/[0.08]'
+            : 'bg-white/80 backdrop-blur-2xl border-b border-black/[0.08]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-5 h-5 rounded-sm bg-[#0B84F3] flex items-center justify-center">
+              <div className="w-5 h-5 rounded-sm bg-[#0071E3] flex items-center justify-center">
                 <div className="w-2 h-2 rounded-sm bg-white" />
               </div>
-              <span className="text-sm font-bold tracking-widest text-white uppercase">
+              <span className="text-sm font-bold tracking-widest text-ink uppercase">
                 Vorantheus
               </span>
             </Link>
@@ -62,7 +62,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 text-sm text-white/60 hover:text-white transition-colors duration-200 rounded-lg"
+                  className="px-4 py-2 text-sm text-ink/60 hover:text-ink transition-colors duration-200 rounded-lg"
                 >
                   {link.label}
                 </Link>
@@ -73,14 +73,14 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/cotizar"
-                className="hidden sm:inline-flex items-center px-4 py-1.5 border border-white/20 hover:border-white/40 text-white text-sm rounded-full transition-all duration-200 hover:bg-white/5"
+                className="hidden sm:inline-flex items-center px-5 py-2 bg-[#0071E3] hover:bg-[#0077ED] text-white text-sm rounded-full transition-all duration-200"
               >
                 Cotizar
               </Link>
 
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 rounded-lg text-white/60 hover:text-white transition-colors duration-200"
+                className="lg:hidden p-2 rounded-lg text-ink/60 hover:text-ink transition-colors duration-200"
                 aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
@@ -92,7 +92,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Menu - full screen overlay */}
+      {/* Mobile Menu - full screen white overlay with dark text */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -101,11 +101,11 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 lg:hidden bg-[#050816]/98 backdrop-blur-2xl flex flex-col items-center justify-center"
+            className="fixed inset-0 z-40 lg:hidden bg-white flex flex-col items-center justify-center"
           >
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-6 p-2 text-white/60 hover:text-white transition-colors"
+              className="absolute top-4 right-6 p-2 text-ink/50 hover:text-ink transition-colors"
               aria-label="Cerrar menú"
             >
               <X className="w-6 h-6" />
@@ -123,7 +123,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-4 text-2xl font-semibold text-white/80 hover:text-white transition-colors duration-200"
+                    className="block py-4 text-2xl font-semibold text-ink/70 hover:text-ink transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -138,7 +138,7 @@ export default function Navbar() {
                 <Link
                   href="/cotizar"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center justify-center px-8 py-3 bg-[#0B84F3] hover:bg-[#0070d8] text-white font-semibold rounded-full transition-all duration-200"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
                 >
                   Cotizar proyecto
                 </Link>

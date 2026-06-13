@@ -5,12 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        carbon: '#050816',
+        // New premium palette
+        carbon: '#000000',
+        smoke: '#F5F5F7',
+        ink: '#1D1D1F',
+        muted: '#6E6E73',
+        voBlue: '#0071E3',
+        voBlueHover: '#0077ED',
+        // Keep existing
         navy: '#071B3A',
         electric: '#0B84F3',
-        voBlue: '#2563EB',
-        voGray: '#94A3B8',
         voPurple: '#7C3AED',
+        voGray: '#94A3B8',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -20,6 +26,9 @@ const config: Config = {
         'electric': '0 0 20px rgba(11, 132, 243, 0.4)',
         'electric-lg': '0 0 40px rgba(11, 132, 243, 0.3)',
         'purple': '0 0 20px rgba(124, 58, 237, 0.4)',
+        'soft': '0 2px 20px rgba(0,0,0,0.08)',
+        'medium': '0 4px 40px rgba(0,0,0,0.12)',
+        'card': '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08)',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
