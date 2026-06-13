@@ -1,18 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  Globe,
-  Layout,
-  ShoppingCart,
-  Database,
-  Smartphone,
-  Bot,
-  Wrench,
-  Check,
-  LucideIcon,
-} from 'lucide-react'
-import { services, Service } from '@/data/services'
+import Link from 'next/link'
+import { Globe, ShoppingCart, Database, Smartphone, Layout, Bot, Wrench, Check, ArrowRight, LucideIcon } from 'lucide-react'
+import { services } from '@/data/services'
 
 const iconMap: Record<string, LucideIcon> = {
   Globe,
@@ -24,103 +15,174 @@ const iconMap: Record<string, LucideIcon> = {
   Wrench,
 }
 
-function ServiceCard({ service, index }: { service: Service; index: number }) {
+// Colors for the gradient placeholder boxes
+const boxGradients = [
+  'from-[#0B84F3]/40 via-[#0B84F3]/20 to-[#7C3AED]/30',
+  'from-[#7C3AED]/40 via-[#7C3AED]/20 to-[#0B84F3]/30',
+  'from-[#0B84F3]/30 via-[#071B3A]/60 to-[#7C3AED]/40',
+  'from-[#7C3AED]/30 via-[#071B3A]/60 to-[#0B84F3]/40',
+]
+
+// The 4 main featured services
+const featuredServiceIds = ['paginas-web', 'tiendas-en-linea', 'sistemas-administrativos', 'aplicaciones-moviles']
+// The 3 smaller supplemental services
+const supplementalServiceIds = ['landing-pages', 'automatizacion-ia', 'mantenimiento']
+
+interface FeatureSectionProps {
+  service: (typeof services)[0]
+  index: number
+  reversed: boolean
+  gradientClass: string
+}
+
+function FeatureSection({ service, index, reversed, gradientClass }: FeatureSectionProps) {
   const Icon = iconMap[service.icon] || Globe
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -4, scale: 1.01 }}
-      className="glass-card rounded-2xl p-6 flex flex-col gap-5 border border-white/8 hover:border-electric/30 hover:shadow-electric transition-all duration-300 group"
-    >
-      {/* Icon */}
-      <div
-        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg group-hover:shadow-electric transition-shadow duration-300`}
-      >
-        <Icon className="w-7 h-7 text-white" />
+  const textBlock = (
+    <div className="flex flex-col gap-6 justify-center">
+      <div>
+        <span className="tag">{service.title}</span>
       </div>
-
-      {/* Title & Description */}
-      <div className="flex flex-col gap-2">
-        <h3 className="text-xl font-bold text-white">{service.title}</h3>
-        <p className="text-voGray text-sm leading-relaxed">{service.description}</p>
-      </div>
-
-      {/* Features */}
-      <ul className="flex flex-col gap-2">
-        {service.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2 text-sm">
-            <Check className="w-4 h-4 text-electric shrink-0 mt-0.5" />
-            <span className="text-voGray">{feature}</span>
+      <h3 className="text-4xl sm:text-5xl font-bold text-white leading-tight tracking-tight">
+        {service.title}
+      </h3>
+      <p className="text-lg text-white/55 leading-relaxed max-w-lg">
+        {service.description}
+      </p>
+      <ul className="flex flex-col gap-3">
+        {service.features.slice(0, 5).map((feature) => (
+          <li key={feature} className="flex items-center gap-3">
+            <div className="w-5 h-5 rounded-full bg-[#0B84F3]/15 flex items-center justify-center shrink-0">
+              <Check className="w-3 h-3 text-[#0B84F3]" />
+            </div>
+            <span className="text-white/70 text-sm">{feature}</span>
           </li>
         ))}
       </ul>
-
-      {/* Ideal for */}
-      <div className="mt-auto pt-4 border-t border-white/8">
-        <p className="text-xs text-voGray/70 leading-relaxed">
-          <span className="text-electric font-semibold">Ideal para: </span>
-          {service.idealFor}
-        </p>
+      <div>
+        <Link
+          href="/cotizar"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0B84F3] hover:text-white transition-colors duration-200"
+        >
+          Cotizar este servicio
+          <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
+    </div>
+  )
+
+  const visualBlock = (
+    <div
+      className={`rounded-3xl bg-gradient-to-br ${gradientClass} min-h-[340px] lg:min-h-[420px] flex items-center justify-center border border-white/[0.06]`}
+    >
+      <div className="flex flex-col items-center gap-4 text-white/20">
+        <div className="w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+          <Icon className="w-10 h-10 text-white/40" />
+        </div>
+        <span className="text-xs tracking-widest uppercase text-white/20">{service.title}</span>
+      </div>
+    </div>
+  )
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center ${reversed ? 'lg:[direction:rtl]' : ''}`}
+    >
+      <div className={reversed ? 'lg:[direction:ltr]' : ''}>{textBlock}</div>
+      <div className={reversed ? 'lg:[direction:ltr]' : ''}>{visualBlock}</div>
     </motion.div>
   )
 }
 
 export default function Services() {
-  return (
-    <section id="servicios" className="py-24 bg-navy relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-electric/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-voPurple/5 rounded-full blur-3xl" />
+  const featuredServices = featuredServiceIds
+    .map((id) => services.find((s) => s.id === id))
+    .filter(Boolean) as typeof services
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+  const supplementalServices = supplementalServiceIds
+    .map((id) => services.find((s) => s.id === id))
+    .filter(Boolean) as typeof services
+
+  return (
+    <section id="servicios" className="section-mid">
+      {/* Section header */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="max-w-2xl"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric/30 bg-electric/10 text-electric text-sm font-medium mb-4">
-            Nuestros servicios
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            ¿Qué <span className="gradient-text">hacemos?</span>
+          <span className="tag">Servicios</span>
+          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+            Todo lo que tu negocio necesita.
           </h2>
-          <p className="max-w-2xl mx-auto text-voGray text-lg leading-relaxed">
-            Desde páginas web hasta sistemas complejos con inteligencia artificial.
-            Cubrimos todo el espectro del desarrollo de software para tu negocio.
+          <p className="mt-6 text-xl text-white/50 leading-relaxed">
+            Desde una página de presentación hasta sistemas complejos con inteligencia artificial. Cubrimos cada etapa del crecimiento digital.
           </p>
         </motion.div>
+      </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
-        </div>
+      {/* Featured alternating sections */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-32 pb-32">
+        {featuredServices.map((service, index) => (
+          <FeatureSection
+            key={service.id}
+            service={service}
+            index={index}
+            reversed={index % 2 !== 0}
+            gradientClass={boxGradients[index % boxGradients.length]}
+          />
+        ))}
+      </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16"
-        >
-          <p className="text-voGray mb-4">¿No encuentras lo que buscas?</p>
-          <a
-            href="/cotizar"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-electric hover:bg-voBlue text-white font-bold rounded-2xl shadow-electric hover:shadow-electric-lg transition-all duration-300 hover:scale-105"
+      {/* Supplemental services - smaller cards */}
+      <div className="border-t border-white/[0.06] section-dark">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-sm text-white/40 uppercase tracking-widest mb-12"
           >
-            Cotiza tu proyecto personalizado
-          </a>
-        </motion.div>
+            También ofrecemos
+          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {supplementalServices.map((service, index) => {
+              const Icon = iconMap[service.icon] || Globe
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="glass-card rounded-2xl p-8 border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300 flex flex-col gap-5"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#0B84F3]/10 border border-[#0B84F3]/20 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-[#0B84F3]" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold text-white mb-2">{service.title}</h4>
+                    <p className="text-sm text-white/50 leading-relaxed">{service.description}</p>
+                  </div>
+                  <Link
+                    href="/cotizar"
+                    className="mt-auto text-sm text-[#0B84F3] hover:text-white transition-colors duration-200 inline-flex items-center gap-1"
+                  >
+                    Saber más <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
       </div>
     </section>
   )
