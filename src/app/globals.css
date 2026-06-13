@@ -50,15 +50,6 @@ body {
   background: #0D1117;
 }
 
-/* Glow effects */
-.glow-electric {
-  box-shadow: 0 0 20px rgba(11, 132, 243, 0.4);
-}
-
-.glow-purple {
-  box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
-}
-
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #0B84F3 0%, #7C3AED 100%);
