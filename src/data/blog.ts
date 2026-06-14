@@ -38,6 +38,134 @@ const defaultCta = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'pagina-web-profesional-ayuda-vender-mas-servicios',
+    title: 'Cómo una página web profesional ayuda a vender más servicios',
+    description:
+      'Un sitio web claro convierte visitas en prospectos al explicar tu oferta, generar confianza y facilitar que te contacten en el momento correcto.',
+    date: '2026-06-13',
+    readTime: '6 min',
+    category: 'Páginas web',
+    content: {
+      intro: [
+        'Vender servicios no depende solo de tener buenos precios o experiencia. También depende de que las personas entiendan rápidamente qué haces, por qué pueden confiar en ti y cuál es el siguiente paso para contratarte.',
+        'Una página web profesional ayuda justo en ese punto: ordena tu mensaje, responde dudas frecuentes y convierte el interés inicial en una oportunidad comercial real.',
+      ],
+      sections: [
+        {
+          heading: 'Convierte interés en confianza',
+          paragraphs: [
+            'Cuando alguien necesita un servicio, normalmente compara varias opciones antes de escribir por WhatsApp o pedir una cotización. Si tu sitio se ve profesional, carga rápido y explica tu propuesta con claridad, la percepción de tu empresa mejora desde el primer contacto.',
+            'La confianza no se construye únicamente con diseño. También nace de mostrar información completa: servicios, proceso de trabajo, casos, preguntas frecuentes, datos de contacto y señales de que hay una empresa seria detrás.',
+          ],
+        },
+        {
+          heading: 'Presenta tus servicios con claridad',
+          bullets: [
+            {
+              title: 'Oferta fácil de entender',
+              text: 'Cada servicio debe explicar qué incluye, para quién es útil y qué problema resuelve.',
+            },
+            {
+              title: 'Pruebas de confianza',
+              text: 'Portafolio, experiencia, certificaciones o casos de uso ayudan a que el visitante sienta menos riesgo al contactarte.',
+            },
+            {
+              title: 'CTAs visibles',
+              text: 'Botones de cotización, WhatsApp y formularios deben estar ubicados donde el usuario naturalmente toma decisiones.',
+            },
+            {
+              title: 'SEO comercial',
+              text: 'Una estructura bien pensada permite aparecer cuando alguien busca soluciones relacionadas con tus servicios.',
+            },
+          ],
+        },
+        {
+          heading: 'Reduce fricción antes de cotizar',
+          paragraphs: [
+            'Muchos prospectos no escriben porque no saben si la empresa atiende su necesidad, cuánto puede costar o cómo funciona el proceso. Una página bien organizada reduce esa incertidumbre antes de la conversación comercial.',
+            'Esto no significa saturar el sitio de información. Significa presentar lo importante en el orden correcto: problema, solución, beneficios, ejemplos y acción siguiente.',
+          ],
+        },
+        {
+          heading: 'Vende incluso fuera de horario',
+          paragraphs: [
+            'Un sitio web trabaja aunque tu equipo no esté conectado. Puede recibir formularios, enviar prospectos a WhatsApp, mostrar servicios y explicar tu propuesta durante la noche, fines de semana o días ocupados.',
+            'Para negocios de servicios, esto representa una ventaja importante: no todos los clientes deciden en horario de oficina, pero sí esperan encontrar información clara cuando están listos para investigar.',
+          ],
+        },
+      ],
+      ctaTitle: '¿Quieres que tu sitio venda mejor tus servicios?',
+      ctaText:
+        'En Vorantheus diseñamos páginas web profesionales orientadas a confianza, claridad comercial y generación de prospectos.',
+      ctaLabel: 'Cotizar página web →',
+      ctaHref: '/cotizar?tipo_proyecto=web&origen=blog-servicios',
+    },
+  },
+  {
+    slug: 'automatizar-tareas-repetitivas-negocio',
+    title: 'Por qué tu negocio necesita automatizar tareas repetitivas',
+    description:
+      'Automatizar tareas reduce errores, ahorra tiempo y permite que tu equipo se enfoque en ventas, servicio y crecimiento.',
+    date: '2026-06-13',
+    readTime: '7 min',
+    category: 'Automatización',
+    content: {
+      intro: [
+        'En muchos negocios, una parte importante del tiempo se va en tareas repetitivas: copiar datos, responder las mismas preguntas, dar seguimiento manual, preparar reportes o actualizar archivos.',
+        'La automatización permite que esas actividades funcionen con menos intervención humana, menos errores y mayor velocidad, sin perder control sobre la operación.',
+      ],
+      sections: [
+        {
+          heading: 'El costo oculto de hacer todo manual',
+          paragraphs: [
+            'Las tareas manuales parecen inofensivas cuando el negocio es pequeño, pero se vuelven un problema cuando aumentan los clientes, pedidos, citas o solicitudes. Lo que antes tomaba minutos empieza a consumir horas cada semana.',
+            'Además del tiempo, existe otro costo: errores de captura, seguimientos olvidados, reportes desactualizados y clientes que esperan más de lo necesario para recibir respuesta.',
+          ],
+        },
+        {
+          heading: 'Qué tareas conviene automatizar primero',
+          bullets: [
+            {
+              title: 'Seguimiento a prospectos',
+              text: 'Registrar solicitudes, enviar confirmaciones y recordar pendientes ayuda a no perder oportunidades.',
+            },
+            {
+              title: 'Reportes y captura de datos',
+              text: 'Automatizar reportes reduce trabajo operativo y permite tomar decisiones con información más actualizada.',
+            },
+            {
+              title: 'Inventario, citas o pagos',
+              text: 'Procesos repetibles pueden conectarse con sistemas internos para evitar dobles capturas.',
+            },
+            {
+              title: 'Atención inicial con IA',
+              text: 'La inteligencia artificial puede responder preguntas frecuentes, clasificar solicitudes o preparar información para el equipo.',
+            },
+          ],
+        },
+        {
+          heading: 'La automatización no sustituye el criterio humano',
+          paragraphs: [
+            'Automatizar no significa dejar todo en manos de una máquina. Las mejores soluciones eliminan trabajo repetitivo para que las personas puedan enfocarse en decisiones, atención personalizada y crecimiento comercial.',
+            'Un buen sistema debe respetar la forma en que opera el negocio, permitir revisión cuando sea necesario y adaptarse conforme cambian los procesos.',
+          ],
+        },
+        {
+          heading: 'Cómo empezar sin complicar la operación',
+          paragraphs: [
+            'El primer paso no es automatizar todo. Lo correcto es identificar tareas frecuentes, medir cuánto tiempo consumen y elegir procesos donde el impacto sea claro.',
+            'A partir de ahí, se puede construir una automatización sencilla, conectarla con herramientas existentes y mejorarla gradualmente. Así el negocio gana eficiencia sin detener su operación diaria.',
+          ],
+        },
+      ],
+      ctaTitle: '¿Listo para ahorrar tiempo en tu operación?',
+      ctaText:
+        'En Vorantheus podemos ayudarte a detectar procesos repetitivos y construir automatizaciones prácticas con IA, integraciones o software a medida.',
+      ctaLabel: 'Cotizar automatización →',
+      ctaHref: '/cotizar?tipo_proyecto=automatizacion&origen=blog-automatizacion',
+    },
+  },
+  {
     slug: 'por-que-negocio-necesita-pagina-web-profesional-2026',
     title: 'Por qué tu negocio necesita una página web profesional en 2026',
     description:
