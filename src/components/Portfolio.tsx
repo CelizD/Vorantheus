@@ -23,7 +23,7 @@ export default function Portfolio() {
       : portfolioItems.filter((item) => item.category === activeCategory)
 
   return (
-    <section id="portafolio" className="section-dark">
+    <section id="portafolio" className="section-light">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
         {/* Header */}
         <motion.div
@@ -34,10 +34,10 @@ export default function Portfolio() {
           className="max-w-2xl mb-12"
         >
           <span className="tag">Portafolio</span>
-          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-ink tracking-tight leading-tight">
             Proyectos que hablan por sí solos.
           </h2>
-          <p className="mt-6 text-xl text-white/50 leading-relaxed">
+          <p className="mt-6 text-xl text-muted leading-relaxed">
             Sistemas, apps y tiendas en línea construidos con tecnología moderna y resultados reales.
           </p>
         </motion.div>
@@ -51,8 +51,8 @@ export default function Portfolio() {
               aria-pressed={activeCategory === cat}
               className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
                 activeCategory === cat
-                  ? 'bg-white text-black font-medium'
-                  : 'border border-white/[0.12] text-white/60 hover:text-white hover:border-white/30'
+                  ? 'bg-ink text-white font-medium'
+                  : 'border border-black/[0.12] text-muted hover:text-ink hover:border-black/30'
               }`}
             >
               {cat}
@@ -76,7 +76,7 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group rounded-3xl overflow-hidden bg-white/[0.02] border border-white/[0.07] hover:border-white/[0.16] transition-all duration-300"
+                className="group rounded-3xl overflow-hidden bg-white border border-black/[0.04] shadow-card hover:shadow-medium transition-all duration-300"
               >
                 {/* Thumbnail */}
                 <div className={`relative aspect-[16/10] bg-gradient-to-br ${gradientTints[item.imageColor] || 'from-[#0B84F3]/40 to-[#7C3AED]/30'} overflow-hidden`}>
@@ -101,15 +101,15 @@ export default function Portfolio() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <p className="text-xs text-[#0B84F3] font-medium uppercase tracking-widest mb-2">{item.category}</p>
-                  <h3 className="text-lg font-bold text-white mb-2">{item.client}</h3>
-                  <p className="text-white/45 text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
-                  <p className="text-white/65 text-sm leading-relaxed mb-4">
-                    <span className="text-white font-medium">Impacto:</span> {item.impact}
+                  <p className="text-xs text-[#0071E3] font-medium uppercase tracking-widest mb-2">{item.category}</p>
+                  <h3 className="text-lg font-bold text-ink mb-2">{item.client}</h3>
+                  <p className="text-muted text-sm leading-relaxed mb-4 line-clamp-3">{item.description}</p>
+                  <p className="text-muted text-sm leading-relaxed mb-4">
+                    <span className="text-ink font-medium">Impacto:</span> {item.impact}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {item.technologies.slice(0, 4).map((tech) => (
-                      <span key={tech} className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.06] text-white/40 text-[11px]">
+                      <span key={tech} className="px-2 py-0.5 rounded-md bg-smoke border border-black/[0.06] text-muted text-[11px]">
                         {tech}
                       </span>
                     ))}

@@ -66,19 +66,18 @@ export default async function CotizarPage({ searchParams }: CotizarPageProps) {
   const initialOrigen = getSearchParam(params, 'origen') || 'cotizar'
 
   return (
-    <main className="min-h-screen bg-carbon">
+    <main className="bg-white">
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-8 bg-navy relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric/30 bg-electric/10 text-electric text-sm font-medium mb-6">
-            Gratis y sin compromiso
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
+      <section className="relative section-dark overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 60% at 30% 40%, rgba(0,113,227,0.12) 0%, transparent 65%)' }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24 text-center">
+          <span className="tag">Gratis y sin compromiso</span>
+          <h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
             Cotiza tu <span className="gradient-text">proyecto</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-voGray text-lg leading-relaxed">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-white/55 leading-relaxed">
             Cuéntanos tu idea y te enviaremos una propuesta completa con alcance,
             cronograma y precio. Sin costo, sin letra chica.
           </p>
@@ -86,7 +85,7 @@ export default async function CotizarPage({ searchParams }: CotizarPageProps) {
       </section>
 
       {/* Benefits */}
-      <section className="py-12 bg-navy">
+      <section className="py-12 section-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {benefits.map((benefit) => {
@@ -94,14 +93,14 @@ export default async function CotizarPage({ searchParams }: CotizarPageProps) {
               return (
                 <div
                   key={benefit.title}
-                  className="glass-card rounded-2xl p-5 border border-white/[0.08] flex flex-col gap-3"
+                  className="bg-white border border-black/[0.04] shadow-card rounded-2xl p-5 flex flex-col gap-3"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-electric/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-electric" />
+                  <div className="w-10 h-10 rounded-xl bg-[#0071E3]/10 flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-[#0071E3]" />
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-sm mb-1">{benefit.title}</p>
-                    <p className="text-voGray text-xs leading-relaxed">{benefit.description}</p>
+                    <p className="text-ink font-semibold text-sm mb-1">{benefit.title}</p>
+                    <p className="text-muted text-xs leading-relaxed">{benefit.description}</p>
                   </div>
                 </div>
               )

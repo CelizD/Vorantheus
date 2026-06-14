@@ -17,9 +17,9 @@ import { getWhatsAppUrl } from '@/lib/site'
 type SubmitStatus = 'idle' | 'loading' | 'success' | 'error'
 
 const inputClass =
-  'w-full px-4 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/25 focus:border-[#0B84F3] focus:bg-[#0B84F3]/[0.04] outline-none transition-all duration-200 text-sm'
+  'w-full px-4 py-3 rounded-2xl bg-white border border-black/[0.1] text-ink placeholder-muted/60 focus:border-[#0071E3] focus:ring-2 focus:ring-[#0071E3]/15 outline-none transition-all duration-200 text-sm'
 
-const labelClass = 'block text-sm font-medium text-white/60 mb-2'
+const labelClass = 'block text-sm font-medium text-ink mb-2'
 
 function FieldError({ message, id }: { message?: string; id: string }) {
   if (!message) return null
@@ -173,25 +173,25 @@ export default function QuoteForm({
 
   if (status === 'success') {
     return (
-      <section id="cotizar" className="section-mid">
+      <section id="cotizar" className="section-light">
         <div className="max-w-2xl mx-auto px-6 lg:px-8 py-32">
           <motion.div
             initial={{ scale: 0.96, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="rounded-3xl p-12 text-center bg-white/[0.02] border border-white/[0.08]"
+            className="rounded-3xl p-12 text-center bg-white border border-black/[0.04] shadow-card"
           >
-            <div className="w-16 h-16 rounded-full bg-[#0B84F3]/15 flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-8 h-8 text-[#0B84F3]" />
+            <div className="w-16 h-16 rounded-full bg-[#0071E3]/10 flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-8 h-8 text-[#0071E3]" />
             </div>
-            <h3 className="text-3xl font-black text-white mb-4">¡Solicitud enviada!</h3>
-            <p className="text-white/50 text-lg leading-relaxed mb-8">
+            <h3 className="text-3xl font-black text-ink mb-4">¡Solicitud enviada!</h3>
+            <p className="text-muted text-lg leading-relaxed mb-8">
               Hemos recibido tu cotización. Te contactaremos en las próximas{' '}
-              <strong className="text-white">24 horas</strong> para platicar tu proyecto.
+              <strong className="text-ink">24 horas</strong> para platicar tu proyecto.
             </p>
             <button
               onClick={() => setStatus('idle')}
-              className="px-8 py-3.5 bg-white hover:bg-white/90 text-black font-semibold rounded-full transition-all duration-200"
+              className="px-8 py-3.5 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
             >
               Enviar otra cotización
             </button>
@@ -202,7 +202,7 @@ export default function QuoteForm({
   }
 
   return (
-    <section id="cotizar" className="section-mid">
+    <section id="cotizar" className="section-light">
       <div className="max-w-2xl mx-auto px-6 lg:px-8 py-32">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -212,10 +212,10 @@ export default function QuoteForm({
           className="mb-12"
         >
           <span className="tag">Sin costo ni compromiso</span>
-          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-ink tracking-tight leading-tight">
             Cuéntanos tu idea.
           </h2>
-          <p className="mt-6 text-xl text-white/50 leading-relaxed">
+          <p className="mt-6 text-xl text-muted leading-relaxed">
             En menos de 24 horas recibirás una propuesta personalizada para tu proyecto.
           </p>
         </motion.div>
@@ -307,11 +307,11 @@ export default function QuoteForm({
                 aria-invalid={Boolean(errors.tipo_proyecto)}
                 aria-describedby={errors.tipo_proyecto ? 'tipo-proyecto-error' : undefined}
               >
-                <option value="" className="bg-[#0D1117]">
+                <option value="" className="bg-white text-ink">
                   Selecciona una opción
                 </option>
                 {projectTypes.map((tipo) => (
-                  <option key={tipo} value={tipo} className="bg-[#0D1117]">
+                  <option key={tipo} value={tipo} className="bg-white text-ink">
                     {tipo}
                   </option>
                 ))}
@@ -330,11 +330,11 @@ export default function QuoteForm({
                 aria-invalid={Boolean(errors.presupuesto)}
                 aria-describedby={errors.presupuesto ? 'presupuesto-error' : undefined}
               >
-                <option value="" className="bg-[#0D1117]">
+                <option value="" className="bg-white text-ink">
                   Selecciona un rango
                 </option>
                 {budgetRanges.map((presupuesto) => (
-                  <option key={presupuesto} value={presupuesto} className="bg-[#0D1117]">
+                  <option key={presupuesto} value={presupuesto} className="bg-white text-ink">
                     {presupuesto}
                   </option>
                 ))}
@@ -358,12 +358,12 @@ export default function QuoteForm({
             />
             <div className="flex justify-between items-center mt-1.5">
               <FieldError id="descripcion-error" message={errors.descripcion?.message} />
-              <span className="text-xs text-white/25 ml-auto">{descripcion.length}/1000</span>
+              <span className="text-xs text-muted/60 ml-auto">{descripcion.length}/1000</span>
             </div>
           </div>
 
           {status === 'error' && (
-            <div className="flex items-start gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm">
+            <div className="flex items-start gap-3 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-600 text-sm">
               <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
               <p>
                 {errorMessage}{' '}
@@ -371,7 +371,7 @@ export default function QuoteForm({
                   href={getWhatsAppUrl('Hola, intenté cotizar en el sitio y necesito ayuda.')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-white hover:text-red-100"
+                  className="font-semibold text-ink hover:text-ink/80"
                 >
                   Escríbenos por WhatsApp.
                 </a>
@@ -382,7 +382,7 @@ export default function QuoteForm({
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="group flex items-center justify-center gap-2 w-full px-8 py-4 bg-white hover:bg-white/90 text-black font-semibold text-base rounded-full transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="group flex items-center justify-center gap-2 w-full px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === 'loading' ? (
               <>
@@ -397,9 +397,9 @@ export default function QuoteForm({
             )}
           </button>
 
-          <p className="text-center text-xs text-white/30">
+          <p className="text-center text-xs text-muted">
             Al enviar aceptas nuestra{' '}
-            <Link href="/privacidad" className="text-[#0B84F3] hover:text-white transition-colors">
+            <Link href="/privacidad" className="text-[#0071E3] hover:text-ink transition-colors">
               política de privacidad
             </Link>
             . Respondemos en menos de 24 horas.

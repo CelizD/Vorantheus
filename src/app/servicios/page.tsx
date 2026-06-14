@@ -193,26 +193,24 @@ Con nuestro servicio de mantenimiento tienes acceso a soporte prioritario vía W
 
 export default function ServiciosPage() {
   return (
-    <main className="min-h-screen bg-carbon">
+    <main className="bg-white">
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-navy relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-electric/5 rounded-full blur-3xl" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric/30 bg-electric/10 text-electric text-sm font-medium mb-6">
-            Lo que hacemos
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
+      <section className="relative section-dark overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 60% at 30% 40%, rgba(0,113,227,0.12) 0%, transparent 65%)' }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24 text-center">
+          <span className="tag">Lo que hacemos</span>
+          <h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
             Nuestros <span className="gradient-text">servicios</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-voGray text-lg leading-relaxed mb-8">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-white/55 leading-relaxed">
             Cubrimos todo el espectro del desarrollo de software profesional.
             Desde una landing page hasta un sistema empresarial complejo.
           </p>
           <Link
             href="/cotizar"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-electric hover:bg-voBlue text-white font-bold rounded-2xl shadow-electric hover:shadow-electric-lg transition-all duration-300 hover:scale-105"
+            className="mt-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
           >
             Cotizar mi proyecto
             <ArrowRight className="w-5 h-5" />
@@ -224,13 +222,13 @@ export default function ServiciosPage() {
       <Services />
 
       {/* Detailed service pages */}
-      <section className="py-24 bg-navy">
+      <section className="py-24 section-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-black text-ink mb-4">
               Detalle de cada <span className="gradient-text">servicio</span>
             </h2>
-            <p className="text-voGray max-w-2xl mx-auto">
+            <p className="text-muted max-w-2xl mx-auto">
               Conoce en profundidad qué incluye cada uno de nuestros servicios.
             </p>
           </div>
@@ -253,24 +251,24 @@ export default function ServiciosPage() {
                   <div className="flex-1">
                     <div className={`flex items-center gap-3 mb-4`}>
                       <div
-                        className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-electric`}
+                        className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center`}
                       >
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <h3 className="text-2xl font-black text-white">{service.title}</h3>
+                      <h3 className="text-2xl font-black text-ink">{service.title}</h3>
                     </div>
-                    <div className="text-voGray text-sm leading-relaxed whitespace-pre-line mb-6">
+                    <div className="text-muted text-sm leading-relaxed whitespace-pre-line mb-6">
                       {service.fullDescription}
                     </div>
 
                     {/* Technologies */}
                     <div className="mb-6">
-                      <p className="text-white text-sm font-semibold mb-3">Tecnologías utilizadas:</p>
+                      <p className="text-ink text-sm font-semibold mb-3">Tecnologías utilizadas:</p>
                       <div className="flex flex-wrap gap-2">
                         {service.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1.5 rounded-lg bg-electric/10 border border-electric/20 text-electric text-xs font-medium"
+                            className="px-3 py-1.5 rounded-lg bg-[#0071E3]/10 border border-[#0071E3]/20 text-[#0071E3] text-xs font-medium"
                           >
                             {tech}
                           </span>
@@ -280,7 +278,7 @@ export default function ServiciosPage() {
 
                     <Link
                       href={quoteHref}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-electric hover:bg-voBlue text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 shadow-electric"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
                     >
                       Cotizar este servicio
                       <ArrowRight className="w-4 h-4" />
@@ -289,16 +287,16 @@ export default function ServiciosPage() {
 
                   {/* Deliverables */}
                   <div className="flex-1 max-w-md">
-                    <div className={`rounded-2xl p-6 bg-gradient-to-br ${service.gradient} border border-white/10`}>
-                      <h4 className="text-white font-bold mb-4 flex items-center gap-2">
-                        <span className="w-6 h-6 rounded-full bg-electric flex items-center justify-center text-xs">✓</span>
+                    <div className="rounded-3xl p-6 bg-white shadow-card border border-black/[0.04]">
+                      <h4 className="text-ink font-bold mb-4 flex items-center gap-2">
+                        <span className="w-6 h-6 rounded-full bg-[#0071E3] flex items-center justify-center text-xs text-white">✓</span>
                         Qué incluye
                       </h4>
                       <ul className="flex flex-col gap-3">
                         {service.deliverables.map((item) => (
                           <li key={item} className="flex items-start gap-2.5 text-sm">
-                            <span className="text-electric mt-0.5 shrink-0">→</span>
-                            <span className="text-white/80">{item}</span>
+                            <span className="text-[#0071E3] mt-0.5 shrink-0">→</span>
+                            <span className="text-muted">{item}</span>
                           </li>
                         ))}
                       </ul>

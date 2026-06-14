@@ -25,12 +25,6 @@ const mockupFor: Record<string, 'browser' | 'store' | 'dashboard' | 'phone'> = {
   'sistemas-administrativos': 'dashboard',
   'aplicaciones-moviles': 'phone',
 }
-const glowFor: Record<string, string> = {
-  'paginas-web': 'bg-[#0B84F3]/15',
-  'tiendas-en-linea': 'bg-[#7C3AED]/15',
-  'sistemas-administrativos': 'bg-[#0B84F3]/15',
-  'aplicaciones-moviles': 'bg-[#7C3AED]/15',
-}
 // The 3 smaller supplemental services
 const supplementalServiceIds = ['landing-pages', 'automatizacion-ia', 'mantenimiento']
 
@@ -49,26 +43,26 @@ function FeatureSection({ service, reversed }: FeatureSectionProps) {
       <div>
         <span className="tag">{service.title}</span>
       </div>
-      <h3 className="text-4xl sm:text-5xl font-bold text-white leading-tight tracking-tight">
+      <h3 className="text-4xl sm:text-5xl font-bold text-ink leading-tight tracking-tight">
         {service.title}
       </h3>
-      <p className="text-lg text-white/55 leading-relaxed max-w-lg">
+      <p className="text-lg text-muted leading-relaxed max-w-lg">
         {service.description}
       </p>
       <ul className="flex flex-col gap-3">
         {service.features.slice(0, 5).map((feature) => (
           <li key={feature} className="flex items-center gap-3">
-            <div className="w-5 h-5 rounded-full bg-[#0B84F3]/15 flex items-center justify-center shrink-0">
-              <Check className="w-3 h-3 text-[#0B84F3]" />
+            <div className="w-5 h-5 rounded-full bg-[#0071E3]/10 flex items-center justify-center shrink-0">
+              <Check className="w-3 h-3 text-[#0071E3]" />
             </div>
-            <span className="text-white/70 text-sm">{feature}</span>
+            <span className="text-muted text-sm">{feature}</span>
           </li>
         ))}
       </ul>
       <div>
         <Link
           href={quoteHref}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0B84F3] hover:text-white transition-colors duration-200"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0071E3] hover:text-ink transition-colors duration-200"
         >
           Cotizar este servicio
           <ArrowRight className="w-4 h-4" />
@@ -79,9 +73,7 @@ function FeatureSection({ service, reversed }: FeatureSectionProps) {
 
   const visualBlock = (
     <div className="relative flex items-center justify-center min-h-[340px] lg:min-h-[420px]">
-      {/* glow */}
-      <div className={`absolute inset-8 ${glowFor[service.id] || 'bg-[#0B84F3]/15'} blur-3xl rounded-full pointer-events-none`} />
-      <div className="relative">
+      <div className="relative w-full bg-white rounded-3xl shadow-card border border-black/[0.04] p-8 flex items-center justify-center">
         <Mockup type={mockupFor[service.id] || 'browser'} />
       </div>
     </div>
@@ -111,7 +103,7 @@ export default function Services() {
     .filter(Boolean) as typeof services
 
   return (
-    <section id="servicios" className="section-mid">
+    <section id="servicios" className="section-light">
       {/* Section header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-20">
         <motion.div
@@ -122,10 +114,10 @@ export default function Services() {
           className="max-w-2xl"
         >
           <span className="tag">Servicios</span>
-          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+          <h2 className="mt-6 text-5xl sm:text-6xl font-black text-ink tracking-tight leading-tight">
             Todo lo que tu negocio necesita.
           </h2>
-          <p className="mt-6 text-xl text-white/50 leading-relaxed">
+          <p className="mt-6 text-xl text-muted leading-relaxed">
             Desde una página de presentación hasta sistemas complejos con inteligencia artificial. Cubrimos cada etapa del crecimiento digital.
           </p>
         </motion.div>
@@ -143,14 +135,14 @@ export default function Services() {
       </div>
 
       {/* Supplemental services - smaller cards */}
-      <div className="border-t border-white/[0.06] section-dark">
+      <div className="border-t border-black/[0.06] section-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-sm text-white/40 uppercase tracking-widest mb-12"
+            className="text-sm text-muted uppercase tracking-widest mb-12"
           >
             También ofrecemos
           </motion.p>
@@ -168,18 +160,18 @@ export default function Services() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="glass-card rounded-2xl p-8 border border-white/[0.06] hover:border-white/[0.14] transition-all duration-300 flex flex-col gap-5"
+                  className="bg-smoke border border-black/[0.04] rounded-2xl p-8 hover:shadow-card transition-all duration-300 flex flex-col gap-5"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#0B84F3]/10 border border-[#0B84F3]/20 flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-[#0B84F3]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#0071E3]/10 flex items-center justify-center">
+                    <Icon className="w-6 h-6 text-[#0071E3]" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-2">{service.title}</h4>
-                    <p className="text-sm text-white/50 leading-relaxed">{service.description}</p>
+                    <h4 className="text-lg font-bold text-ink mb-2">{service.title}</h4>
+                    <p className="text-sm text-muted leading-relaxed">{service.description}</p>
                   </div>
                   <Link
                     href={quoteHref}
-                    className="mt-auto text-sm text-[#0B84F3] hover:text-white transition-colors duration-200 inline-flex items-center gap-1"
+                    className="mt-auto text-sm text-[#0071E3] hover:text-ink transition-colors duration-200 inline-flex items-center gap-1"
                   >
                     Saber más <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

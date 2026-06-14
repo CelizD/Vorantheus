@@ -84,29 +84,28 @@ const maintenanceQuoteType = encodeURIComponent(serviceQuoteTypes.mantenimiento)
 
 function FeatureValue({ value }: { value: string | boolean }) {
   if (value === true) {
-    return <Check className="w-5 h-5 text-electric mx-auto" />
+    return <Check className="w-5 h-5 text-[#0071E3] mx-auto" />
   }
   if (value === false) {
-    return <X className="w-5 h-5 text-white/20 mx-auto" />
+    return <X className="w-5 h-5 text-black/20 mx-auto" />
   }
-  return <span className="text-voGray text-sm">{value}</span>
+  return <span className="text-muted text-sm">{value}</span>
 }
 
 export default function PaquetesPage() {
   return (
-    <main className="min-h-screen bg-carbon">
+    <main className="bg-white">
       <Navbar />
 
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-navy relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-electric/30 bg-electric/10 text-electric text-sm font-medium mb-6">
-            Precios transparentes
-          </span>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-6">
+      <section className="relative section-dark overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 60% at 30% 40%, rgba(0,113,227,0.12) 0%, transparent 65%)' }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24 text-center">
+          <span className="tag">Precios transparentes</span>
+          <h1 className="mt-8 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.05]" style={{ letterSpacing: '-0.02em' }}>
             Paquetes y <span className="gradient-text">precios</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-voGray text-lg leading-relaxed mb-8">
+          <p className="mt-6 max-w-2xl mx-auto text-lg text-white/55 leading-relaxed">
             Sin costos ocultos, sin sorpresas. Elige el paquete que se adapte a tu presupuesto
             y necesidades, o cuéntanos tu proyecto para una cotización personalizada.
           </p>
@@ -117,13 +116,13 @@ export default function PaquetesPage() {
       <Pricing />
 
       {/* Comparison table */}
-      <section className="py-24 bg-navy">
+      <section className="py-24 section-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-black text-ink mb-4">
               Comparativa de <span className="gradient-text">planes</span>
             </h2>
-            <p className="text-voGray max-w-2xl mx-auto">
+            <p className="text-muted max-w-2xl mx-auto">
               Compara en detalle qué incluye cada plan para tomar la mejor decisión.
             </p>
           </div>
@@ -133,25 +132,25 @@ export default function PaquetesPage() {
             <table className="w-full min-w-[640px]">
               <thead>
                 <tr>
-                  <th className="text-left py-4 pr-4 text-voGray text-sm font-medium w-2/5">
+                  <th className="text-left py-4 pr-4 text-muted text-sm font-medium w-2/5">
                     Característica
                   </th>
-                  <th className="text-center py-4 px-4 text-white font-bold">Básico</th>
-                  <th className="text-center py-4 px-4 text-electric font-bold">Profesional</th>
-                  <th className="text-center py-4 px-4 text-white font-bold">Enterprise</th>
+                  <th className="text-center py-4 px-4 text-ink font-bold">Básico</th>
+                  <th className="text-center py-4 px-4 text-[#0071E3] font-bold">Profesional</th>
+                  <th className="text-center py-4 px-4 text-ink font-bold">Enterprise</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonFeatures.map((row, index) => (
                   <tr
                     key={row.feature}
-                    className={`border-t border-white/5 ${index % 2 === 0 ? 'bg-white/[0.02]' : ''}`}
+                    className={`border-t border-black/[0.06] ${index % 2 === 0 ? 'bg-smoke' : ''}`}
                   >
-                    <td className="py-3.5 pr-4 text-voGray text-sm">{row.feature}</td>
+                    <td className="py-3.5 pr-4 text-muted text-sm">{row.feature}</td>
                     <td className="py-3.5 px-4 text-center">
                       <FeatureValue value={row.basico} />
                     </td>
-                    <td className="py-3.5 px-4 text-center bg-electric/5">
+                    <td className="py-3.5 px-4 text-center bg-[#0071E3]/5">
                       <FeatureValue value={row.profesional} />
                     </td>
                     <td className="py-3.5 px-4 text-center">
@@ -166,13 +165,13 @@ export default function PaquetesPage() {
       </section>
 
       {/* Monthly maintenance plans */}
-      <section className="py-24 bg-carbon">
+      <section className="py-24 section-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-black text-ink mb-4">
               Planes de <span className="gradient-text">mantenimiento mensual</span>
             </h2>
-            <p className="text-voGray max-w-2xl mx-auto">
+            <p className="text-muted max-w-2xl mx-auto">
               Mantén tu software seguro, actualizado y funcionando perfectamente con nuestros planes mensuales.
             </p>
           </div>
@@ -181,30 +180,30 @@ export default function PaquetesPage() {
             {monthlyPlans.map((plan) => (
               <div
                 key={plan.name}
-                className={`rounded-2xl p-6 border ${
+                className={`rounded-2xl p-6 ${
                   plan.highlighted
-                    ? 'border-electric bg-electric/10 shadow-electric'
-                    : 'border-white/10 glass-card'
+                    ? 'bg-[#000000] text-white'
+                    : 'bg-white border border-black/[0.07] shadow-card'
                 }`}
               >
-                <div className={`text-sm font-bold mb-1 ${plan.highlighted ? 'text-electric' : 'text-voGray'}`}>
+                <div className="text-sm font-bold mb-1 text-[#0071E3]">
                   {plan.name}
                 </div>
-                <div className="text-2xl font-black text-white mb-4">{plan.price}</div>
+                <div className={`text-2xl font-black mb-4 ${plan.highlighted ? 'text-white' : 'text-ink'}`}>{plan.price}</div>
                 <ul className="flex flex-col gap-2">
                   {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-voGray">
-                      <Check className="w-4 h-4 text-electric shrink-0" />
+                    <li key={f} className={`flex items-center gap-2 text-sm ${plan.highlighted ? 'text-white/60' : 'text-muted'}`}>
+                      <Check className="w-4 h-4 text-[#0071E3] shrink-0" />
                       {f}
                     </li>
                   ))}
                 </ul>
                 <Link
                   href={`/cotizar?tipo=${maintenanceQuoteType}&origen=mantenimiento:${encodeURIComponent(plan.name.toLowerCase())}`}
-                  className={`mt-6 flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                  className={`mt-6 flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-200 ${
                     plan.highlighted
-                      ? 'bg-electric hover:bg-voBlue text-white shadow-electric'
-                      : 'border border-electric/50 text-electric hover:bg-electric/10'
+                      ? 'bg-[#0071E3] hover:bg-[#0077ED] text-white'
+                      : 'border border-ink/20 text-ink hover:bg-ink/5'
                   }`}
                 >
                   Contratar
@@ -216,31 +215,31 @@ export default function PaquetesPage() {
       </section>
 
       {/* Payment terms */}
-      <section className="py-24 bg-navy">
+      <section className="py-24 section-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+            <h2 className="text-3xl sm:text-4xl font-black text-ink mb-4">
               Condiciones de <span className="gradient-text">pago</span>
             </h2>
           </div>
 
-          <div className="glass-card rounded-2xl p-8 border border-white/10">
-            <h3 className="text-xl font-bold text-white mb-6">Esquema de pagos por etapas</h3>
+          <div className="bg-white border border-black/[0.04] shadow-card rounded-3xl p-8">
+            <h3 className="text-xl font-bold text-ink mb-6">Esquema de pagos por etapas</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {paymentTerms[0].steps.map((step, index) => (
                 <div key={step.label} className="flex flex-col items-center text-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-electric flex items-center justify-center text-white font-black text-lg">
+                  <div className="w-12 h-12 rounded-full bg-[#0071E3] flex items-center justify-center text-white font-black text-lg">
                     {index + 1}
                   </div>
                   <div>
-                    <p className="text-electric font-bold text-sm">{step.label}</p>
-                    <p className="text-voGray text-xs mt-1">{step.description}</p>
+                    <p className="text-[#0071E3] font-bold text-sm">{step.label}</p>
+                    <p className="text-muted text-xs mt-1">{step.description}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-8 pt-6 border-t border-white/10">
-              <p className="text-voGray text-sm text-center">
+            <div className="mt-8 pt-6 border-t border-black/[0.08]">
+              <p className="text-muted text-sm text-center">
                 Para proyectos Enterprise, podemos acordar un plan de pagos personalizado.
                 Aceptamos transferencia bancaria, tarjeta de crédito/débito y PayPal.
               </p>
@@ -250,7 +249,7 @@ export default function PaquetesPage() {
           <div className="text-center mt-12">
             <Link
               href="/cotizar"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-electric hover:bg-voBlue text-white font-bold rounded-2xl shadow-electric hover:shadow-electric-lg transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
             >
               Solicitar cotización gratuita
               <ArrowRight className="w-5 h-5" />
