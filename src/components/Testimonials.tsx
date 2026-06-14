@@ -88,7 +88,7 @@ export default function Testimonials() {
             >
               <SpotlightCard className="flex flex-col h-full bg-[#F7F4EF] rounded-3xl p-8 border border-[#E6E0D6]">
                 <div className="flex items-center gap-1 mb-5">
-                  {Array.from({ length: t.rating }).map((_, s) => (
+                  {Array.from({ length: Math.min(5, Math.max(1, t.rating || 5)) }).map((_, s) => (
                     <Star key={s} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" aria-hidden />
                   ))}
                 </div>

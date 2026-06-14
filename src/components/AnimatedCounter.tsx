@@ -9,7 +9,8 @@ interface AnimatedCounterProps {
 }
 
 function parseValue(val: string): { num: number; suffix: string } | null {
-  const m = val.match(/^(\d+)(.*)$/)
+  // Only animate values with clean suffixes (letters, %, +) — "24/7" falls back to static
+  const m = val.match(/^(\d+)([%+a-zA-Z]*)$/)
   if (!m) return null
   return { num: parseInt(m[1], 10), suffix: m[2] }
 }

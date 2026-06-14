@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Calendar } from 'lucide-react'
 
-// Set your Calendly URL here or via env var NEXT_PUBLIC_CALENDLY_URL
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/vorantheus/consulta-gratuita'
 
@@ -24,14 +23,14 @@ export default function CalendlyButton({
   className,
   label = 'Agendar llamada gratuita',
 }: CalendlyButtonProps) {
+  const ready = useRef(false)
+
   useEffect(() => {
-    // Load Calendly assets once — guard against duplicate injection
     if (!document.getElementById('calendly-css')) {
       const link = document.createElement('link')
       link.id = 'calendly-css'
       link.rel = 'stylesheet'
       link.href = 'https://assets.calendly.com/assets/external/widget.css'
-      // crossOrigin enables CORS checks for the stylesheet
       link.crossOrigin = 'anonymous'
       document.head.appendChild(link)
     }
@@ -42,14 +41,21 @@ export default function CalendlyButton({
       script.src = 'https://assets.calendly.com/assets/external/widget.js'
       script.async = true
       script.crossOrigin = 'anonymous'
+      script.onload = () => { ready.current = true }
       document.head.appendChild(script)
+    } else {
+      // Script tag already exists — may have loaded already
+      ready.current = !!window.Calendly
     }
-    // No cleanup needed: these assets persist for the session lifetime.
-    // Removing them on unmount would break other mounted CalendlyButton instances.
   }, [])
 
   function openCalendly() {
-    window.Calendly?.initPopupWidget({ url: CALENDLY_URL })
+    if (ready.current && window.Calendly) {
+      window.Calendly.initPopupWidget({ url: CALENDLY_URL })
+    } else {
+      // Script not ready yet — open the scheduling page directly as fallback
+      window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer')
+    }
   }
 
   return (
