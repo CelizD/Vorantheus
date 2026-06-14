@@ -210,7 +210,7 @@ export default function ServiciosPage() {
           </p>
           <Link
             href="/cotizar"
-            className="mt-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
+            className="mt-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200"
           >
             Cotizar mi proyecto
             <ArrowRight className="w-5 h-5" />
@@ -278,7 +278,7 @@ export default function ServiciosPage() {
 
                     <Link
                       href={quoteHref}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200"
                     >
                       Cotizar este servicio
                       <ArrowRight className="w-4 h-4" />

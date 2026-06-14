@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import Contact from '@/components/Contact'
 import WhyUs from '@/components/WhyUs'
 import { ArrowRight, Target, Eye, Heart } from 'lucide-react'
+import AnimatedCounter from '@/components/AnimatedCounter'
 
 export const metadata: Metadata = {
   title: 'Nosotros | Vorantheus',
@@ -106,9 +107,10 @@ export default function NosotrosPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <p className="text-4xl sm:text-5xl font-black text-ink tracking-tight">
-                    {stat.value}
-                  </p>
+                  <AnimatedCounter
+                    value={stat.value}
+                    className="text-4xl sm:text-5xl font-black text-ink tracking-tight"
+                  />
                   <p className="mt-2 text-sm text-muted">{stat.label}</p>
                 </div>
               ))}

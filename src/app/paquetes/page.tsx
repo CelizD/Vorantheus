@@ -249,7 +249,7 @@ export default function PaquetesPage() {
           <div className="text-center mt-12">
             <Link
               href="/cotizar"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200"
             >
               Solicitar cotización gratuita
               <ArrowRight className="w-5 h-5" />

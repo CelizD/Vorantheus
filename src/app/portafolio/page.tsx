@@ -36,7 +36,7 @@ export default function PortafolioPage() {
           </p>
           <Link
             href="/cotizar"
-            className="mt-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
+            className="mt-10 inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200"
           >
             Quiero mi proyecto
             <ArrowRight className="w-5 h-5" />
@@ -62,7 +62,7 @@ export default function PortafolioPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/cotizar"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-[background-color,border-color,color,transform] duration-200"
               >
                 Cotizar mi proyecto
                 <ArrowRight className="w-5 h-5" />

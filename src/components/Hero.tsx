@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import CalendlyButton from '@/components/CalendlyButton'
 import HeroOrb from '@/components/HeroOrb'
 import MagneticButton from '@/components/MagneticButton'
+import AnimatedCounter from '@/components/AnimatedCounter'
 
 const stats = [
   { value: '50+', label: 'Proyectos completados' },
@@ -98,7 +99,7 @@ export default function Hero() {
             >
               {stats.map((s) => (
                 <div key={s.label} className="flex flex-col gap-1">
-                  <span className="text-3xl font-black text-[#1C1B18]">{s.value}</span>
+                  <AnimatedCounter value={s.value} className="text-3xl font-black text-[#1C1B18]" />
                   <span className="text-xs text-[#9B9890] leading-snug">{s.label}</span>
                 </div>
               ))}

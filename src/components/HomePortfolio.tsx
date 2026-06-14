@@ -58,7 +58,7 @@ export default function HomePortfolio() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-3xl overflow-hidden bg-white/[0.04] border border-white/[0.07] hover:border-white/[0.18] transition-all duration-300"
+              className="group rounded-3xl overflow-hidden bg-white/[0.04] border border-white/[0.07] hover:border-white/[0.18] transition-[border-color] duration-300"
             >
               {/* Image area */}
               <div
@@ -76,8 +76,8 @@ export default function HomePortfolio() {
                     {item.title}
                   </span>
                 </div>
-                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/0 group-hover:bg-white flex items-center justify-center transition-all duration-300">
-                  <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/0 group-hover:bg-white flex items-center justify-center transition-[background-color] duration-300">
+                  <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black opacity-0 group-hover:opacity-100 transition-[color,opacity] duration-300" />
                 </div>
               </div>
 

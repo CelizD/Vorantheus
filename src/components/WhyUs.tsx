@@ -58,7 +58,7 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group p-8 rounded-3xl bg-[#F7F4EF] border border-[#E6E0D6] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300"
+                className="group p-8 rounded-3xl bg-[#F7F4EF] border border-[#E6E0D6] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-[box-shadow,transform] duration-300"
               >
                 <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center mb-5 group-hover:bg-[#0071E3] transition-colors duration-300">
                   <Icon className="w-6 h-6 text-[#0071E3] group-hover:text-white transition-colors duration-300" />

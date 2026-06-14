@@ -49,7 +49,7 @@ export default function Portfolio() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               aria-pressed={activeCategory === cat}
-              className={`px-4 py-2 rounded-full text-sm transition-all duration-200 ${
+              className={`px-4 py-2 rounded-full text-sm transition-[background-color,color,border-color] duration-200 ${
                 activeCategory === cat
                   ? 'bg-ink text-white font-medium'
                   : 'border border-black/[0.12] text-muted hover:text-ink hover:border-black/30'
@@ -76,7 +76,7 @@ export default function Portfolio() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group rounded-3xl overflow-hidden bg-white border border-black/[0.04] shadow-card hover:shadow-medium transition-all duration-300"
+                className="group rounded-3xl overflow-hidden bg-white border border-black/[0.04] shadow-card hover:shadow-medium transition-[box-shadow] duration-300"
               >
                 {/* Thumbnail */}
                 <div className={`relative aspect-[16/10] bg-gradient-to-br ${gradientTints[item.imageColor] || 'from-[#0B84F3]/40 to-[#7C3AED]/30'} overflow-hidden`}>
@@ -94,8 +94,8 @@ export default function Portfolio() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="text-3xl font-black text-white/80 tracking-wide">{item.title}</span>
                   </div>
-                  <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/0 group-hover:bg-white flex items-center justify-center transition-all duration-300">
-                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                  <div className="absolute bottom-4 right-4 w-9 h-9 rounded-full bg-white/0 group-hover:bg-white flex items-center justify-center transition-[background-color] duration-300">
+                    <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black opacity-0 group-hover:opacity-100 transition-[color,opacity] duration-300" />
                   </div>
                 </div>
 

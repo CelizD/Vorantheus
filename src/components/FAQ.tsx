@@ -46,7 +46,7 @@ function FAQItem({
         </span>
         <span
           aria-hidden="true"
-          className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+          className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-[border-color,color] duration-300 ${
             isOpen
               ? 'border-[#0071E3] text-[#0071E3]'
               : 'border-black/20 text-ink/40 group-hover:border-black/40 group-hover:text-ink/70'
