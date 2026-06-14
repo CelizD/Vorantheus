@@ -1,6 +1,12 @@
+function normalizeUrl(raw: string | undefined): string {
+  const value = raw?.trim() || 'http://localhost:3000'
+  if (value.startsWith('http://') || value.startsWith('https://')) return value
+  return `https://${value}`
+}
+
 export const siteConfig = {
   name: 'Vorantheus',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL),
   description:
     'Software profesional para hacer crecer tu negocio: paginas web, apps, sistemas administrativos y automatizaciones con IA.',
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hola@vorantheus.com',
