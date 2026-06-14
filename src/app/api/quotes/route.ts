@@ -7,7 +7,7 @@ import { siteConfig } from '@/lib/site'
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 const resendApiKey = process.env.RESEND_API_KEY
-const quoteNotifyEmail = process.env.QUOTE_NOTIFY_EMAIL || siteConfig.email
+const quoteNotifyEmail = process.env.QUOTE_NOTIFY_EMAIL || siteConfig.salesEmail
 const quoteFromEmail = process.env.QUOTE_FROM_EMAIL || 'Vorantheus <onboarding@resend.dev>'
 
 // ── Simple in-memory rate limiter ───────────────────────────────────────────

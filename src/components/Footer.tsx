@@ -27,6 +27,13 @@ const legalLinks = [
   { label: 'Términos y condiciones', href: '/terminos' },
 ]
 
+const emailContacts = [
+  { label: 'General', email: siteConfig.email },
+  { label: 'Ventas', email: siteConfig.salesEmail },
+  { label: 'Soporte', email: siteConfig.supportEmail },
+  { label: 'Facturación', email: siteConfig.billingEmail },
+]
+
 export default function Footer() {
   return (
     <footer style={{ background: '#1C1B18' }} className="border-t border-white/[0.06]">
@@ -92,15 +99,22 @@ export default function Footer() {
               Contacto
             </p>
             <ul className="flex flex-col gap-3">
-              <li>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
-                >
-                  {siteConfig.email}
-                </a>
-              </li>
-              <li>
+              {emailContacts.map((c) => (
+                <li key={c.email}>
+                  <a
+                    href={`mailto:${c.email}`}
+                    className="group flex flex-col text-sm transition-colors duration-200"
+                  >
+                    <span className="text-white/40 text-[11px] uppercase tracking-wider">
+                      {c.label}
+                    </span>
+                    <span className="text-white/25 group-hover:text-white/60 transition-colors duration-200">
+                      {c.email}
+                    </span>
+                  </a>
+                </li>
+              ))}
+              <li className="pt-1">
                 <a
                   href={getWhatsAppUrl()}
                   target="_blank"
@@ -110,7 +124,7 @@ export default function Footer() {
                   {siteConfig.whatsappDisplay}
                 </a>
               </li>
-              <li>
+              <li className="flex items-center gap-4 pt-1">
                 <a
                   href={siteConfig.social.instagram}
                   target="_blank"
@@ -119,8 +133,6 @@ export default function Footer() {
                 >
                   Instagram
                 </a>
-              </li>
-              <li>
                 <a
                   href={siteConfig.social.facebook}
                   target="_blank"

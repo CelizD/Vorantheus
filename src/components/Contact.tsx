@@ -5,6 +5,12 @@ import Link from 'next/link'
 import { ArrowRight, MessageCircle, Mail, Instagram, Facebook } from 'lucide-react'
 import { getWhatsAppUrl, siteConfig } from '@/lib/site'
 
+const departments = [
+  { label: 'Ventas y cotizaciones', email: siteConfig.salesEmail },
+  { label: 'Soporte técnico', email: siteConfig.supportEmail },
+  { label: 'Facturación', email: siteConfig.billingEmail },
+]
+
 export default function Contact() {
   return (
     <section id="contacto" style={{ background: '#1C1B18' }}>
@@ -93,7 +99,7 @@ export default function Contact() {
               <span className="text-white/25">{siteConfig.location}</span>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 shrink-0">
               <a
                 href={siteConfig.social.instagram}
                 target="_blank"
@@ -113,6 +119,30 @@ export default function Contact() {
                 <Facebook className="w-4 h-4" />
               </a>
             </div>
+          </motion.div>
+
+          {/* Department emails */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-8 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row gap-6 sm:gap-12"
+          >
+            {departments.map((d) => (
+              <a
+                key={d.email}
+                href={`mailto:${d.email}`}
+                className="group flex flex-col gap-0.5"
+              >
+                <span className="text-[11px] uppercase tracking-widest text-white/35">
+                  {d.label}
+                </span>
+                <span className="text-sm text-white/55 group-hover:text-white transition-colors duration-200">
+                  {d.email}
+                </span>
+              </a>
+            ))}
           </motion.div>
         </div>
       </div>
