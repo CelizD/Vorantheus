@@ -7,10 +7,15 @@ const routes = [
   '/paquetes',
   '/portafolio',
   '/nosotros',
+  '/estimador',
   '/cotizar',
   '/contacto',
   '/privacidad',
   '/terminos',
+  '/blog',
+  '/blog/cuanto-cuesta-pagina-web-mexico',
+  '/blog/react-vs-wordpress',
+  '/blog/sistema-administrativo-vs-excel',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { DashboardMockup } from '@/components/mockups'
+import CalendlyButton from '@/components/CalendlyButton'
 
 const stats = [
   { value: '50+', label: 'Proyectos completados' },
@@ -88,6 +89,7 @@ export default function Hero() {
                 Cotizar proyecto
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
+              <CalendlyButton />
               <Link
                 href="/#servicios"
                 className="inline-flex items-center gap-1.5 text-base text-white/60 hover:text-white transition-colors duration-200 font-medium py-4"

@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import './globals.css'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import CookieBanner from '@/components/CookieBanner'
 import { siteConfig } from '@/lib/site'
+import { localBusinessSchema } from '@/lib/schema'
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID
 
@@ -62,24 +64,31 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased">
+        {/* GA4 — consent-aware: defaults to denied until user accepts */}
         {gaId ? (
           <>
+            <Script id="ga-consent-default" strategy="beforeInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied'});`}
+            </Script>
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
               strategy="afterInteractive"
             />
             <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}');
-              `}
+              {`gtag('js',new Date());gtag('config','${gaId}');`}
             </Script>
           </>
         ) : null}
+
+        {/* LocalBusiness JSON-LD — applies sitewide */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
+        />
+
         {children}
         <WhatsAppButton />
+        <CookieBanner />
       </body>
     </html>
   )

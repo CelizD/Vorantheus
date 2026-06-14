@@ -10,10 +10,15 @@ import FAQ from '@/components/FAQ'
 import Guarantee from '@/components/Guarantee'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
+import { faqPageSchema } from '@/lib/schema'
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema()) }}
+      />
       <Navbar />
       <main>
         <Hero />

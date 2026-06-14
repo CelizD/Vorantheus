@@ -14,8 +14,10 @@ const companyLinks = [
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Portafolio', href: '/portafolio' },
   { label: 'Paquetes y precios', href: '/paquetes' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Proceso de trabajo', href: '/#proceso' },
   { label: 'Preguntas frecuentes', href: '/#faq' },
+  { label: 'Estimador de presupuesto', href: '/estimador' },
   { label: 'Cotizar proyecto', href: '/cotizar' },
   { label: 'Contacto', href: '/#contacto' },
 ]
