@@ -75,7 +75,7 @@ function renderQuoteHtml(data: QuoteRequestData) {
   ]
 
   return `
-    <div style="font-family: Arial, sans-serif; color: #0f172a; line-height: 1.5;">
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #0f172a; line-height: 1.5;">
       <h1 style="font-size: 22px; margin: 0 0 16px;">Nueva solicitud de cotizacion</h1>
       <table style="border-collapse: collapse; width: 100%; max-width: 680px;">
         <tbody>
