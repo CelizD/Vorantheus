@@ -102,8 +102,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — animated globe */}
-          <div className="hidden lg:flex items-center justify-center lg:justify-end">
+          {/* RIGHT — animated globe (visible tablet+) */}
+          <div className="hidden md:flex items-center justify-center lg:justify-end">
             <HeroOrb />
           </div>
 
