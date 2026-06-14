@@ -11,6 +11,7 @@ const servicesLinks = [
 ]
 
 const companyLinks = [
+  { label: 'Nosotros', href: '/nosotros' },
   { label: 'Portafolio', href: '/portafolio' },
   { label: 'Paquetes y precios', href: '/paquetes' },
   { label: 'Proceso de trabajo', href: '/#proceso' },

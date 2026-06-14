@@ -6,6 +6,7 @@ const routes = [
   '/servicios',
   '/paquetes',
   '/portafolio',
+  '/nosotros',
   '/cotizar',
   '/contacto',
   '/privacidad',

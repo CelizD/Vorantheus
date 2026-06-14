@@ -132,6 +132,37 @@ h1, h2 {
   animation: gradient-rotate 3s ease infinite;
 }
 
+/* Infinite marquee for tech logos */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 12%,
+    black 88%,
+    transparent
+  );
+}
+
+.marquee-track:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
 /* Focus ring */
 *:focus-visible {
   outline: 2px solid #0071E3;
