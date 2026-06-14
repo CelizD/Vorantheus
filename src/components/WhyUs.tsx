@@ -39,8 +39,9 @@ export default function WhyUs() {
             className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
-            No solo entregamos software.{' '}
-            <span className="gradient-text">Entregamos tranquilidad.</span>
+            No solo entregamos software.
+            <br />
+            Entregamos tranquilidad.
           </h2>
           <p className="mt-5 text-lg text-white/40 leading-relaxed">
             Trabajar con nosotros significa claridad, calidad y acompañamiento real en cada etapa de tu proyecto.

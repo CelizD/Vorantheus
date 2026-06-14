@@ -51,7 +51,7 @@ export default function HomeServices() {
             className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight max-w-md"
             style={{ letterSpacing: '-0.02em' }}
           >
-            Soluciones digitales <span className="gradient-text">a medida.</span>
+            Soluciones digitales a medida.
           </h2>
           <p className="mt-4 text-white/40 text-lg max-w-md leading-relaxed">
             Creamos software profesional adaptado a las necesidades reales de tu negocio.

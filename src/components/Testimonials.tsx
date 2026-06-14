@@ -22,8 +22,9 @@ export default function Testimonials() {
             className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
-            Negocios reales,{' '}
-            <span className="gradient-text">resultados reales.</span>
+            Negocios reales,
+            <br />
+            resultados reales.
           </h2>
           <p className="mt-5 text-lg text-white/40 leading-relaxed">
             Esto es lo que dicen quienes ya confiaron su crecimiento digital a Vorantheus.

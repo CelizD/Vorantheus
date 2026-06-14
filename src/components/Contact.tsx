@@ -4,15 +4,12 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, MessageCircle, Mail, Instagram, Facebook } from 'lucide-react'
 import { getWhatsAppUrl, siteConfig } from '@/lib/site'
-import AnimatedBackground from '@/components/AnimatedBackground'
-
 export default function Contact() {
   return (
-    <section id="contacto" className="relative overflow-hidden" style={{ background: '#000' }}>
-      <AnimatedBackground showDotGrid={false} />
+    <section id="contacto" style={{ background: '#000' }}>
 
       {/* Big CTA band */}
-      <div className="relative z-10 border-t border-white/[0.06]">
+      <div className="border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +24,7 @@ export default function Contact() {
               style={{ letterSpacing: '-0.02em' }}
             >
               ¿Listo para hacer crecer{' '}
-              <span className="gradient-text">tu negocio?</span>
+              tu negocio?
             </h2>
             <p className="mt-8 text-xl text-white/40 leading-relaxed max-w-xl">
               La primera consulta es gratis. Cuéntanos tu idea y te enviamos una propuesta en menos de 24 horas.
@@ -56,7 +53,7 @@ export default function Contact() {
       </div>
 
       {/* Contact info bar */}
-      <div className="relative z-10 border-t border-white/[0.05]">
+      <div className="border-t border-white/[0.05]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
