@@ -58,7 +58,7 @@ export default function HomeServices() {
           </p>
           <Link
             href="/servicios"
-            className="mt-4 inline-flex items-center gap-1 text-[#0071E3] text-sm font-medium hover:underline"
+            className="mt-4 inline-flex items-center gap-1 text-[#1C1B18] text-sm font-medium hover:underline"
           >
             Ver todos los servicios
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -89,7 +89,7 @@ export default function HomeServices() {
                 </div>
 
                 <div className="p-8 flex flex-col flex-1">
-                  <p className="text-xs font-medium uppercase tracking-widest text-[#0071E3] mb-3">
+                  <p className="text-xs font-medium uppercase tracking-widest text-[#1C1B18] mb-3">
                     {tile.category}
                   </p>
                   <h3 className="text-2xl font-bold text-[#1C1B18] leading-snug mb-3">
@@ -98,7 +98,7 @@ export default function HomeServices() {
                   <p className="text-sm text-[#6B6860] leading-relaxed flex-1">
                     {tile.body}
                   </p>
-                  <div className="mt-4 inline-flex items-center gap-1 text-sm text-[#0071E3] font-medium group-hover:gap-2 transition-all duration-200">
+                  <div className="mt-4 inline-flex items-center gap-1 text-sm text-[#1C1B18] font-medium group-hover:gap-2 transition-all duration-200">
                     Saber más
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
@@ -111,7 +111,7 @@ export default function HomeServices() {
         <div className="lg:hidden text-center mt-8">
           <Link
             href="/servicios"
-            className="inline-flex items-center gap-1.5 text-sm text-[#0071E3] hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm text-[#1C1B18] hover:underline"
           >
             Ver todos los servicios <ArrowUpRight className="w-4 h-4" />
           </Link>

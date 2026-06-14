@@ -32,7 +32,7 @@ export default function WhyUs() {
           transition={{ duration: 0.5 }}
           className="max-w-2xl mb-16"
         >
-          <p className="text-xs font-medium uppercase tracking-widest text-[#0071E3] mb-4">
+          <p className="text-xs font-medium uppercase tracking-widest text-[#1C1B18] mb-4">
             Por qué elegirnos
           </p>
           <h2

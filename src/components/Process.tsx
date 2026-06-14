@@ -79,11 +79,11 @@ export default function Process() {
               transition={{ duration: 0.5, delay: index * 0.04 }}
               className="group grid grid-cols-1 lg:grid-cols-[100px_1fr] gap-4 lg:gap-16 py-10"
             >
-              <span className="text-xs font-bold tracking-widest text-[#0071E3] uppercase pt-1">
+              <span className="text-xs font-bold tracking-widest text-[#1C1B18] uppercase pt-1">
                 {step.number}
               </span>
               <div>
-                <h3 className="text-2xl font-bold text-[#1C1B18] mb-3 group-hover:text-[#0071E3] transition-colors duration-200">
+                <h3 className="text-2xl font-bold text-[#1C1B18] mb-3 group-hover:text-[#6B6860] transition-colors duration-200">
                   {step.title}
                 </h3>
                 <p className="text-[#6B6860] leading-relaxed max-w-2xl">

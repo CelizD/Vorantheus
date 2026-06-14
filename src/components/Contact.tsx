@@ -19,7 +19,16 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <span className="tag">Empecemos</span>
+            <span
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest border"
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                background: 'rgba(255,255,255,0.06)',
+                borderColor: 'rgba(255,255,255,0.14)',
+              }}
+            >
+              Empecemos
+            </span>
             <h2
               className="mt-6 text-5xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.04]"
               style={{ letterSpacing: '-0.02em' }}
