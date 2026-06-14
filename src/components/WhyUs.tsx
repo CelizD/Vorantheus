@@ -23,7 +23,7 @@ const iconMap: Record<string, LucideIcon> = {
 
 export default function WhyUs() {
   return (
-    <section style={{ background: '#0A0A0A' }}>
+    <section style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -36,14 +36,14 @@ export default function WhyUs() {
             Por qué elegirnos
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight"
+            className="text-4xl sm:text-5xl font-black text-[#1C1B18] tracking-tight leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
             No solo entregamos software.
             <br />
             Entregamos tranquilidad.
           </h2>
-          <p className="mt-5 text-lg text-white/40 leading-relaxed">
+          <p className="mt-5 text-lg text-[#6B6860] leading-relaxed">
             Trabajar con nosotros significa claridad, calidad y acompañamiento real en cada etapa de tu proyecto.
           </p>
         </motion.div>
@@ -58,13 +58,13 @@ export default function WhyUs() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group p-8 rounded-3xl glass hover:-translate-y-1 transition-all duration-300"
+                className="group p-8 rounded-3xl bg-[#F7F4EF] border border-[#E6E0D6] hover:shadow-[0_4px_20px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center mb-5 group-hover:bg-[#0071E3] transition-colors duration-300">
                   <Icon className="w-6 h-6 text-[#0071E3] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-bold text-[#1C1B18] mb-2">{item.title}</h3>
+                <p className="text-sm text-[#6B6860] leading-relaxed">{item.description}</p>
               </motion.div>
             )
           })}

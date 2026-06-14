@@ -33,8 +33,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-black/80 backdrop-blur-2xl border-b border-white/[0.06]'
-            : 'bg-transparent'
+            ? 'bg-[#F7F4EF]/95 backdrop-blur-2xl border-b border-[#E6E0D6]'
+            : 'bg-[#F7F4EF]/80 backdrop-blur-xl border-b border-[#E6E0D6]/50'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -44,7 +44,7 @@ export default function Navbar() {
               <div className="w-5 h-5 rounded-sm bg-[#0071E3] flex items-center justify-center">
                 <div className="w-2 h-2 rounded-sm bg-white" />
               </div>
-              <span className="text-sm font-bold tracking-widest text-white uppercase">
+              <span className="text-sm font-bold tracking-widest text-[#1C1B18] uppercase">
                 Vorantheus
               </span>
             </Link>
@@ -55,7 +55,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-4 py-2 text-sm text-white/50 hover:text-white transition-colors duration-200 rounded-lg"
+                  className="px-4 py-2 text-sm text-[#6B6860] hover:text-[#1C1B18] transition-colors duration-200 rounded-lg"
                 >
                   {link.label}
                 </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
               </Link>
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 rounded-lg text-white/50 hover:text-white transition-colors duration-200"
+                className="lg:hidden p-2 rounded-lg text-[#6B6860] hover:text-[#1C1B18] transition-colors duration-200"
                 aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
                 aria-expanded={mobileOpen}
                 aria-controls="mobile-menu"
@@ -93,12 +93,11 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 lg:hidden flex flex-col items-center justify-center"
-            style={{ background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(20px)' }}
+            className="fixed inset-0 z-40 lg:hidden flex flex-col items-center justify-center bg-[#F7F4EF]"
           >
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-5 right-6 p-2 text-white/40 hover:text-white transition-colors"
+              className="absolute top-5 right-6 p-2 text-[#6B6860] hover:text-[#1C1B18] transition-colors"
               aria-label="Cerrar menú"
             >
               <X className="w-6 h-6" />
@@ -116,7 +115,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-4 text-2xl font-semibold text-white/60 hover:text-white transition-colors duration-200"
+                    className="block py-4 text-2xl font-semibold text-[#6B6860] hover:text-[#1C1B18] transition-colors duration-200"
                   >
                     {link.label}
                   </Link>

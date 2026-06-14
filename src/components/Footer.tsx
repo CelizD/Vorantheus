@@ -29,7 +29,7 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#050505' }} className="border-t border-white/[0.04]">
+    <footer style={{ background: '#1C1B18' }} className="border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main columns */}
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
@@ -135,7 +135,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="py-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-xs">
             © 2026 Vorantheus. Todos los derechos reservados. {siteConfig.location}.
           </p>

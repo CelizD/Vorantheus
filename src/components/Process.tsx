@@ -47,9 +47,8 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="proceso" style={{ background: '#000' }}>
+    <section id="proceso" style={{ background: '#F7F4EF' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-28">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,36 +58,38 @@ export default function Process() {
         >
           <span className="tag">Metodología probada</span>
           <h2
-            className="mt-6 text-5xl sm:text-6xl font-black text-white tracking-tight leading-tight"
+            className="mt-6 text-5xl sm:text-6xl font-black text-[#1C1B18] tracking-tight leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
             Así trabajamos.
           </h2>
-          <p className="mt-6 text-xl text-white/40 leading-relaxed">
+          <p className="mt-6 text-xl text-[#6B6860] leading-relaxed">
             Un proceso estructurado que garantiza transparencia, calidad y entrega a tiempo.
           </p>
         </motion.div>
 
-        {/* Steps grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-px bg-white/[0.06] rounded-3xl overflow-hidden">
+        {/* Steps — vertical list with left number, right content */}
+        <div className="flex flex-col divide-y divide-[#E6E0D6]">
           {steps.map((step, index) => (
             <motion.div
               key={step.number}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="group p-8 bg-[#000] hover:bg-[#0A0A0A] transition-colors duration-300"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: index * 0.04 }}
+              className="group grid grid-cols-1 lg:grid-cols-[100px_1fr] gap-4 lg:gap-16 py-10"
             >
-              <span className="text-xs font-bold tracking-widest text-[#0071E3] uppercase block mb-5">
+              <span className="text-xs font-bold tracking-widest text-[#0071E3] uppercase pt-1">
                 {step.number}
               </span>
-              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#0071E3] transition-colors duration-200">
-                {step.title}
-              </h3>
-              <p className="text-sm text-white/35 leading-relaxed">
-                {step.description}
-              </p>
+              <div>
+                <h3 className="text-2xl font-bold text-[#1C1B18] mb-3 group-hover:text-[#0071E3] transition-colors duration-200">
+                  {step.title}
+                </h3>
+                <p className="text-[#6B6860] leading-relaxed max-w-2xl">
+                  {step.description}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>

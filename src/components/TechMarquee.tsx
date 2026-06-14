@@ -20,11 +20,11 @@ export default function TechMarquee() {
 
   return (
     <section
-      className="border-y border-white/[0.05]"
-      style={{ background: '#080808' }}
+      className="border-y border-[#E6E0D6]"
+      style={{ background: '#FFFFFF' }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10">
-        <p className="text-center text-xs font-medium uppercase tracking-widest text-white/25 mb-8">
+        <p className="text-center text-xs font-medium uppercase tracking-widest text-[#9B9890] mb-8">
           Construido con tecnología de primer nivel
         </p>
 
@@ -33,7 +33,7 @@ export default function TechMarquee() {
             {loop.map((tech, i) => (
               <span
                 key={`${tech}-${i}`}
-                className="text-xl sm:text-2xl font-bold text-white/20 whitespace-nowrap select-none hover:text-white/50 transition-colors duration-200"
+                className="text-xl sm:text-2xl font-bold text-[#1C1B18]/20 whitespace-nowrap select-none hover:text-[#1C1B18]/50 transition-colors duration-200"
               >
                 {tech}
               </span>

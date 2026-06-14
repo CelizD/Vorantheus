@@ -6,7 +6,7 @@ import { testimonials } from '@/data/testimonials'
 
 export default function Testimonials() {
   return (
-    <section style={{ background: '#080808' }}>
+    <section style={{ background: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -19,14 +19,14 @@ export default function Testimonials() {
             Testimonios
           </p>
           <h2
-            className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight"
+            className="text-4xl sm:text-5xl font-black text-[#1C1B18] tracking-tight leading-tight"
             style={{ letterSpacing: '-0.02em' }}
           >
             Negocios reales,
             <br />
             resultados reales.
           </h2>
-          <p className="mt-5 text-lg text-white/40 leading-relaxed">
+          <p className="mt-5 text-lg text-[#6B6860] leading-relaxed">
             Esto es lo que dicen quienes ya confiaron su crecimiento digital a Vorantheus.
           </p>
         </motion.div>
@@ -39,15 +39,15 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="flex flex-col glass rounded-3xl p-8"
+              className="flex flex-col bg-[#F7F4EF] rounded-3xl p-8 border border-[#E6E0D6]"
             >
               <div className="flex items-center gap-1 mb-5">
                 {Array.from({ length: t.rating }).map((_, s) => (
-                  <Star key={s} className="w-4 h-4 fill-[#FFB800] text-[#FFB800]" />
+                  <Star key={s} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" />
                 ))}
               </div>
-              <blockquote className="text-white/80 text-lg leading-relaxed flex-1">
-                "{t.quote}"
+              <blockquote className="text-[#1C1B18] text-lg leading-relaxed flex-1">
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-4">
                 <div
@@ -56,8 +56,8 @@ export default function Testimonials() {
                   <span className="text-white font-bold text-sm">{t.initials}</span>
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">{t.name}</p>
-                  <p className="text-white/40 text-sm">
+                  <p className="text-[#1C1B18] font-semibold text-sm">{t.name}</p>
+                  <p className="text-[#6B6860] text-sm">
                     {t.role}, {t.company}
                   </p>
                 </div>
