@@ -44,7 +44,7 @@ export default function Contact() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Link
                 href="/cotizar"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-all duration-200"
+                className="group inline-flex items-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-[background-color,transform] duration-200 active:scale-[0.97]"
               >
                 Cotizar proyecto gratis
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />

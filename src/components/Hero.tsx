@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import CalendlyButton from '@/components/CalendlyButton'
 import HeroOrb from '@/components/HeroOrb'
+import MagneticButton from '@/components/MagneticButton'
 
 const stats = [
   { value: '50+', label: 'Proyectos completados' },
@@ -17,11 +18,11 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen overflow-hidden"
+      className="relative min-h-[100dvh] overflow-hidden"
       style={{ background: '#F7F4EF' }}
     >
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100vh-144px)]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center min-h-[calc(100dvh-144px)]">
 
           {/* LEFT — editorial text */}
           <div className="flex flex-col justify-center">
@@ -69,13 +70,15 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.32 }}
               className="mt-10 flex flex-col sm:flex-row gap-4 items-start"
             >
-              <Link
-                href="/cotizar"
-                className="group inline-flex items-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-all duration-200"
-              >
-                Cotizar proyecto
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+              <MagneticButton className="inline-block" strength={0.3}>
+                <Link
+                  href="/cotizar"
+                  className="group inline-flex items-center gap-2 px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-colors duration-200 active:scale-[0.97]"
+                >
+                  Cotizar proyecto
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </MagneticButton>
               <CalendlyButton />
               <Link
                 href="/#servicios"

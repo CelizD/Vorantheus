@@ -383,7 +383,7 @@ export default function QuoteForm({
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="group flex items-center justify-center gap-2 w-full px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+            className="group flex items-center justify-center gap-2 w-full px-8 py-4 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold text-base rounded-full transition-[background-color,transform] duration-200 active:scale-[0.97] disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === 'loading' ? (
               <>

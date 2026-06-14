@@ -13,6 +13,9 @@ const tiles = [
     href: '/servicios',
     gradientArea: 'bg-gradient-to-br from-blue-50 to-blue-100/60',
     mockup: <BrowserMockup />,
+    // Bento layout — wide tile spanning 2 cols, mockup + text side by side
+    span: 'lg:col-span-2',
+    wide: true,
   },
   {
     category: 'Sistemas administrativos',
@@ -21,18 +24,23 @@ const tiles = [
     href: '/servicios',
     gradientArea: 'bg-gradient-to-br from-stone-50 to-stone-100/60',
     mockup: <DashboardMockup />,
+    span: 'lg:col-span-1',
+    wide: false,
   },
   {
     category: 'Aplicaciones móviles',
     headline: 'Tu marca en el bolsillo de tu cliente.',
     body: 'Android e iPhone. Login, notificaciones, pagos, mapas y panel de administración.',
     href: '/servicios',
-    gradientArea: 'bg-gradient-to-br from-violet-50 to-violet-100/60',
+    gradientArea: 'bg-gradient-to-br from-stone-50 to-blue-50/40',
     mockup: (
       <div className="flex justify-center">
         <PhoneMockup />
       </div>
     ),
+    // Full-width tile closing the bento, mockup + text side by side
+    span: 'lg:col-span-3',
+    wide: true,
   },
 ]
 
@@ -74,31 +82,34 @@ export default function HomeServices() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.23, 1, 0.32, 1] }}
+              className={tile.span}
             >
               <Link
                 href={tile.href}
-                className="group flex flex-col bg-white rounded-3xl overflow-hidden border border-[#E6E0D6] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300"
+                className={`group h-full bg-white rounded-3xl overflow-hidden border border-[#E6E0D6] hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-[transform,box-shadow] duration-300 ${
+                  tile.wide ? 'grid lg:grid-cols-2 items-stretch' : 'flex flex-col'
+                }`}
               >
                 <div
-                  className={`relative h-52 ${tile.gradientArea} flex items-center justify-center overflow-hidden`}
+                  className={`relative ${tile.wide ? 'h-52 lg:h-auto lg:min-h-[300px]' : 'h-52'} ${tile.gradientArea} flex items-center justify-center overflow-hidden`}
                 >
-                  <div className="w-full scale-75 origin-center opacity-90 group-hover:opacity-100 group-hover:scale-80 transition-all duration-500">
+                  <div className="w-full scale-75 origin-center opacity-90 group-hover:opacity-100 group-hover:scale-[0.8] transition-[transform,opacity] duration-500">
                     {tile.mockup}
                   </div>
                 </div>
 
-                <div className="p-8 flex flex-col flex-1">
+                <div className="p-8 flex flex-col flex-1 lg:justify-center">
                   <p className="text-xs font-medium uppercase tracking-widest text-[#1C1B18] mb-3">
                     {tile.category}
                   </p>
-                  <h3 className="text-2xl font-bold text-[#1C1B18] leading-snug mb-3">
+                  <h3 className={`font-bold text-[#1C1B18] leading-snug mb-3 ${tile.wide ? 'text-2xl lg:text-3xl max-w-sm' : 'text-2xl'}`}>
                     {tile.headline}
                   </h3>
-                  <p className="text-sm text-[#6B6860] leading-relaxed flex-1">
+                  <p className={`text-sm text-[#6B6860] leading-relaxed ${tile.wide ? 'max-w-md' : 'flex-1'}`}>
                     {tile.body}
                   </p>
-                  <div className="mt-4 inline-flex items-center gap-1 text-sm text-[#1C1B18] font-medium group-hover:gap-2 transition-all duration-200">
+                  <div className="mt-4 inline-flex items-center gap-1 text-sm text-[#1C1B18] font-medium group-hover:gap-2 transition-[gap] duration-200">
                     Saber más
                     <ArrowUpRight className="w-4 h-4" />
                   </div>

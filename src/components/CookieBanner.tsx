@@ -71,7 +71,7 @@ export default function CookieBanner() {
               <button
                 type="button"
                 onClick={accept}
-                className="flex-1 sm:flex-none px-5 py-2 text-sm text-white bg-[#0071E3] hover:bg-[#0077ED] rounded-full transition-colors duration-200 font-medium"
+                className="flex-1 sm:flex-none px-5 py-2 text-sm text-white bg-[#0071E3] hover:bg-[#0077ED] rounded-full transition-[background-color,transform] duration-200 font-medium active:scale-[0.97]"
               >
                 Aceptar
               </button>

@@ -103,7 +103,7 @@ function PricingCard({ pkg, index }: { pkg: Package; index: number }) {
       {/* CTA */}
       <Link
         href={quoteHref}
-        className={`flex items-center justify-center px-6 py-3.5 rounded-2xl font-semibold text-sm transition-all duration-200 ${
+        className={`flex items-center justify-center px-6 py-3.5 rounded-2xl font-semibold text-sm transition-all duration-200 active:scale-[0.97] ${
           pkg.highlighted
             ? 'bg-[#0071E3] hover:bg-[#0077ED] text-white'
             : 'border border-ink/20 text-ink hover:bg-ink/5'

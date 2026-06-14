@@ -146,7 +146,8 @@ export default function Services() {
           >
             También ofrecemos
           </motion.p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Divided list (no card-in-card) — breaks the 3-equal-card pattern */}
+          <div className="flex flex-col divide-y divide-black/[0.07] border-t border-black/[0.07]">
             {supplementalServices.map((service, index) => {
               const Icon = iconMap[service.icon] || Globe
               const quoteHref = `/cotizar?tipo=${encodeURIComponent(
@@ -159,21 +160,22 @@ export default function Services() {
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
-                  className="bg-smoke border border-black/[0.04] rounded-2xl p-8 hover:shadow-card transition-all duration-300 flex flex-col gap-5"
+                  transition={{ duration: 0.5, delay: index * 0.08, ease: [0.23, 1, 0.32, 1] }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#0071E3]/10 flex items-center justify-center">
-                    <Icon className="w-6 h-6 text-[#0071E3]" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-ink mb-2">{service.title}</h4>
-                    <p className="text-sm text-muted leading-relaxed">{service.description}</p>
-                  </div>
                   <Link
                     href={quoteHref}
-                    className="mt-auto text-sm text-[#0071E3] hover:text-ink transition-colors duration-200 inline-flex items-center gap-1"
+                    className="group grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-5 md:gap-8 py-8"
                   >
-                    Saber más <ArrowRight className="w-3.5 h-3.5" />
+                    <div className="w-12 h-12 rounded-xl bg-[#0071E3]/10 flex items-center justify-center shrink-0 group-hover:bg-[#0071E3] transition-colors duration-300">
+                      <Icon className="w-6 h-6 text-[#0071E3] group-hover:text-white transition-colors duration-300" />
+                    </div>
+                    <div className="max-w-2xl">
+                      <h4 className="text-xl font-bold text-ink mb-1.5">{service.title}</h4>
+                      <p className="text-sm text-muted leading-relaxed">{service.description}</p>
+                    </div>
+                    <span className="text-sm text-[#0071E3] inline-flex items-center gap-1 md:justify-self-end group-hover:gap-2 transition-[gap] duration-200">
+                      Saber más <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
                   </Link>
                 </motion.div>
               )

@@ -10,7 +10,7 @@ export default function OGImage() {
         style={{
           width: '100%',
           height: '100%',
-          background: '#000000',
+          background: '#0A0A0A',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
@@ -32,7 +32,7 @@ export default function OGImage() {
               'radial-gradient(ellipse 55% 65% at 15% 50%, rgba(0,113,227,0.22) 0%, transparent 60%)',
           }}
         />
-        {/* Purple accent glow */}
+        {/* Secondary blue glow — single accent, no purple (lila ban) */}
         <div
           style={{
             position: 'absolute',
@@ -41,7 +41,7 @@ export default function OGImage() {
             right: 0,
             bottom: 0,
             background:
-              'radial-gradient(ellipse 40% 50% at 85% 60%, rgba(124,58,237,0.10) 0%, transparent 65%)',
+              'radial-gradient(ellipse 40% 50% at 85% 60%, rgba(0,113,227,0.08) 0%, transparent 65%)',
           }}
         />
 

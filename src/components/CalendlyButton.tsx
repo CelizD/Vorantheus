@@ -59,7 +59,7 @@ export default function CalendlyButton({
       aria-label={label}
       className={
         className ??
-        'inline-flex items-center gap-2 text-base text-white/60 hover:text-white transition-colors duration-200 font-medium py-4'
+        'inline-flex items-center gap-2 text-base text-white/60 hover:text-white transition-colors duration-200 font-medium py-4 active:scale-[0.97]'
       }
     >
       <Calendar className="w-4 h-4" aria-hidden="true" />
