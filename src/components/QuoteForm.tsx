@@ -190,6 +190,7 @@ export default function QuoteForm({
               <strong className="text-ink">24 horas</strong> para platicar tu proyecto.
             </p>
             <button
+              type="button"
               onClick={() => setStatus('idle')}
               className="px-8 py-3.5 bg-[#0071E3] hover:bg-[#0077ED] text-white font-semibold rounded-full transition-all duration-200"
             >

@@ -19,6 +19,9 @@ function FAQItem({
   isOpen: boolean
   onToggle: () => void
 }) {
+  const panelId = `faq-panel-${index}`
+  const buttonId = `faq-btn-${index}`
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 12 }}
@@ -28,9 +31,11 @@ function FAQItem({
       className="border-b border-black/[0.07]"
     >
       <button
+        id={buttonId}
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-6 py-7 text-left group"
         aria-expanded={isOpen}
+        aria-controls={panelId}
       >
         <span
           className={`text-lg font-medium transition-colors duration-200 ${
@@ -40,6 +45,7 @@ function FAQItem({
           {question}
         </span>
         <span
+          aria-hidden="true"
           className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
             isOpen
               ? 'border-[#0071E3] text-[#0071E3]'
@@ -53,6 +59,9 @@ function FAQItem({
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

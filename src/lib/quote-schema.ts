@@ -31,16 +31,21 @@ export const serviceQuoteTypes: Record<string, string> = {
 }
 
 export const quoteSchema = z.object({
-  nombre: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres'),
-  correo: z.string().trim().email('Ingresa un correo electrónico válido'),
+  nombre: z.string().trim().min(2, 'El nombre debe tener al menos 2 caracteres').max(120),
+  correo: z.string().trim().email('Ingresa un correo electrónico válido').max(254),
   whatsapp: z
     .string()
     .trim()
     .min(10, 'El número debe tener al menos 10 dígitos')
+    .max(30)
     .regex(/^\+?[\d\s\-()]+$/, 'Número de teléfono inválido'),
-  negocio: z.string().trim().min(2, 'El nombre del negocio es requerido'),
-  tipo_proyecto: z.string().trim().min(1, 'Selecciona un tipo de proyecto'),
-  presupuesto: z.string().trim().min(1, 'Selecciona un rango de presupuesto'),
+  negocio: z.string().trim().min(2, 'El nombre del negocio es requerido').max(200),
+  tipo_proyecto: z.enum(projectTypes as [string, ...string[]], {
+    errorMap: () => ({ message: 'Selecciona un tipo de proyecto válido' }),
+  }),
+  presupuesto: z.enum(budgetRanges as [string, ...string[]], {
+    errorMap: () => ({ message: 'Selecciona un rango de presupuesto válido' }),
+  }),
   descripcion: z
     .string()
     .trim()

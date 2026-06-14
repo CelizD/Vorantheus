@@ -1,18 +1,27 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useSyncExternalStore } from 'react'
 
 interface AnimatedBackgroundProps {
   className?: string
   showDotGrid?: boolean
 }
 
+function subscribe() {
+  return () => {}
+}
+
 export default function AnimatedBackground({
   className = '',
   showDotGrid = true,
 }: AnimatedBackgroundProps) {
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
+  // useSyncExternalStore is the recommended way to detect client-side mounting
+  // without triggering cascading setState-in-effect warnings.
+  const mounted = useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false,
+  )
 
   return (
     <div

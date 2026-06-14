@@ -62,12 +62,14 @@ export default function CookieBanner() {
             </div>
             <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
               <button
+                type="button"
                 onClick={reject}
                 className="flex-1 sm:flex-none px-5 py-2 text-sm text-muted border border-black/[0.1] rounded-full hover:bg-black/[0.03] transition-colors duration-200"
               >
                 Rechazar
               </button>
               <button
+                type="button"
                 onClick={accept}
                 className="flex-1 sm:flex-none px-5 py-2 text-sm text-white bg-[#0071E3] hover:bg-[#0077ED] rounded-full transition-colors duration-200 font-medium"
               >

@@ -10,6 +10,31 @@ const resendApiKey = process.env.RESEND_API_KEY
 const quoteNotifyEmail = process.env.QUOTE_NOTIFY_EMAIL || siteConfig.email
 const quoteFromEmail = process.env.QUOTE_FROM_EMAIL || 'Vorantheus <onboarding@resend.dev>'
 
+// ── Simple in-memory rate limiter ───────────────────────────────────────────
+// Allows MAX_REQUESTS per IP per WINDOW_MS.
+// In a multi-instance deployment replace this with an edge KV store (e.g. Upstash Redis).
+const WINDOW_MS = 60_000 // 1 minute
+const MAX_REQUESTS = 5
+
+const ipRequestMap = new Map<string, { count: number; windowStart: number }>()
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const entry = ipRequestMap.get(ip)
+
+  if (!entry || now - entry.windowStart > WINDOW_MS) {
+    ipRequestMap.set(ip, { count: 1, windowStart: now })
+    return false
+  }
+
+  if (entry.count >= MAX_REQUESTS) {
+    return true
+  }
+
+  entry.count += 1
+  return false
+}
+
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, '&amp;')
@@ -73,6 +98,17 @@ function renderQuoteHtml(data: QuoteRequestData) {
 }
 
 export async function POST(request: Request) {
+  // Rate limiting — check before parsing the body to save work
+  const forwarded = request.headers.get('x-forwarded-for')
+  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown'
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, message: 'Demasiadas solicitudes. Por favor espera un momento antes de intentarlo de nuevo.' },
+      { status: 429 },
+    )
+  }
+
   let body: unknown
 
   try {

@@ -39,7 +39,7 @@ export default function BlogGrid({ posts }: Props) {
             {/* Footer */}
             <div className="flex items-center justify-between pt-4 border-t border-black/[0.06]">
               <span className="text-[#6E6E73] text-xs">
-                {new Date(post.date).toLocaleDateString('es-MX', {
+                {new Date(`${post.date}T00:00:00`).toLocaleDateString('es-MX', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric',
