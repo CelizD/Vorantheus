@@ -1,6 +1,6 @@
-'use client'
+import Link from 'next/link'
+import { technologies } from '@/data/technologies'
 
-// Hand-crafted inline SVG logos using simple geometric shapes — no external deps
 function TechIcon({ name }: { name: string }) {
   const cls = 'w-7 h-7 flex-shrink-0'
   switch (name) {
@@ -73,7 +73,6 @@ function TechIcon({ name }: { name: string }) {
         <svg viewBox="0 0 32 32" fill="currentColor" className={cls} aria-hidden>
           <path d="M3 3h13.5L3 18v-15z" />
           <path d="M3 29l13.5-13.5L29 29H3z" />
-          <path d="M16.5 3L3 16.5 16.5 3z M16.5 3L29 3 16.5 15.5z" />
           <polygon points="16.5,3 29,3 29,15.5" />
         </svg>
       )
@@ -101,26 +100,14 @@ function TechIcon({ name }: { name: string }) {
   }
 }
 
-const technologies = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'Node.js',
-  'Supabase',
-  'PostgreSQL',
-  'Tailwind CSS',
-  'React Native',
-  'Kotlin',
-  'Swift',
-  'Python',
-  'Vercel',
-]
+const techList = technologies.map((t) => ({ name: t.name, slug: t.slug }))
 
 export default function TechMarquee() {
-  const loop = [...technologies, ...technologies]
+  const loop = [...techList, ...techList]
 
   return (
     <section
+      id="tecnologias"
       className="border-y border-[#E6E0D6]"
       style={{ background: '#FFFFFF' }}
     >
@@ -132,15 +119,17 @@ export default function TechMarquee() {
         <div className="marquee-track marquee-mask overflow-hidden">
           <div className="animate-marquee flex w-max items-center gap-10">
             {loop.map((tech, i) => (
-              <div
-                key={`${tech}-${i}`}
-                className="flex flex-col items-center gap-2 w-20 select-none text-[#1C1B18]/30 hover:text-[#1C1B18]/70 transition-colors duration-200"
+              <Link
+                key={`${tech.slug}-${i}`}
+                href={`/tecnologias/${tech.slug}`}
+                aria-label={`Leer más sobre ${tech.name}`}
+                className="group flex flex-col items-center gap-2 w-20 select-none text-[#1C1B18]/30 hover:text-[#1C1B18] transition-[color,transform] duration-200 hover:scale-110 cursor-pointer"
               >
-                <TechIcon name={tech} />
+                <TechIcon name={tech.name} />
                 <span className="text-[10px] font-semibold whitespace-nowrap text-center leading-tight">
-                  {tech}
+                  {tech.name}
                 </span>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

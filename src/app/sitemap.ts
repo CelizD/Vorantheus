@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { siteConfig } from '@/lib/site'
 import { blogPosts } from '@/data/blog'
+import { technologies } from '@/data/technologies'
 
 const routes = [
   '',
@@ -33,5 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticPages, ...blogPages]
+  const techPages: MetadataRoute.Sitemap = technologies.map((tech) => ({
+    url: `${siteConfig.url}/tecnologias/${tech.slug}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }))
+
+  return [...staticPages, ...blogPages, ...techPages]
 }
