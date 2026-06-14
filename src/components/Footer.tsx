@@ -29,7 +29,7 @@ const legalLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0A0A] border-t border-white/[0.05]">
+    <footer style={{ background: '#050505' }} className="border-t border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main columns */}
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
@@ -39,18 +39,18 @@ export default function Footer() {
               <div className="w-5 h-5 rounded-sm bg-[#0071E3] flex items-center justify-center">
                 <div className="w-2 h-2 rounded-sm bg-white" />
               </div>
-              <span className="text-sm font-bold tracking-widest text-white/80 uppercase">
+              <span className="text-sm font-bold tracking-widest text-white/70 uppercase">
                 Vorantheus
               </span>
             </Link>
-            <p className="text-white/30 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/25 text-sm leading-relaxed max-w-xs">
               Software profesional para hacer crecer tu negocio. Páginas web, apps, sistemas y automatizaciones con IA.
             </p>
           </div>
 
           {/* Services */}
           <div>
-            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">
+            <p className="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">
               Servicios
             </p>
             <ul className="flex flex-col gap-3">
@@ -58,7 +58,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                    className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">
+            <p className="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">
               Empresa
             </p>
             <ul className="flex flex-col gap-3">
@@ -77,7 +77,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                    className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -88,14 +88,14 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <p className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-5">
+            <p className="text-white/40 text-xs font-semibold uppercase tracking-widest mb-5">
               Contacto
             </p>
             <ul className="flex flex-col gap-3">
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                  className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
                 >
                   {siteConfig.email}
                 </a>
@@ -105,7 +105,7 @@ export default function Footer() {
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                  className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
                 >
                   {siteConfig.whatsappDisplay}
                 </a>
@@ -115,7 +115,7 @@ export default function Footer() {
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                  className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
                 >
                   Instagram
                 </a>
@@ -125,7 +125,7 @@ export default function Footer() {
                   href={siteConfig.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/30 hover:text-white/70 text-sm transition-colors duration-200"
+                  className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
                 >
                   Facebook
                 </a>
@@ -135,8 +135,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-white/25 text-xs">
+        <div className="py-6 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-white/20 text-xs">
             © 2026 Vorantheus. Todos los derechos reservados. {siteConfig.location}.
           </p>
           <div className="flex items-center gap-6">
@@ -144,7 +144,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/25 hover:text-white/60 text-xs transition-colors duration-200"
+                className="text-white/20 hover:text-white/50 text-xs transition-colors duration-200"
               >
                 {link.label}
               </Link>

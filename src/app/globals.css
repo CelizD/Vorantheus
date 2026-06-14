@@ -184,3 +184,66 @@ h1, h2 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ──────────────────────────────────────
+   Animated Background blobs
+────────────────────────────────────── */
+@keyframes blob-move-1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.08); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+@keyframes blob-move-2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(-50px, 30px) scale(1.05); }
+  66%       { transform: translate(30px, -40px) scale(0.97); }
+}
+
+@keyframes blob-move-3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%       { transform: translate(-50%, -50%) scale(1.12); }
+}
+
+.animate-blob-1 { animation: blob-move-1 18s ease-in-out infinite; }
+.animate-blob-2 { animation: blob-move-2 22s ease-in-out infinite; }
+.animate-blob-3 { animation: blob-move-3 14s ease-in-out infinite; }
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Dot grid pattern */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Glow utilities */
+.glow-blue {
+  box-shadow: 0 0 60px rgba(0, 113, 227, 0.25);
+}
+
+.glow-purple {
+  box-shadow: 0 0 60px rgba(124, 58, 237, 0.2);
+}
+
+/* prefers-reduced-motion: disable blobs */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob-1,
+  .animate-blob-2,
+  .animate-blob-3 {
+    animation: none !important;
+  }
+}
