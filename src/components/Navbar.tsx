@@ -28,6 +28,15 @@ export default function Navbar() {
     return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
 
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [mobileOpen])
+
   return (
     <>
       <header
@@ -89,6 +98,9 @@ export default function Navbar() {
         {mobileOpen && (
           <motion.div
             id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menú de navegación"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

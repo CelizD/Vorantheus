@@ -38,7 +38,10 @@ export const quoteSchema = z.object({
     .trim()
     .min(10, 'El número debe tener al menos 10 dígitos')
     .max(30)
-    .regex(/^\+?[\d\s\-()]+$/, 'Número de teléfono inválido'),
+    .regex(/^\+?[\d\s\-()]+$/, 'Número de teléfono inválido')
+    .refine((v) => (v.match(/\d/g)?.length ?? 0) >= 10, {
+      message: 'El número debe tener al menos 10 dígitos',
+    }),
   negocio: z.string().trim().min(2, 'El nombre del negocio es requerido').max(200),
   tipo_proyecto: z.enum(projectTypes as [string, ...string[]], {
     errorMap: () => ({ message: 'Selecciona un tipo de proyecto válido' }),

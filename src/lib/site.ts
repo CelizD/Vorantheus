@@ -20,8 +20,8 @@ export const siteConfig = {
   whatsappDisplay: process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY || '+52 1 999 123 4567',
   location: 'Merida, Yucatan, Mexico',
   social: {
-    instagram: 'https://instagram.com/vorantheus',
-    facebook: 'https://facebook.com/vorantheus',
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com/vorantheus',
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://facebook.com/vorantheus',
   },
 }
 

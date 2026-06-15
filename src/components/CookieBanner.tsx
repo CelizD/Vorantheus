@@ -47,7 +47,11 @@ export default function CookieBanner() {
           transition={{ duration: 0.35, ease: 'easeOut' }}
           className="fixed bottom-0 left-0 right-0 z-[60] p-4 sm:p-6 pointer-events-none"
         >
-          <div className="max-w-4xl mx-auto bg-white border border-black/[0.08] rounded-2xl shadow-medium p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 pointer-events-auto">
+          <div
+            role="region"
+            aria-label="Aviso de cookies"
+            className="max-w-4xl mx-auto bg-white border border-black/[0.08] rounded-2xl shadow-medium p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 pointer-events-auto"
+          >
             <div className="flex items-start gap-3 flex-1">
               <div className="w-9 h-9 rounded-xl bg-[#0071E3]/10 flex items-center justify-center shrink-0 mt-0.5">
                 <Cookie className="w-4.5 h-4.5 text-[#0071E3]" />

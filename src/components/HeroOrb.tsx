@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from 'framer-motion'
 export default function HeroOrb() {
   const prefersReduced = useReducedMotion()
 
-  // When reduced motion is preferred, make durations so long they appear static
-  const dur = (base: string) => (prefersReduced ? '99999s' : base)
+  // When reduced motion is preferred, collapse durations so animations settle instantly
+  const dur = (base: string) => (prefersReduced ? '0.01s' : base)
 
   return (
     <motion.div

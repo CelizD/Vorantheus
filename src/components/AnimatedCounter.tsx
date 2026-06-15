@@ -39,8 +39,10 @@ export default function AnimatedCounter({ value, className }: AnimatedCounterPro
   if (!parsed) return <span className={className}>{value}</span>
 
   return (
-    <motion.span ref={ref} className={className}>
-      {display}
-    </motion.span>
+    <span className={className} role="text" aria-label={value}>
+      <motion.span ref={ref} aria-hidden="true">
+        {display}
+      </motion.span>
+    </span>
   )
 }

@@ -3,109 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  Globe,
-  ShoppingCart,
-  Database,
-  Smartphone,
-  Layout,
-  Bot,
-  ArrowRight,
-  Check,
-  RotateCcw,
-  ChevronRight,
-} from 'lucide-react'
+import { ArrowRight, Check, RotateCcw, ChevronRight } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-
-// ─── Helpers ────────────────────────────────────────────────────────────────
-
-function formatMXN(n: number): string {
-  return n.toLocaleString('es-MX', {
-    style: 'currency',
-    currency: 'MXN',
-    minimumFractionDigits: 0,
-  })
-}
-
-function roundTo500(n: number): number {
-  return Math.round(n / 500) * 500
-}
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-
-type ProjectType = {
-  id: string
-  label: string
-  icon: React.ElementType
-  base: [number, number]
-}
-
-type Feature = {
-  id: string
-  label: string
-  add: [number, number]
-}
-
-type Urgency = {
-  id: string
-  label: string
-  desc: string
-  multiplier: number
-}
-
-const projectTypes: ProjectType[] = [
-  { id: 'pagina-web', label: 'Página web', icon: Globe, base: [15000, 35000] },
-  { id: 'tienda-online', label: 'Tienda en línea', icon: ShoppingCart, base: [20000, 50000] },
-  { id: 'sistema-admin', label: 'Sistema administrativo', icon: Database, base: [35000, 90000] },
-  { id: 'app-movil', label: 'App móvil', icon: Smartphone, base: [45000, 120000] },
-  { id: 'landing', label: 'Landing page', icon: Layout, base: [7000, 18000] },
-  { id: 'ia', label: 'Automatización IA', icon: Bot, base: [22000, 65000] },
-]
-
-const featuresByType: Record<string, Feature[]> = {
-  'pagina-web': [
-    { id: 'cms', label: 'Panel de administración (CMS)', add: [4000, 8000] },
-    { id: 'blog', label: 'Blog o noticias', add: [3000, 6000] },
-    { id: 'multiidioma', label: 'Multiidioma', add: [5000, 10000] },
-    { id: 'seo', label: 'SEO avanzado', add: [3000, 5000] },
-  ],
-  'tienda-online': [
-    { id: 'pagos', label: 'Múltiples métodos de pago', add: [3000, 6000] },
-    { id: 'cupones', label: 'Cupones y descuentos', add: [2000, 4000] },
-    { id: 'inventario', label: 'Inventario avanzado', add: [5000, 12000] },
-    { id: 'carrito', label: 'Recuperación de carrito abandonado', add: [3000, 5000] },
-  ],
-  'sistema-admin': [
-    { id: 'crm', label: 'Módulo CRM (clientes)', add: [10000, 20000] },
-    { id: 'cfdi', label: 'Facturación electrónica CFDI', add: [8000, 15000] },
-    { id: 'inventario', label: 'Control de inventario', add: [8000, 15000] },
-    { id: 'reportes', label: 'Reportes y analytics', add: [5000, 10000] },
-  ],
-  'app-movil': [
-    { id: 'push', label: 'Notificaciones push', add: [5000, 10000] },
-    { id: 'pagos', label: 'Pagos in-app', add: [8000, 15000] },
-    { id: 'geo', label: 'Geolocalización y mapas', add: [6000, 12000] },
-    { id: 'offline', label: 'Modo sin conexión', add: [8000, 15000] },
-  ],
-  landing: [
-    { id: 'ab', label: 'A/B testing', add: [2000, 4000] },
-    { id: 'crm', label: 'Integración con CRM / email marketing', add: [3000, 6000] },
-    { id: 'pixels', label: 'Píxeles y analytics avanzado', add: [2000, 4000] },
-  ],
-  ia: [
-    { id: 'whatsapp', label: 'Chatbot en WhatsApp Business', add: [10000, 20000] },
-    { id: 'datos', label: 'Análisis automático de datos', add: [8000, 15000] },
-    { id: 'flujos', label: 'Automatización de flujos de trabajo', add: [5000, 10000] },
-    { id: 'crm', label: 'Integración con sistemas existentes', add: [5000, 10000] },
-  ],
-}
-
-const urgencies: Urgency[] = [
-  { id: 'calma', label: 'Sin prisa', desc: 'Más de 2 meses', multiplier: 1.0 },
-  { id: 'normal', label: 'Normal', desc: '4 a 8 semanas', multiplier: 1.1 },
-  { id: 'urgente', label: 'Urgente', desc: 'Menos de 4 semanas', multiplier: 1.3 },
-]
+import { formatMXN, calcEstimate } from '@/lib/estimator'
+import { projectTypes, featuresByType, urgencies } from '@/data/estimator-data'
 
 // ─── Step indicator ──────────────────────────────────────────────────────────
 
@@ -167,17 +69,6 @@ export default function EstimadorPage() {
   const features = selectedType ? featuresByType[selectedType] ?? [] : []
   const urgency = urgencies.find((u) => u.id === selectedUrgency)
 
-  function calcEstimate(): { min: number; max: number } {
-    if (!projectType || !urgency) return { min: 0, max: 0 }
-    const selectedFeatObjs = features.filter((f) => selectedFeatures.has(f.id))
-    const addMin = selectedFeatObjs.reduce((sum, f) => sum + f.add[0], 0)
-    const addMax = selectedFeatObjs.reduce((sum, f) => sum + f.add[1], 0)
-    return {
-      min: roundTo500((projectType.base[0] + addMin) * urgency.multiplier),
-      max: roundTo500((projectType.base[1] + addMax) * urgency.multiplier),
-    }
-  }
-
   // ── handlers ─────────────────────────────────────────────────────────────
 
   function toggleFeature(id: string) {
@@ -203,7 +94,7 @@ export default function EstimadorPage() {
 
   // ── render ────────────────────────────────────────────────────────────────
 
-  const estimate = calcEstimate()
+  const estimate = calcEstimate({ projectType, features, selectedFeatures, urgency })
 
   const urgencyBadge: Record<string, string> = {
     urgente: '+30%',
