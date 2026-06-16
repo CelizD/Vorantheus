@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import PlanetDashboard from '@/components/PlanetDashboard'
 import TechMarquee from '@/components/TechMarquee'
 import HomeServices from '@/components/HomeServices'
 import WhyUs from '@/components/WhyUs'
@@ -22,6 +23,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <PlanetDashboard />
         <TechMarquee />
         <HomeServices />
         <WhyUs />

@@ -252,3 +252,38 @@ h1, h2 {
     animation: none !important;
   }
 }
+
+/* ── PlanetDashboard animations ────────────────────────────────────────── */
+@keyframes voCityPulse {
+  0%, 100% { opacity: 0.30; }
+  50%       { opacity: 0.85; }
+}
+
+@keyframes voArcFlow {
+  from { stroke-dashoffset: 200; }
+  to   { stroke-dashoffset: 0;   }
+}
+
+@keyframes voCardFloat {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes voGridSpin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+.vo-float    { animation: voCardFloat 4s ease-in-out infinite; }
+.vo-pulse    { animation: voCityPulse 2.5s ease-in-out infinite; }
+.vo-arc-flow { animation: voArcFlow linear infinite; }
+.vo-grid-spin {
+  transform-origin: 250px 250px;
+  animation: voGridSpin 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vo-float, .vo-pulse, .vo-arc-flow, .vo-grid-spin {
+    animation: none !important;
+  }
+}
