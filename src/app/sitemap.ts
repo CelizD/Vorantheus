@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 import { siteConfig } from '@/lib/site'
 import { blogPosts } from '@/data/blog'
 import { technologies } from '@/data/technologies'
+import { services } from '@/data/services'
+import { portfolioItems } from '@/data/portfolio'
 
 const routes = [
   '',
@@ -41,5 +43,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.65,
   }))
 
-  return [...staticPages, ...blogPages, ...techPages]
+  const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
+    url: `${siteConfig.url}/servicios/${s.id}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }))
+
+  const portfolioPages: MetadataRoute.Sitemap = portfolioItems.map((p) => ({
+    url: `${siteConfig.url}/portafolio/${p.id}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.65,
+  }))
+
+  return [...staticPages, ...blogPages, ...techPages, ...servicePages, ...portfolioPages]
 }

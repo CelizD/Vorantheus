@@ -2,12 +2,12 @@ import Link from 'next/link'
 import { getWhatsAppUrl, siteConfig } from '@/lib/site'
 
 const servicesLinks = [
-  { label: 'Páginas web', href: '/servicios' },
-  { label: 'Landing pages', href: '/servicios' },
-  { label: 'Tiendas en línea', href: '/servicios' },
-  { label: 'Sistemas administrativos', href: '/servicios' },
-  { label: 'Aplicaciones móviles', href: '/servicios' },
-  { label: 'Automatización con IA', href: '/servicios' },
+  { label: 'Páginas web', href: '/servicios/paginas-web' },
+  { label: 'Landing pages', href: '/servicios/landing-pages' },
+  { label: 'Tiendas en línea', href: '/servicios/tiendas-en-linea' },
+  { label: 'Sistemas administrativos', href: '/servicios/sistemas-administrativos' },
+  { label: 'Aplicaciones móviles', href: '/servicios/aplicaciones-moviles' },
+  { label: 'Automatización con IA', href: '/servicios/automatizacion-ia' },
 ]
 
 const companyLinks = [

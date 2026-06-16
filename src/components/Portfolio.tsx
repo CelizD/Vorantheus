@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import Link from 'next/link'
 import { portfolioItems, categories } from '@/data/portfolio'
 
 // Map the design-token gradient strings from the data to concrete tints.
@@ -71,12 +72,12 @@ export default function Portfolio() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {filtered.map((item, index) => (
+              <Link key={item.id} href={`/portafolio/${item.id}`}>
               <motion.div
-                key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="group rounded-3xl overflow-hidden bg-white border border-black/[0.04] shadow-card hover:shadow-medium transition-[box-shadow] duration-300"
+                className="group rounded-3xl overflow-hidden bg-white border border-black/[0.04] shadow-card hover:shadow-medium transition-[box-shadow] duration-300 cursor-pointer"
               >
                 {/* Thumbnail */}
                 <div className={`relative aspect-[16/10] bg-gradient-to-br ${gradientTints[item.imageColor] || 'from-[#0B84F3]/40 to-[#7C3AED]/30'} overflow-hidden`}>
@@ -116,6 +117,7 @@ export default function Portfolio() {
                   </div>
                 </div>
               </motion.div>
+              </Link>
             ))}
           </motion.div>
         </AnimatePresence>
