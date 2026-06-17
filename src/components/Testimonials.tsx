@@ -52,7 +52,7 @@ function SpotlightCard({
 
 export default function Testimonials() {
   return (
-    <section style={{ background: '#FFFFFF' }}>
+    <section className="testimonials-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
         <motion.div
           initial={{ opacity: 0, y: 12 }}

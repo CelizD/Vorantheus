@@ -165,8 +165,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-[100dvh] overflow-hidden"
-      style={{ background: '#07080D' }}
+      className="relative min-h-[100dvh] overflow-hidden hero-bg"
     >
       {/* Background glows */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
