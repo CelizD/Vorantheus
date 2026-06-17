@@ -552,6 +552,526 @@ export const technologies: Technology[] = [
       },
     ],
   },
+  {
+    name: 'Firebase',
+    slug: 'firebase',
+    tagline: 'Backend de Google para apps que escalan desde el día uno.',
+    description: [
+      'Firebase es la plataforma de desarrollo de aplicaciones de Google que ofrece base de datos en tiempo real, autenticación, almacenamiento de archivos, funciones en la nube y analítica en un solo servicio. Su mayor fortaleza es la sincronización en tiempo real: los datos se actualizan instantáneamente en todos los dispositivos conectados.',
+      'Usado por millones de aplicaciones en el mundo, Firebase permite lanzar productos con backend completo en días. Es ideal para aplicaciones con actualizaciones en vivo, notificaciones push, autenticación social y flujos colaborativos.',
+    ],
+    useCases: [
+      'Aplicaciones con sincronización de datos en tiempo real',
+      'Autenticación con Google, Facebook, Apple y email',
+      'Notificaciones push para apps móviles',
+      'Almacenamiento de archivos multimedia en la nube',
+    ],
+    whyWeUseIt:
+      'Firebase es la solución más rápida para lanzar apps con backend completo. Su integración nativa con Google Cloud y los SDKs para React Native y Flutter aceleran el desarrollo cuando la velocidad de lanzamiento es prioritaria.',
+    businessBenefits: [
+      'App funcional con backend en días, no semanas',
+      'Escalabilidad automática gestionada por Google',
+      'Notificaciones push sin costo de infraestructura adicional',
+      'Monitoreo y analítica de uso incluidos',
+    ],
+    vorantheusCases: [
+      'Apps móviles con chat y mensajería en tiempo real',
+      'Sistemas de notificaciones push para apps iOS y Android',
+      'Backends rápidos para prototipos y MVPs',
+    ],
+    examples: [
+      {
+        title: 'App de reservas con disponibilidad en vivo',
+        description:
+          'Los clientes ven disponibilidad actualizada al segundo. Cuando alguien reserva un espacio, todos los demás usuarios lo ven ocupado instantáneamente sin recargar la pantalla.',
+      },
+      {
+        title: 'Notificaciones de entregas en tiempo real',
+        description:
+          'Push notifications que alertan al cliente cuando su pedido es preparado, enviado y entregado. El estado del repartidor se actualiza en el mapa en vivo.',
+      },
+    ],
+  },
+  {
+    name: 'MySQL',
+    slug: 'mysql',
+    tagline: 'La base de datos más usada del mundo para aplicaciones web.',
+    description: [
+      'MySQL es el sistema de base de datos relacional de código abierto más popular del mundo, respaldado por Oracle y usado por empresas como Facebook, Twitter, YouTube y Netflix. Su combinación de simplicidad, rendimiento probado y disponibilidad en prácticamente cualquier proveedor de hosting lo hace la elección pragmática para millones de proyectos.',
+      'MySQL destaca por su velocidad en operaciones de lectura, su amplio soporte en herramientas de administración y su compatibilidad con la mayoría de los lenguajes y frameworks. Es la base de datos predeterminada de WordPress, Drupal, Magento y muchos otros sistemas populares.',
+    ],
+    useCases: [
+      'Aplicaciones web con datos estructurados y relacionales',
+      'E-commerce y tiendas en línea con catálogo de productos',
+      'Sistemas de gestión de contenido (CMS)',
+      'Migración y coexistencia con sistemas legacy',
+    ],
+    whyWeUseIt:
+      'Usamos MySQL cuando el cliente ya tiene infraestructura, conocimiento interno o proveedores que lo requieren. Su compatibilidad universal y la familiaridad del equipo con sus herramientas de administración facilitan la transición y el mantenimiento.',
+    businessBenefits: [
+      'Sin costos de licencia — completamente gratuito',
+      'Compatible con casi todos los proveedores de hosting',
+      'Herramientas de administración maduras como phpMyAdmin',
+      'Soporte amplio en la comunidad y documentación extensa',
+    ],
+    vorantheusCases: [
+      'Sistemas heredados que requieren MySQL por compatibilidad',
+      'Proyectos con proveedores de hosting con MySQL disponible',
+      'Migraciones desde sistemas existentes basados en MySQL',
+    ],
+    examples: [
+      {
+        title: 'Migración de base de datos para sistema ERP',
+        description:
+          'Empresa con ERP en MySQL de 10 años. Mantuvimos MySQL para preservar compatibilidad con reportes existentes mientras modernizamos la interfaz con React y Next.js.',
+      },
+      {
+        title: 'Catálogo de e-commerce heredado',
+        description:
+          'Tienda con 8,000 productos en MySQL. Optimizamos índices y consultas logrando tiempos de respuesta 5x más rápidos sin migrar la base de datos.',
+      },
+    ],
+  },
+  {
+    name: 'MongoDB',
+    slug: 'mongodb',
+    tagline: 'La base de datos de documentos para datos flexibles y escalables.',
+    description: [
+      'MongoDB es la base de datos NoSQL más popular del mundo. Almacena los datos como documentos JSON en lugar de tablas y filas, lo que la hace ideal cuando la estructura de los datos es variable, evoluciona frecuentemente o tiene jerarquías anidadas complejas. MongoDB es usado por eBay, Forbes, Adobe, Cisco y miles de startups.',
+      'Su modelo de documentos elimina los JOINs complejos: toda la información relacionada se guarda junta en un solo documento. Esto simplifica las consultas y permite escalar horizontalmente de forma nativa, distribuyendo los datos en múltiples servidores automáticamente.',
+    ],
+    useCases: [
+      'Catálogos de productos con atributos variables por categoría',
+      'Sistemas de logs y auditoría de alto volumen',
+      'Aplicaciones con estructuras de datos que cambian frecuentemente',
+      'APIs que manejan datos semi-estructurados o JSON puro',
+    ],
+    whyWeUseIt:
+      'MongoDB es la elección natural cuando los datos no encajan bien en un esquema tabular rígido. Para catálogos con cientos de atributos diferentes por producto, logs de eventos y sistemas donde la velocidad de desarrollo supera la necesidad de relaciones complejas.',
+    businessBenefits: [
+      'Flexibilidad de esquema — agrega campos nuevos sin migraciones complejas',
+      'Escalabilidad horizontal nativa para millones de registros',
+      'Consultas rápidas en datos anidados sin JOINs',
+      'Atlas Cloud de MongoDB simplifica la infraestructura',
+    ],
+    vorantheusCases: [
+      'Sistemas de logs y auditoría para plataformas de alto volumen',
+      'Catálogos con productos de atributos muy variables',
+      'Backends de APIs con respuestas JSON complejas',
+    ],
+    examples: [
+      {
+        title: 'Catálogo de refacciones automotrices',
+        description:
+          'Más de 200,000 refacciones con atributos completamente distintos por categoría. MongoDB permitió definir el esquema de cada categoría de forma independiente sin tablas de atributos genéricas.',
+      },
+      {
+        title: 'Sistema de auditoría de cambios',
+        description:
+          'Registro de cada acción de usuario en un sistema financiero. MongoDB almacena el estado completo del registro antes y después de cada cambio, facilitando auditorías regulatorias.',
+      },
+    ],
+  },
+  {
+    name: 'NestJS',
+    slug: 'nestjs',
+    tagline: 'El framework de Node.js para backends empresariales estructurados.',
+    description: [
+      'NestJS es un framework progresivo de Node.js para construir APIs y backends escalables, testables y bien estructurados. Usa TypeScript de forma nativa y aplica los patrones de arquitectura empresarial — inyección de dependencias, módulos, decoradores — que hacen que el código sea organizado y mantenible a largo plazo.',
+      'Inspirado en Angular, NestJS proporciona una estructura clara para proyectos grandes donde múltiples desarrolladores trabajan en paralelo. Su integración con Prisma, TypeORM, GraphQL, WebSockets y microservicios lo convierte en la columna vertebral de backends complejos.',
+    ],
+    useCases: [
+      'APIs REST y GraphQL para aplicaciones de escala empresarial',
+      'Microservicios y arquitecturas distribuidas',
+      'Backends con múltiples desarrolladores y equipos',
+      'Sistemas que requieren testing exhaustivo y CI/CD',
+    ],
+    whyWeUseIt:
+      'NestJS nos da estructura y disciplina en proyectos backend complejos. La inyección de dependencias facilita las pruebas, los módulos organizan el código por dominio de negocio y la integración nativa con TypeScript garantiza calidad a largo plazo.',
+    businessBenefits: [
+      'Código backend organizado y mantenible a largo plazo',
+      'Fácil de extender con nuevas funcionalidades sin romper lo existente',
+      'Integración nativa con bases de datos, autenticación y colas',
+      'Testing automatizado integrado en la arquitectura',
+    ],
+    vorantheusCases: [
+      'APIs de sistemas administrativos complejos con múltiples módulos',
+      'Backends de plataformas SaaS con autenticación y multi-tenancy',
+      'Microservicios para procesamiento de pagos y notificaciones',
+    ],
+    examples: [
+      {
+        title: 'API central de plataforma de logística',
+        description:
+          'Backend con módulos para pedidos, rutas, conductores, clientes y facturación. Cada módulo es independiente y testeable, lo que permite actualizar uno sin afectar los demás.',
+      },
+      {
+        title: 'Servicio de procesamiento de pagos',
+        description:
+          'Microservicio NestJS que orquesta pagos con Stripe y Mercado Pago, maneja reintentos, webhooks y conciliación de transacciones con alta confiabilidad.',
+      },
+    ],
+  },
+  {
+    name: 'Express.js',
+    slug: 'express',
+    tagline: 'El framework minimalista que pone en marcha tu API al instante.',
+    description: [
+      'Express.js es el framework de Node.js más descargado del mundo con más de 100 millones de descargas mensuales. Su filosofía minimalista te da solo lo esencial: enrutamiento, middleware y acceso a la solicitud/respuesta HTTP. Sin opiniones adicionales, sin magia — solo código claro y predecible.',
+      'Express es la base de la mayoría de las APIs en Node.js. Frameworks como NestJS, Sails y LoopBack están construidos sobre Express. Su ecosistema de middleware — autenticación, compresión, CORS, logging — cubre prácticamente cualquier necesidad sin agregar peso innecesario.',
+    ],
+    useCases: [
+      'APIs REST ligeras y microservicios',
+      'Proxies y gateways de API',
+      'Backends para aplicaciones móviles y SPAs',
+      'Prototipado rápido de APIs',
+    ],
+    whyWeUseIt:
+      'Express es nuestra elección para APIs donde la simplicidad y el control son prioritarios. Sin la estructura de NestJS, pero con total libertad para organizarlo como mejor sirve al proyecto. Ideal para microservicios pequeños y APIs que se integran con sistemas existentes.',
+    businessBenefits: [
+      'API funcional en horas — sin configuración compleja',
+      'Cero overhead — el servidor hace exactamente lo que necesita',
+      'Ecosistema maduro con middleware para cualquier caso de uso',
+      'Fácil de desplegar en cualquier proveedor de Node.js',
+    ],
+    vorantheusCases: [
+      'Microservicios de notificaciones y webhooks',
+      'APIs de integración entre sistemas de terceros',
+      'Backends ligeros para landing pages con formularios',
+    ],
+    examples: [
+      {
+        title: 'Gateway de integración con SAT',
+        description:
+          'API Express que recibe solicitudes de timbrado, las valida, las envía al PAC certificado y devuelve el CFDI firmado. Maneja errores y reintentos de forma robusta.',
+      },
+      {
+        title: 'Servidor de webhooks para pagos',
+        description:
+          'Express procesa notificaciones de Stripe y Mercado Pago, verifica firmas de seguridad y actualiza el estado de órdenes en tiempo real.',
+      },
+    ],
+  },
+  {
+    name: 'Docker',
+    slug: 'docker',
+    tagline: 'El mismo entorno en tu computadora y en producción.',
+    description: [
+      'Docker es la plataforma de contenedores que cambió cómo se desarrolla, empaqueta y despliega software. Un contenedor Docker encapsula una aplicación con todas sus dependencias — lenguaje, librerías, configuración — en un paquete portable que funciona igual en cualquier entorno: la laptop del desarrollador, el servidor de pruebas o la nube.',
+      'El problema que resuelve Docker es el clásico "en mi máquina sí funciona". Con Docker, si funciona en tu computadora, funciona en producción. Esto elimina horas de debugging de entornos y hace que los deployments sean predecibles y repetibles.',
+    ],
+    useCases: [
+      'Empaquetado de aplicaciones para deployment reproducible',
+      'Entornos de desarrollo consistentes entre el equipo',
+      'Orquestación de múltiples servicios con Docker Compose',
+      'Base para despliegues en Kubernetes y servicios en la nube',
+    ],
+    whyWeUseIt:
+      'Docker garantiza que el entorno de desarrollo y producción son idénticos. Eliminamos la categoría entera de bugs "solo pasa en producción" y facilitamos el onboarding de nuevos desarrolladores — clonar el repo y correr `docker compose up` es suficiente.',
+    businessBenefits: [
+      'Deployments sin sorpresas — lo que se prueba es lo que se publica',
+      'Onboarding de nuevos desarrolladores en minutos, no días',
+      'Aislamiento de servicios — un servicio caído no afecta a los demás',
+      'Portable entre cualquier proveedor de nube sin cambios de código',
+    ],
+    vorantheusCases: [
+      'Contenedores de APIs y servicios backend en producción',
+      'Entornos locales de desarrollo con base de datos incluida',
+      'Pipelines de CI/CD con builds reproducibles',
+    ],
+    examples: [
+      {
+        title: 'Stack completo con Docker Compose',
+        description:
+          'API NestJS, PostgreSQL, Redis y Nginx orquestados con un solo archivo. El equipo levanta el entorno completo en segundos con `docker compose up`.',
+      },
+      {
+        title: 'Pipeline de CI/CD con Docker',
+        description:
+          'Cada commit genera una imagen Docker etiquetada. Los tests corren en contenedores idénticos al entorno de producción antes de hacer deploy automáticamente.',
+      },
+    ],
+  },
+  {
+    name: 'AWS',
+    slug: 'aws',
+    tagline: 'La nube más grande del mundo para infraestructura sin límites.',
+    description: [
+      'Amazon Web Services (AWS) es la plataforma de servicios en la nube más grande y madura del mundo, con más de 200 servicios disponibles. Desde servidores virtuales (EC2) y almacenamiento (S3) hasta bases de datos gestionadas (RDS), funciones serverless (Lambda) e inteligencia artificial, AWS provee la infraestructura sobre la que corre una fracción significativa de internet.',
+      'Netflix, Airbnb, Spotify, LinkedIn y la gran mayoría de las empresas tecnológicas más importantes del mundo construyen sobre AWS. Su red global de regiones y zonas de disponibilidad garantiza alta disponibilidad, latencia mínima y cumplimiento regulatorio en prácticamente cualquier país.',
+    ],
+    useCases: [
+      'Infraestructura escalable para aplicaciones de alto tráfico',
+      'Almacenamiento masivo de archivos con S3',
+      'Bases de datos gestionadas con RDS y DynamoDB',
+      'Funciones serverless con Lambda para procesos automáticos',
+    ],
+    whyWeUseIt:
+      'AWS es la elección cuando el cliente necesita control total sobre su infraestructura, cumplimiento regulatorio específico o está migrando desde sistemas on-premise. Su madurez, documentación y ecosistema no tienen rival para proyectos con requerimientos de enterprise.',
+    businessBenefits: [
+      'Infraestructura que escala automáticamente a millones de usuarios',
+      'SLAs de 99.99% de disponibilidad respaldados por Amazon',
+      'Cumplimiento de regulaciones: HIPAA, PCI DSS, ISO 27001',
+      'Pay-as-you-go — pagas solo por lo que usas',
+    ],
+    vorantheusCases: [
+      'Hosting de aplicaciones con requerimientos de compliance regulatorio',
+      'Almacenamiento de archivos y backups con S3',
+      'Funciones Lambda para procesamiento asíncrono de documentos',
+    ],
+    examples: [
+      {
+        title: 'Plataforma de telemedicina en AWS',
+        description:
+          'Sistema de videoconferencias médicas con cumplimiento HIPAA. Almacenamiento cifrado de expedientes en S3, base de datos RDS en VPC privada y CDN CloudFront para baja latencia.',
+      },
+      {
+        title: 'Procesamiento masivo de imágenes',
+        description:
+          'Lambda function que procesa automáticamente imágenes subidas a S3: redimensiona, comprime y genera thumbnails en múltiples resoluciones sin servidor dedicado.',
+      },
+    ],
+  },
+  {
+    name: 'OpenAI',
+    slug: 'openai',
+    tagline: 'La IA más avanzada del mundo integrada en tu negocio.',
+    description: [
+      'OpenAI es la empresa creadora de GPT-4, ChatGPT y DALL-E — los modelos de inteligencia artificial generativa más avanzados disponibles comercialmente. A través de su API, cualquier aplicación puede integrar capacidades de comprensión y generación de texto, análisis de documentos, generación de imágenes y mucho más.',
+      'La API de OpenAI permite construir asistentes que responden preguntas con el contexto de tu negocio, generan contenido personalizado, analizan documentos, extraen información estructurada de texto libre y automatizan comunicación. Es la puerta de entrada más accesible a la IA para negocios de cualquier tamaño.',
+    ],
+    useCases: [
+      'Chatbots de atención al cliente entrenados con tu información',
+      'Análisis y extracción de datos de documentos PDF y contratos',
+      'Generación automática de descripciones de productos',
+      'Asistentes internos para equipos de ventas y soporte',
+    ],
+    whyWeUseIt:
+      'La API de OpenAI es la forma más práctica de agregar IA real a un producto. GPT-4 entiende contexto complejo, sigue instrucciones precisas y genera respuestas de calidad. Lo integramos con los datos propios del cliente para crear asistentes especializados en su industria.',
+    businessBenefits: [
+      'Atención al cliente 24/7 sin costo de personal adicional',
+      'Procesamiento automático de documentos que toma horas manualmente',
+      'Generación de contenido a escala para catálogos y descripciones',
+      'Ventaja competitiva real con IA que habla el idioma de tu negocio',
+    ],
+    vorantheusCases: [
+      'Chatbots de WhatsApp y sitio web para negocios de servicios',
+      'Procesamiento automático de cotizaciones y contratos',
+      'Generación de descripciones de productos para tiendas en línea',
+    ],
+    examples: [
+      {
+        title: 'Asistente de ventas por WhatsApp',
+        description:
+          'Bot que conoce el catálogo completo, responde preguntas de disponibilidad y precio, califica leads y agenda citas con el equipo comercial — las 24 horas del día.',
+      },
+      {
+        title: 'Procesador de contratos',
+        description:
+          'Sistema que recibe PDFs de contratos, extrae cláusulas clave, identifica fechas de vencimiento y genera resúmenes ejecutivos en segundos en lugar de horas.',
+      },
+    ],
+  },
+  {
+    name: 'Stripe',
+    slug: 'stripe',
+    tagline: 'El estándar global para pagos en línea seguros y sin fricciones.',
+    description: [
+      'Stripe es la plataforma de pagos en línea preferida por startups y empresas tecnológicas en todo el mundo. Procesa pagos con tarjeta de crédito y débito, OXXO, transferencias bancarias y más de 135 métodos de pago globales, todo con una API que los desarrolladores pueden integrar en horas.',
+      'Más que un procesador de pagos, Stripe es una suite completa: manejo de suscripciones recurrentes, facturas automáticas, detección de fraude con ML, pagos en múltiples monedas y cumplimiento PCI DSS Level 1 incluido. Companies like Shopify, Salesforce, and Zoom use Stripe for all their payment processing.',
+    ],
+    useCases: [
+      'Pagos únicos y suscripciones recurrentes en e-commerce',
+      'Facturación automática para servicios SaaS',
+      'Marketplaces con pagos entre múltiples partes',
+      'Pagos internacionales en múltiples monedas',
+    ],
+    whyWeUseIt:
+      'Stripe tiene la mejor documentación de cualquier API de pagos, el ecosistema de webhooks más confiable y la seguridad más sólida del mercado. Integrar Stripe en un proyecto Next.js o Node.js toma horas, no semanas, y su dashboard de analítica da visibilidad total sobre los ingresos.',
+    businessBenefits: [
+      'Pagos con tarjeta aceptados sin configurar cuenta bancaria compleja',
+      'Cumplimiento PCI DSS incluido — sin auditorías de seguridad adicionales',
+      'Suscripciones automáticas con manejo de renovaciones y cancelaciones',
+      'Dashboard en tiempo real con ingresos, reembolsos y disputas',
+    ],
+    vorantheusCases: [
+      'Checkout de e-commerce con múltiples métodos de pago',
+      'Suscripciones mensuales para plataformas SaaS',
+      'Pagos internacionales para clientes con clientes en EE.UU.',
+    ],
+    examples: [
+      {
+        title: 'Plataforma de cursos con membresías',
+        description:
+          'Cobro mensual automático con Stripe Subscriptions. Los alumnos acceden al contenido mientras su tarjeta esté vigente. Cambios de plan, pausas y cancelaciones gestionados automáticamente.',
+      },
+      {
+        title: 'E-commerce con múltiples métodos de pago',
+        description:
+          'Checkout que acepta tarjetas Visa/Mastercard internacionales y pagos en OXXO para clientes sin tarjeta bancaria. Confirmación por email automática al acreditar.',
+      },
+    ],
+  },
+  {
+    name: 'Mercado Pago',
+    slug: 'mercado-pago',
+    tagline: 'El método de pago que tu cliente mexicano ya conoce y usa.',
+    description: [
+      'Mercado Pago es la plataforma de pagos líder en América Latina, parte del ecosistema de Mercado Libre. En México, es uno de los métodos de pago digital más utilizados, con soporte para tarjetas de crédito y débito, OXXO, SPEI, Mercado Crédito y pagos a meses sin intereses — los métodos que los compradores mexicanos prefieren.',
+      'Para negocios que venden en México y LATAM, Mercado Pago ofrece tasas competitivas, una API robusta y la confianza de una marca que los compradores ya conocen. La integración incluye checkout hospedado, API de pagos personalizada y soporte para flujos de suscripción.',
+    ],
+    useCases: [
+      'E-commerce con pagos a meses sin intereses en México',
+      'Checkout con OXXO para clientes sin tarjeta bancaria',
+      'Pagos con QR para negocios físicos',
+      'Suscripciones y pagos recurrentes en pesos mexicanos',
+    ],
+    whyWeUseIt:
+      'Para clientes con negocios en México, Mercado Pago suele ser indispensable. Los compradores mexicanos confían en la marca y el soporte a pagos en OXXO y a meses sin intereses aumenta significativamente la tasa de conversión versus solo ofrecer tarjeta de crédito.',
+    businessBenefits: [
+      'Mayor conversión — tus clientes pagan con el método que prefieren',
+      'OXXO incluido — vendes incluso a clientes sin cuenta bancaria',
+      'Meses sin intereses — aumenta el ticket promedio de compra',
+      'Protección al vendedor contra fraudes y chargebacks',
+    ],
+    vorantheusCases: [
+      'Checkout de e-commerce dirigido al mercado mexicano',
+      'Tiendas en línea que necesitan OXXO y meses sin intereses',
+      'Plataformas de servicios con suscripciones en MXN',
+    ],
+    examples: [
+      {
+        title: 'Tienda de moda con pagos a 12 meses',
+        description:
+          'Checkout con opción de pagar a 3, 6 y 12 meses sin intereses en tarjetas participantes. La opción de OXXO abrió un segmento de clientes que antes no podía comprar en línea.',
+      },
+      {
+        title: 'Plataforma de membresías deportivas',
+        description:
+          'Membresías mensuales cobradas automáticamente en pesos. Los socios reciben su acceso digital al confirmar el pago y se desactiva automáticamente si la renovación falla.',
+      },
+    ],
+  },
+  {
+    name: 'Flutter',
+    slug: 'flutter',
+    tagline: 'Apps hermosas para iOS, Android y web desde un solo código.',
+    description: [
+      'Flutter es el framework de Google para construir aplicaciones nativas compiladas para móvil, web y desktop desde una sola base de código usando el lenguaje Dart. A diferencia de React Native, Flutter no usa componentes nativos del sistema operativo — renderiza cada píxel con su propio motor gráfico, lo que garantiza una apariencia idéntica en iOS y Android.',
+      'Su sistema de widgets y el motor Skia permiten crear interfaces visualmente ricas con animaciones fluidas a 60fps/120fps. Google, eBay, BMW y Alibaba han migrado apps a Flutter. Es la opción de elección cuando la consistencia visual entre plataformas y la performance de UI son críticas.',
+    ],
+    useCases: [
+      'Apps móviles iOS y Android con diseño altamente personalizado',
+      'Aplicaciones con animaciones complejas y UI premium',
+      'Apps que también requieren versión web o desktop',
+      'MVPs rápidos que necesitan presencia en ambas tiendas',
+    ],
+    whyWeUseIt:
+      'Flutter es nuestra elección cuando el diseño personalizado es prioritario y el cliente necesita app en iOS y Android. El renderizado propio garantiza que las animaciones y transiciones se vean exactamente igual en todos los dispositivos, sin depender de los componentes nativos de cada OS.',
+    businessBenefits: [
+      'App en iOS y Android simultáneamente con diseño pixel-perfect',
+      'Animaciones y transiciones fluidas a 60fps o más',
+      'Hot reload — cambios de UI visibles en milisegundos durante desarrollo',
+      'La misma app puede ejecutarse en web con ajustes mínimos',
+    ],
+    vorantheusCases: [
+      'Apps móviles con branding fuerte y animaciones personalizadas',
+      'Aplicaciones que requieren presencia en iOS, Android y web',
+      'MVPs de productos digitales con UI premium',
+    ],
+    examples: [
+      {
+        title: 'App de fitness con animaciones de ejercicios',
+        description:
+          'Animaciones fluidas de instrucciones de ejercicio, temporizadores interactivos y visualizaciones de progreso. La experiencia visual fue clave para la retención de usuarios.',
+      },
+      {
+        title: 'App de delivery con mapa en tiempo real',
+        description:
+          'Mapa con ubicación de repartidores actualizada cada 3 segundos, animaciones de marcadores y transiciones suaves entre estados del pedido.',
+      },
+    ],
+  },
+  {
+    name: 'GitHub',
+    slug: 'github',
+    tagline: 'El hogar del código donde la colaboración se vuelve producto.',
+    description: [
+      'GitHub es la plataforma de colaboración de código más grande del mundo, con más de 100 millones de desarrolladores y 420 millones de repositorios. Aloja el código fuente de prácticamente todo el software de código abierto relevante del mundo y es el sistema de control de versiones estándar de la industria.',
+      'Más allá de almacenar código, GitHub es una plataforma completa de DevOps: automatización de pipelines CI/CD con GitHub Actions, gestión de proyectos con Issues y Projects, revisiones de código colaborativas y despliegues automáticos. Es la columna vertebral del flujo de trabajo moderno de desarrollo de software.',
+    ],
+    useCases: [
+      'Control de versiones del código fuente del proyecto',
+      'Colaboración entre desarrolladores con pull requests y revisiones',
+      'CI/CD automatizado con GitHub Actions',
+      'Gestión de tareas y sprints con GitHub Projects',
+    ],
+    whyWeUseIt:
+      'Todo nuestro código vive en GitHub. Los clientes tienen acceso al repositorio de su proyecto, pueden ver el historial completo de cambios y colaborar directamente. GitHub Actions automatiza los tests y deployments en cada commit, eliminando pasos manuales y errores humanos.',
+    businessBenefits: [
+      'Tú eres dueño de tu código — acceso total al repositorio en cualquier momento',
+      'Historial completo de cada cambio — nada se pierde',
+      'Deployments automáticos seguros sin intervención manual',
+      'Colaboración estructurada con revisiones antes de publicar cambios',
+    ],
+    vorantheusCases: [
+      'Repositorio de todos los proyectos que desarrollamos para clientes',
+      'Pipelines de CI/CD para deployments automáticos a Vercel y AWS',
+      'Gestión de backlog y sprints con clientes',
+    ],
+    examples: [
+      {
+        title: 'Pipeline de deployment automático',
+        description:
+          'Cada push a main ejecuta tests, lint y build. Si todo pasa, el sitio se publica automáticamente en Vercel en menos de 2 minutos. Sin intervención humana.',
+      },
+      {
+        title: 'Repositorio con acceso del cliente',
+        description:
+          'El cliente accede al repositorio de su proyecto, ve el historial de cambios, aprueba pull requests y tiene respaldo completo de su inversión en código.',
+      },
+    ],
+  },
+  {
+    name: 'Figma',
+    slug: 'figma',
+    tagline: 'Diseño colaborativo que se convierte directamente en código.',
+    description: [
+      'Figma es la herramienta de diseño de interfaces más adoptada por equipos de producto modernos. Permite crear prototipos interactivos, sistemas de diseño y especificaciones de UI que los desarrolladores pueden inspeccionar directamente, acelerando el puente entre diseño y código.',
+      'La colaboración en tiempo real de Figma — múltiples personas editando el mismo archivo simultáneamente — revolucionó los flujos de trabajo de diseño. Empresas como Airbnb, Uber, Microsoft y Apple usan Figma como herramienta central de diseño. Su adquisición por Adobe en 2022 confirmó su posición dominante en el mercado.',
+    ],
+    useCases: [
+      'Diseño de interfaces de aplicaciones web y móviles',
+      'Prototipado interactivo para validar flujos con usuarios',
+      'Sistemas de diseño reutilizables para productos digitales',
+      'Especificaciones visuales para el equipo de desarrollo',
+    ],
+    whyWeUseIt:
+      'Usamos Figma para diseñar todas las interfaces antes de escribir código. Permite iterar rápidamente sobre el diseño con el cliente, aprobar la dirección visual antes de invertir en desarrollo y generar especificaciones exactas de colores, tipografía y espaciados que el equipo de desarrollo sigue al píxel.',
+    businessBenefits: [
+      'Ves tu app antes de que se construya — apruebas el diseño primero',
+      'Cambios de diseño en Figma son más baratos que cambios en código',
+      'Especificaciones exactas eliminan malentendidos entre diseño y desarrollo',
+      'Prototipo funcional para validar con usuarios antes de invertir en desarrollo',
+    ],
+    vorantheusCases: [
+      'Diseño de todas las interfaces web y móviles antes del desarrollo',
+      'Prototipado interactivo para presentaciones a clientes',
+      'Sistemas de diseño para marcas con múltiples productos digitales',
+    ],
+    examples: [
+      {
+        title: 'Diseño de sistema administrativo',
+        description:
+          'Prototipo interactivo completo del ERP antes de escribir una línea de código. El cliente navegó todas las pantallas, aprobó flujos y solicitó ajustes — sin costo de desarrollo.',
+      },
+      {
+        title: 'Sistema de diseño para app móvil',
+        description:
+          'Librería de componentes en Figma: botones, formularios, tarjetas, iconos y paleta de colores. El equipo de desarrollo la usa como referencia exacta para cada componente.',
+      },
+    ],
+  },
 ]
 
 export function getTechnology(slug: string): Technology | undefined {

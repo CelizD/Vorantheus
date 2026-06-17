@@ -2,21 +2,28 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/paquetes', label: 'Paquetes' },
-  { href: '/portafolio', label: 'Portafolio' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/nosotros', label: 'Nosotros' },
-  { href: '/contacto', label: 'Contacto' },
+  { href: '/',             label: 'Inicio'      },
+  { href: '/servicios',    label: 'Servicios'   },
+  { href: '/tecnologias',  label: 'Tecnologías' },
+  { href: '/portafolio',   label: 'Portafolio'  },
+  { href: '/nosotros',     label: 'Nosotros'    },
+  { href: '/contacto',     label: 'Contacto'    },
 ]
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const pathname = usePathname()
+
+  function isActive(href: string) {
+    if (href === '/') return pathname === '/'
+    return pathname === href || pathname.startsWith(href + '/')
+  }
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40)
@@ -61,15 +68,22 @@ export default function Navbar() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-4 py-2 text-sm text-[#6B6860] hover:text-[#1C1B18] transition-colors duration-200 rounded-lg"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) => {
+                const active = isActive(link.href)
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-4 py-2 text-sm rounded-lg transition-[color,background-color] duration-200 font-medium ${
+                      active
+                        ? 'bg-[#1C1B18] text-white'
+                        : 'text-[#6B6860] hover:text-[#1C1B18] hover:bg-[#1C1B18]/06'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )
+              })}
             </nav>
 
             {/* CTA + Mobile Toggle */}
@@ -128,7 +142,9 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-4 text-2xl font-semibold text-[#6B6860] hover:text-[#1C1B18] transition-colors duration-200"
+                    className={`block py-4 text-2xl font-semibold transition-colors duration-200 ${
+                      isActive(link.href) ? 'text-[#1C1B18]' : 'text-[#6B6860] hover:text-[#1C1B18]'
+                    }`}
                   >
                     {link.label}
                   </Link>
