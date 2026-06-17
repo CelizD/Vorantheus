@@ -288,37 +288,3 @@ h1, h2 {
   }
 }
 
-/* ── PlanetNetworkDashboard animations ─────────────────────────────────────── */
-@keyframes pndPulse {
-  0%, 100% { opacity: 0.22; transform: scale(1);    }
-  50%       { opacity: 0.88; transform: scale(1.18); }
-}
-
-@keyframes pndArcFlow {
-  from { stroke-dashoffset: 251; }
-  to   { stroke-dashoffset: 0;   }
-}
-
-@keyframes pndFloat {
-  0%, 100% { transform: translateY(0px);  }
-  50%       { transform: translateY(-9px); }
-}
-
-@keyframes pndGridSpin {
-  from { transform: rotate(0deg);   }
-  to   { transform: rotate(360deg); }
-}
-
-.pnd-pulse    { animation: pndPulse    2.6s ease-in-out infinite; }
-.pnd-arc-flow { animation: pndArcFlow  linear        infinite; }
-.pnd-float    { animation: pndFloat    4.8s ease-in-out infinite; }
-.pnd-grid-spin {
-  transform-origin: 250px 250px;
-  animation: pndGridSpin 90s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pnd-pulse, .pnd-arc-flow, .pnd-float, .pnd-grid-spin {
-    animation: none !important;
-  }
-}
