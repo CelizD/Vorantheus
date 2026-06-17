@@ -35,6 +35,7 @@ const emailContacts = [
 ]
 
 export default function Footer() {
+  const waUrl = getWhatsAppUrl()
   return (
     <footer style={{ background: '#1C1B18' }} className="border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -114,16 +115,18 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li className="pt-1">
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
-                >
-                  {siteConfig.whatsappDisplay}
-                </a>
-              </li>
+              {waUrl && siteConfig.whatsappDisplay && (
+                <li className="pt-1">
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/25 hover:text-white/60 text-sm transition-colors duration-200"
+                  >
+                    {siteConfig.whatsappDisplay}
+                  </a>
+                </li>
+              )}
               <li className="flex items-center gap-4 pt-1">
                 <a
                   href={siteConfig.social.instagram}

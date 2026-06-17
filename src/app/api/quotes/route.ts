@@ -12,13 +12,23 @@ const quoteFromEmail = process.env.QUOTE_FROM_EMAIL || 'Vorantheus <onboarding@r
 
 // ── Simple in-memory rate limiter ───────────────────────────────────────────
 // Allows MAX_REQUESTS per IP per WINDOW_MS.
-// In a multi-instance deployment replace this with an edge KV store (e.g. Upstash Redis).
+// Limitation: state is per-process — in a multi-instance deployment each replica
+// has its own counter, so the effective limit is MAX_REQUESTS × instance_count.
+// Replace with an edge KV store (e.g. Upstash Redis) for true global rate limiting.
 const WINDOW_MS = 60_000 // 1 minute
 const MAX_REQUESTS = 5
 
 const ipRequestMap = new Map<string, { count: number; windowStart: number }>()
 
+function pruneExpired(): void {
+  const now = Date.now()
+  for (const [ip, entry] of ipRequestMap) {
+    if (now - entry.windowStart > WINDOW_MS) ipRequestMap.delete(ip)
+  }
+}
+
 function isRateLimited(ip: string): boolean {
+  pruneExpired()
   const now = Date.now()
   const entry = ipRequestMap.get(ip)
 
@@ -99,8 +109,9 @@ function renderQuoteHtml(data: QuoteRequestData) {
 
 export async function POST(request: Request) {
   // Rate limiting — check before parsing the body to save work
+  const realIp = request.headers.get('x-real-ip')
   const forwarded = request.headers.get('x-forwarded-for')
-  const ip = forwarded ? forwarded.split(',')[0].trim() : 'unknown'
+  const ip = realIp ?? (forwarded ? forwarded.split(',')[0].trim() : 'unknown')
 
   if (isRateLimited(ip)) {
     return NextResponse.json(
@@ -162,7 +173,7 @@ export async function POST(request: Request) {
   ])
 
   if (error) {
-    console.error('Error saving quote request', error)
+    console.error('Error saving quote request:', error instanceof Error ? error.message : String(error))
     return NextResponse.json(
       {
         ok: false,
@@ -187,12 +198,12 @@ export async function POST(request: Request) {
       })
 
       if (emailError) {
-        console.error('Error sending quote notification', emailError)
+        console.error('Error sending quote notification:', emailError instanceof Error ? emailError.message : String(emailError))
       } else {
         notificationSent = true
       }
     } catch (emailError) {
-      console.error('Error sending quote notification', emailError)
+      console.error('Error sending quote notification:', emailError instanceof Error ? emailError.message : String(emailError))
     }
   }
 

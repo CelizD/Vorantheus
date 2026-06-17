@@ -37,6 +37,8 @@ export default async function TechnologyPage({ params }: PageProps) {
   const tech = getTechnology(slug)
   if (!tech) notFound()
 
+  const waUrl = getWhatsAppUrl(`Hola, quiero hablar sobre un proyecto con ${tech!.name}.`)
+
   return (
     <>
       <Navbar />
@@ -207,14 +209,16 @@ export default async function TechnologyPage({ params }: PageProps) {
                 Cotizar proyecto gratis
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a
-                href={getWhatsAppUrl(`Hola, quiero hablar sobre un proyecto con ${tech.name}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#1C1B18]/20 hover:border-[#1C1B18]/40 text-[#1C1B18] font-medium text-base rounded-full transition-all duration-200 hover:bg-[#1C1B18]/5 active:scale-[0.97]"
-              >
-                WhatsApp directo
-              </a>
+              {waUrl && (
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 border border-[#1C1B18]/20 hover:border-[#1C1B18]/40 text-[#1C1B18] font-medium text-base rounded-full transition-all duration-200 hover:bg-[#1C1B18]/5 active:scale-[0.97]"
+                >
+                  WhatsApp directo
+                </a>
+              )}
             </div>
           </div>
         </section>

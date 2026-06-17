@@ -368,14 +368,19 @@ export default function QuoteForm({
               <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
               <p>
                 {errorMessage}{' '}
-                <a
-                  href={getWhatsAppUrl('Hola, intenté cotizar en el sitio y necesito ayuda.')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-ink hover:text-ink/80"
-                >
-                  Escríbenos por WhatsApp.
-                </a>
+                {(() => {
+                  const waUrl = getWhatsAppUrl('Hola, intenté cotizar en el sitio y necesito ayuda.')
+                  return waUrl ? (
+                    <a
+                      href={waUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-ink hover:text-ink/80"
+                    >
+                      Escríbenos por WhatsApp.
+                    </a>
+                  ) : null
+                })()}
               </p>
             </div>
           )}

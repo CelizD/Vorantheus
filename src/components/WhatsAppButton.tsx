@@ -5,10 +5,12 @@ import { getWhatsAppUrl } from '@/lib/site'
 
 export default function WhatsAppButton() {
   const message = 'Hola, me interesa conocer mas sobre sus servicios de desarrollo de software.'
+  const url = getWhatsAppUrl(message)
+  if (!url) return null
 
   return (
     <motion.a
-      href={getWhatsAppUrl(message)}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"

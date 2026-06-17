@@ -78,6 +78,7 @@ function FAQItem({
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const waUrl = getWhatsAppUrl('Hola, tengo una pregunta antes de cotizar mi proyecto.')
 
   return (
     <section id="faq" className="section-light">
@@ -119,14 +120,16 @@ export default function FAQ() {
           className="mt-14 flex items-center gap-3 text-muted text-sm"
         >
           <span>¿Tienes otra pregunta?</span>
-          <a
-            href={getWhatsAppUrl('Hola, tengo una pregunta antes de cotizar mi proyecto.')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#0071E3] hover:text-ink transition-colors duration-200 font-medium"
-          >
-            Escríbenos por WhatsApp →
-          </a>
+          {waUrl && (
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0071E3] hover:text-ink transition-colors duration-200 font-medium"
+            >
+              Escríbenos por WhatsApp →
+            </a>
+          )}
         </motion.div>
       </div>
     </section>

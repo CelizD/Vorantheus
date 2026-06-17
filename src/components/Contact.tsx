@@ -12,6 +12,8 @@ const departments = [
 ]
 
 export default function Contact() {
+  const waQuoteUrl = getWhatsAppUrl('Hola, quiero cotizar un proyecto con Vorantheus.')
+  const waContactUrl = getWhatsAppUrl()
   return (
     <section id="contacto" style={{ background: '#1C1B18' }}>
 
@@ -55,15 +57,17 @@ export default function Contact() {
                 Cotizar proyecto gratis
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
               </Link>
-              <a
-                href={getWhatsAppUrl('Hola, quiero cotizar un proyecto con Vorantheus.')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-white/40 text-white font-medium text-base rounded-full transition-all duration-200 hover:bg-white/5"
-              >
-                <MessageCircle className="w-4 h-4" />
-                WhatsApp directo
-              </a>
+              {waQuoteUrl && (
+                <a
+                  href={waQuoteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 border border-white/20 hover:border-white/40 text-white font-medium text-base rounded-full transition-all duration-200 hover:bg-white/5"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp directo
+                </a>
+              )}
             </div>
           </motion.div>
         </div>
@@ -87,15 +91,17 @@ export default function Contact() {
                 <Mail className="w-4 h-4" />
                 {siteConfig.email}
               </a>
-              <a
-                href={getWhatsAppUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-white transition-colors duration-200"
-              >
-                <MessageCircle className="w-4 h-4" />
-                {siteConfig.whatsappDisplay}
-              </a>
+              {waContactUrl && siteConfig.whatsappDisplay && (
+                <a
+                  href={waContactUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 hover:text-white transition-colors duration-200"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {siteConfig.whatsappDisplay}
+                </a>
+              )}
               <span className="text-white/25">{siteConfig.location}</span>
             </div>
 

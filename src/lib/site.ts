@@ -16,8 +16,9 @@ export const siteConfig = {
   legalEmail: process.env.NEXT_PUBLIC_LEGAL_EMAIL || 'legal@vorantheus.com',
   // No existe alias privacidad@ — el contacto de privacidad/ARCO usa legal@
   privacyEmail: process.env.NEXT_PUBLIC_PRIVACY_EMAIL || 'legal@vorantheus.com',
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '5219991234567',
-  whatsappDisplay: process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY || '+52 1 999 123 4567',
+  // Required in production — leave empty to hide all WhatsApp UI
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || '',
+  whatsappDisplay: process.env.NEXT_PUBLIC_WHATSAPP_DISPLAY || '',
   location: 'Merida, Yucatan, Mexico',
   social: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com/vorantheus',
@@ -25,7 +26,8 @@ export const siteConfig = {
   },
 }
 
-export function getWhatsAppUrl(message?: string) {
+export function getWhatsAppUrl(message?: string): string | null {
+  if (!siteConfig.whatsapp) return null
   const text = message ? `?text=${encodeURIComponent(message)}` : ''
   return `https://wa.me/${siteConfig.whatsapp}${text}`
 }
