@@ -6,6 +6,21 @@
   /* Easing curves (Emil Kowalski / animations.dev) — stronger than CSS defaults */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  /* ── Vorantheus premium dark palette (cool navy) ───────────────────── */
+  --bg:          #020617;  /* page base */
+  --surface-1:   #050816;  /* deepest surface */
+  --surface-2:   #0B1120;  /* raised surface */
+  --surface-3:   #0F172A;  /* card surface */
+  --surface-4:   #1E293B;  /* elevated card */
+  --text:        #F8FAFC;  /* primary text */
+  --text-muted:  #94A3B8;  /* secondary text */
+  --text-faint:  #64748B;  /* tertiary text */
+  --accent:      #0071E3;  /* brand blue */
+  --accent-2:    #22D3EE;  /* cyan */
+  --accent-soft: rgba(0, 113, 227, 0.12);
+  --hairline:    rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.14);
 }
 
 html {
@@ -56,11 +71,112 @@ h1, h2 {
 
 /* Section backgrounds */
 .section-dark {
-  background: #1C1B18;
+  background: var(--bg);
 }
 
 .section-mid {
-  background: #2A2925;
+  background: var(--surface-2);
+}
+
+/* ── Premium dark primitives (Vorantheus) ──────────────────────────────── */
+
+/* Page-level premium dark backdrop with subtle radial depth */
+.surface-base {
+  background:
+    radial-gradient(900px circle at 15% -10%, rgba(0, 113, 227, 0.08), transparent 55%),
+    radial-gradient(800px circle at 90% 0%, rgba(34, 211, 238, 0.05), transparent 50%),
+    var(--bg);
+  color: var(--text);
+}
+
+/* Glass card for dark surfaces */
+.glass-dark {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+}
+
+/* Bento card — Apple-style modular tile */
+.bento-card {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+  border: 1px solid var(--hairline);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: border-color 220ms var(--ease-out), transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+}
+
+.bento-card:hover {
+  border-color: var(--hairline-strong);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 113, 227, 0.12);
+}
+
+/* Hairline divider helper */
+.hairline {
+  border-color: var(--hairline);
+}
+
+/* Premium buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 200ms var(--ease-out), transform 200ms var(--ease-out),
+    box-shadow 200ms var(--ease-out);
+  box-shadow: 0 8px 30px rgba(0, 113, 227, 0.25);
+}
+
+.btn-primary:hover {
+  background: #0077ED;
+  box-shadow: 0 10px 36px rgba(0, 113, 227, 0.35);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-weight: 600;
+  border: 1px solid var(--hairline-strong);
+  transition: background-color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Eyebrow / accent label */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 113, 227, 0.22);
+  background: var(--accent-soft);
+  color: #7dd3fc;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .section-light {

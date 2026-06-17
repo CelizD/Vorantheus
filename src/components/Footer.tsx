@@ -37,7 +37,7 @@ const emailContacts = [
 export default function Footer() {
   const waUrl = getWhatsAppUrl()
   return (
-    <footer className="cta-bg border-t border-white/[0.06]" style={{ background: 'linear-gradient(135deg, #1C1B18 0%, #2A2925 100%)' }}>
+    <footer className="border-t border-white/[0.06]" style={{ background: 'linear-gradient(180deg, #050816 0%, #020617 100%)' }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Main columns */}
         <div className="py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
