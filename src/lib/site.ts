@@ -22,7 +22,7 @@ export const siteConfig = {
   location: 'Merida, Yucatan, Mexico',
   social: {
     instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://www.instagram.com/vorantheus/',
-    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://www.facebook.com/share/18eMAowTfc/',
+    facebook: process.env.NEXT_PUBLIC_FACEBOOK_URL || 'https://www.facebook.com/profile.php?id=61590853683990',
   },
 }
 
