@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useId } from 'react'
+import { useState, useId, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Globe, Smartphone, LayoutDashboard, Bot, type LucideIcon } from 'lucide-react'
@@ -14,20 +14,29 @@ interface City {
   name: string
   tagline: string
   services: string
+  color: string
+}
+
+interface MousePosition {
+  x: number
+  y: number
 }
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 const CITIES: City[] = [
-  { id: 'tijuana',  cx: 112, cy: 222, name: 'Tijuana',          tagline: 'Centro de operaciones digitales',    services: 'Web · Apps · Sistemas · IA'          },
-  { id: 'sandiego', cx:  98, cy: 204, name: 'San Diego',        tagline: 'Conexión binacional tecnológica',    services: 'Software · Automatización · Dashboards' },
-  { id: 'la',       cx:  82, cy: 186, name: 'Los Angeles',      tagline: 'Experiencias digitales premium',     services: 'Web · Branding · Apps'                },
-  { id: 'cdmx',     cx: 166, cy: 280, name: 'Ciudad de México', tagline: 'Expansión empresarial digital',      services: 'Sistemas · E-commerce · IA'           },
-  { id: 'gdl',      cx: 140, cy: 266, name: 'Guadalajara',      tagline: 'Silicon Valley mexicano',            services: 'Web · Apps · Automatización'          },
-  { id: 'mty',      cx: 170, cy: 250, name: 'Monterrey',        tagline: 'Polo industrial y tecnológico',      services: 'Sistemas · ERP · Web'                 },
-  { id: 'ny',       cx: 248, cy: 164, name: 'New York',         tagline: 'Mercado global de negocios',         services: 'IA · Apps · E-commerce'               },
-  { id: 'madrid',   cx: 354, cy: 158, name: 'Madrid',           tagline: 'Presencia internacional',            services: 'Soluciones digitales escalables'       },
-  { id: 'tokyo',    cx: 418, cy: 186, name: 'Tokyo',            tagline: 'Innovación tecnológica',             services: 'Automatización · IA · Software'       },
+  { id: 'tijuana',  cx: 112, cy: 222, name: 'Tijuana',          tagline: 'Centro de operaciones digitales',    services: 'Web · Apps · Sistemas · IA',           color: '#60a5fa' },
+  { id: 'sandiego', cx:  98, cy: 204, name: 'San Diego',        tagline: 'Conexión binacional tecnológica',    services: 'Software · Automatización · Dashboards', color: '#34d399' },
+  { id: 'la',       cx:  82, cy: 186, name: 'Los Angeles',      tagline: 'Experiencias digitales premium',     services: 'Web · Branding · Apps',                color: '#fbbf24' },
+  { id: 'cdmx',     cx: 166, cy: 280, name: 'Ciudad de México', tagline: 'Expansión empresarial digital',      services: 'Sistemas · E-commerce · IA',           color: '#f472b6' },
+  { id: 'gdl',      cx: 140, cy: 266, name: 'Guadalajara',      tagline: 'Silicon Valley mexicano',            services: 'Web · Apps · Automatización',          color: '#a78bfa' },
+  { id: 'mty',      cx: 170, cy: 250, name: 'Monterrey',        tagline: 'Polo industrial y tecnológico',      services: 'Sistemas · ERP · Web',                 color: '#38bdf8' },
+  { id: 'bangkok',  cx: 360, cy: 280, name: 'Bangkok',          tagline: 'Centro tecnológico asiático',        services: 'Apps · IA · Consultoría',              color: '#fb923c' },
+  { id: 'dubai',    cx: 320, cy: 240, name: 'Dubai',            tagline: 'Hub de innovación global',           services: 'E-commerce · Sistemas · IA',           color: '#ec4899' },
+  { id: 'ny',       cx: 248, cy: 164, name: 'New York',         tagline: 'Mercado global de negocios',         services: 'IA · Apps · E-commerce',               color: '#10b981' },
+  { id: 'madrid',   cx: 354, cy: 158, name: 'Madrid',           tagline: 'Presencia internacional',            services: 'Soluciones digitales escalables',       color: '#6366f1' },
+  { id: 'singapore', cx: 390, cy: 300, name: 'Singapore',       tagline: 'Fintech y software avanzado',        services: 'Automatización · IA · Web',            color: '#d946ef' },
+  { id: 'tokyo',    cx: 418, cy: 186, name: 'Tokyo',            tagline: 'Innovación tecnológica',             services: 'Automatización · IA · Software',       color: '#06b6d4' },
 ]
 
 // [fromId, toId, durationSeconds]
@@ -38,7 +47,10 @@ const ARCS: [string, string, number][] = [
   ['cdmx',     'mty',      2.5],
   ['la',       'ny',       3.2],
   ['ny',       'madrid',   3.5],
-  ['madrid',   'tokyo',    3.8],
+  ['madrid',   'dubai',    3.1],
+  ['dubai',    'bangkok',  2.8],
+  ['bangkok',  'singapore', 2.3],
+  ['singapore', 'tokyo',   2.6],
   ['tokyo',    'tijuana',  4.2],
 ]
 
@@ -47,43 +59,43 @@ const CARDS: {
   Icon: LucideIcon
   title: string
   desc: string
-  corner: 'tl' | 'tr' | 'bl' | 'br'
+  position: 'top' | 'right' | 'bottom' | 'left'
   delay: number
   floatDelay: string
 }[] = [
   {
     id: 'web',
     Icon: Globe,
-    title: 'Páginas web',
-    desc: 'Sitios modernos para negocios que quieren vender más y verse profesionales.',
-    corner: 'tl',
+    title: 'Páginas web premium',
+    desc: 'Sitios responsivos y modernos que generan conversiones. Diseño personalizado, SEO optimizado y velocidad de carga extrema.',
+    position: 'top',
     delay: 0.5,
     floatDelay: '0s',
   },
   {
     id: 'apps',
     Icon: Smartphone,
-    title: 'Apps móviles',
-    desc: 'Aplicaciones Android y iOS pensadas para conectar con tus clientes.',
-    corner: 'tr',
+    title: 'Apps nativas',
+    desc: 'Aplicaciones iOS y Android con funcionalidad avanzada. Push notifications, pagos integrados y sincronización en tiempo real.',
+    position: 'right',
     delay: 0.65,
     floatDelay: '1.2s',
   },
   {
     id: 'sistemas',
     Icon: LayoutDashboard,
-    title: 'Sistemas admin.',
-    desc: 'Control de ventas, inventario, clientes, reportes y operaciones.',
-    corner: 'bl',
+    title: 'Sistemas administrativos',
+    desc: 'Dashboards potentes para gestionar tu negocio. Ventas, inventario, reportes automáticos y análisis de datos en vivo.',
+    position: 'bottom',
     delay: 0.8,
     floatDelay: '2.4s',
   },
   {
     id: 'ia',
     Icon: Bot,
-    title: 'Automatización IA',
-    desc: 'Procesos inteligentes para ahorrar tiempo y mejorar resultados.',
-    corner: 'br',
+    title: 'Automatización con IA',
+    desc: 'Inteligencia artificial para optimizar procesos. Chatbots, análisis predictivo, automatización de flujos y más.',
+    position: 'left',
     delay: 0.95,
     floatDelay: '3.6s',
   },
@@ -132,10 +144,12 @@ function GlobeSVG({
   hovered,
   onHover,
   reduced,
+  mousePos,
 }: {
   hovered: string | null
   onHover: (id: string | null) => void
   reduced: boolean
+  mousePos: MousePosition
 }) {
   const raw = useId()
   const uid = raw.replace(/:/g, 'u')
@@ -203,6 +217,17 @@ function GlobeSVG({
         <clipPath id={`cp-${uid}`}>
           <circle cx="250" cy="250" r="192" />
         </clipPath>
+
+        {/* ── Ripple animation ── */}
+        <style>{`
+          @keyframes ripple-pulse {
+            0% { r: 0; opacity: 0.8; }
+            100% { r: 200; opacity: 0; }
+          }
+          .ripple-ring {
+            animation: ripple-pulse 2.5s ease-out infinite;
+          }
+        `}</style>
       </defs>
 
       {/* ── Outer diffuse glow (behind planet) ── */}
@@ -213,6 +238,11 @@ function GlobeSVG({
 
       {/* ── Planet base ── */}
       <circle cx="250" cy="250" r="192" fill={`url(#pg-${uid})`} />
+
+      {/* ── Ripple effect from center ── */}
+      <circle cx="250" cy="250" r="40" fill="none" stroke="rgba(96,165,250,0.4)" strokeWidth="1.2" className={reduced ? '' : 'ripple-ring'} style={reduced ? {} : { animationDelay: '0s' }} />
+      <circle cx="250" cy="250" r="40" fill="none" stroke="rgba(96,165,250,0.4)" strokeWidth="1.2" className={reduced ? '' : 'ripple-ring'} style={reduced ? {} : { animationDelay: '0.8s' }} />
+      <circle cx="250" cy="250" r="40" fill="none" stroke="rgba(96,165,250,0.4)" strokeWidth="1.2" className={reduced ? '' : 'ripple-ring'} style={reduced ? {} : { animationDelay: '1.6s' }} />
 
       {/* ── Star-field inside planet ── */}
       <g clipPath={`url(#cp-${uid})`} aria-hidden="true">
@@ -281,14 +311,22 @@ function GlobeSVG({
             {/* Static base line */}
             <path
               d={d} fill="none"
-              stroke={active ? 'rgba(96,165,250,0.55)' : 'rgba(59,130,246,0.18)'}
-              strokeWidth={active ? 1.7 : 0.85}
+              stroke={active ? 'rgba(96,165,250,0.65)' : 'rgba(59,130,246,0.22)'}
+              strokeWidth={active ? 2 : 1}
+              opacity={active ? 1 : 0.8}
+            />
+            {/* Glow line */}
+            <path
+              d={d} fill="none"
+              stroke={active ? 'rgba(147,197,253,0.4)' : 'rgba(147,197,253,0.15)'}
+              strokeWidth={active ? 4.5 : 2.5}
+              opacity={0.6}
             />
             {/* Animated photon dot */}
             <path
               d={d} fill="none"
-              stroke={active ? 'rgba(200,235,255,0.98)' : 'rgba(147,197,253,0.65)'}
-              strokeWidth={active ? 3.0 : 1.7}
+              stroke={active ? 'rgba(200,235,255,0.99)' : 'rgba(147,197,253,0.75)'}
+              strokeWidth={active ? 3.5 : 2}
               strokeLinecap="round"
               strokeDasharray="6 245"
               className={reduced ? '' : 'pnd-arc-flow'}
@@ -301,6 +339,8 @@ function GlobeSVG({
       {/* ── City markers ── */}
       {CITIES.map((city, i) => {
         const active = hovered === city.id
+        const r = active ? 14 : 10
+        const glowOpacity = active ? 0.35 : 0.18
         return (
           <g
             key={city.id}
@@ -322,40 +362,43 @@ function GlobeSVG({
             {/* Outer pulse ring */}
             <circle
               cx={city.cx} cy={city.cy}
-              r={active ? 13 : 9}
+              r={r}
               fill="none"
-              stroke={active ? 'rgba(96,165,250,0.70)' : 'rgba(59,130,246,0.28)'}
-              strokeWidth="0.8"
+              stroke={city.color}
+              strokeOpacity={active ? 0.7 : 0.3}
+              strokeWidth="0.9"
               className={reduced ? '' : 'pnd-pulse'}
               style={reduced ? {} : { animationDelay: `${(i % 6) * 0.42}s` }}
             />
             {/* Filled glow area */}
             <circle
               cx={city.cx} cy={city.cy}
-              r={active ? 6.5 : 4.8}
-              fill={active ? 'rgba(96,165,250,0.30)' : 'rgba(59,130,246,0.14)'}
+              r={active ? 7 : 5}
+              fill={city.color}
+              opacity={glowOpacity}
             />
             {/* Main dot */}
             <circle
               cx={city.cx} cy={city.cy}
-              r={active ? 3.8 : 2.8}
-              fill={active ? '#93c5fd' : '#7dd3fc'}
+              r={active ? 4 : 2.8}
+              fill={city.color}
+              opacity={0.95}
             />
             {/* Bright core */}
             <circle
               cx={city.cx} cy={city.cy}
-              r="1.4"
+              r="1.6"
               fill="white"
-              opacity={active ? 1 : 0.82}
+              opacity={active ? 1 : 0.9}
             />
             {/* City label */}
             <text
-              x={city.cx + 8}
+              x={city.cx + 9}
               y={city.cy + 4.5}
-              fontSize={active ? '8.2' : '7.2'}
-              fill={active ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.42)'}
+              fontSize={active ? '8.5' : '7.2'}
+              fill={active ? 'rgba(255,255,255,0.98)' : 'rgba(255,255,255,0.48)'}
               fontFamily="system-ui,-apple-system,sans-serif"
-              fontWeight={active ? '700' : '400'}
+              fontWeight={active ? '700' : '500'}
               style={{ pointerEvents: 'none', userSelect: 'none' }}
             >
               {city.name}
@@ -406,18 +449,18 @@ function CityTooltip({ city }: { city: City }) {
 
 // ── Floating Card ─────────────────────────────────────────────────────────────
 
-const CORNER_POS: Record<string, string> = {
-  tl: '-top-4 -left-3 lg:-top-6 lg:-left-8',
-  tr: '-top-4 -right-3 lg:-top-6 lg:-right-8',
-  bl: '-bottom-4 -left-3 lg:-bottom-6 lg:-left-8',
-  br: '-bottom-4 -right-3 lg:-bottom-6 lg:-right-8',
+const POSITION_MAP: Record<string, string> = {
+  top: 'left-1/2 -translate-x-1/2 -top-24 lg:-top-32',
+  right: 'right-0 lg:right-12 top-1/2 -translate-y-1/2 lg:translate-y-0',
+  bottom: 'left-1/2 -translate-x-1/2 -bottom-24 lg:-bottom-32',
+  left: 'left-0 lg:-left-12 top-1/2 -translate-y-1/2 lg:translate-y-0',
 }
 
 function FloatingCard({
   Icon,
   title,
   desc,
-  corner,
+  position,
   delay,
   floatDelay,
   reduced,
@@ -425,38 +468,47 @@ function FloatingCard({
   Icon: LucideIcon
   title: string
   desc: string
-  corner: keyof typeof CORNER_POS
+  position: 'top' | 'right' | 'bottom' | 'left'
   delay: number
   floatDelay: string
   reduced: boolean
 }) {
-  const yInit = corner.startsWith('b') ? 14 : -14
+  const getInitPos = () => {
+    switch (position) {
+      case 'top': return { y: -20, x: 0 }
+      case 'bottom': return { y: 20, x: 0 }
+      case 'left': return { x: -20, y: 0 }
+      case 'right': return { x: 20, y: 0 }
+    }
+  }
+  const initPos = getInitPos()
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.86, y: yInit }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.82, ...initPos }}
+      whileInView={{ opacity: 1, scale: 1, x: 0, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.68, delay, ease: [0.23, 1, 0.32, 1] }}
-      className={`hidden lg:block absolute z-10 w-44 ${CORNER_POS[corner] ?? ''} ${reduced ? '' : 'pnd-float'}`}
+      transition={{ duration: 0.7, delay, ease: [0.23, 1, 0.32, 1] }}
+      className={`hidden lg:block absolute z-10 w-52 ${POSITION_MAP[position] ?? ''} ${reduced ? '' : 'pnd-float'}`}
       style={{
         animationDelay: floatDelay,
-        background: 'rgba(6, 12, 30, 0.88)',
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        border: '1px solid rgba(96, 165, 250, 0.20)',
-        borderRadius: 18,
-        padding: '14px 16px',
+        background: 'rgba(6, 12, 30, 0.92)',
+        backdropFilter: 'blur(28px)',
+        WebkitBackdropFilter: 'blur(28px)',
+        border: '1px solid rgba(96, 165, 250, 0.24)',
+        borderRadius: 20,
+        padding: '16px 18px',
+        boxShadow: '0 20px 60px rgba(0, 113, 227, 0.12)',
       }}
     >
       <div
-        className="w-8 h-8 rounded-xl flex items-center justify-center mb-3"
-        style={{ background: 'rgba(96, 165, 250, 0.15)' }}
+        className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
+        style={{ background: 'rgba(96, 165, 250, 0.18)' }}
       >
-        <Icon className="w-4 h-4 text-[#7dd3fc]" />
+        <Icon className="w-4.5 h-4.5 text-[#60a5fa]" />
       </div>
-      <p className="text-white text-[12px] font-bold mb-1.5 leading-tight">{title}</p>
-      <p className="text-white/60 text-[10px] leading-relaxed">{desc}</p>
+      <p className="text-white text-[13px] font-bold mb-2 leading-tight">{title}</p>
+      <p className="text-white/65 text-[11px] leading-relaxed">{desc}</p>
     </motion.div>
   )
 }
@@ -465,10 +517,39 @@ function FloatingCard({
 
 export default function PlanetNetworkDashboard() {
   const [hovered, setHovered] = useState<string | null>(null)
+  const [mousePos, setMousePos] = useState<MousePosition>({ x: 0, y: 0 })
+  const [scale, setScale] = useState(1)
   const reduced = useReducedMotion() ?? false
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        setMousePos({
+          x: (e.clientX - rect.left) / rect.width,
+          y: (e.clientY - rect.top) / rect.height,
+        })
+      }
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const newScale = 1 + (scrollY % 200) / 1000
+      setScale(Math.min(newScale, 1.15))
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <section
+      ref={containerRef}
       className="relative overflow-hidden"
       style={{ background: 'linear-gradient(150deg, #06091a 0%, #07101e 45%, #04080f 100%)' }}
       aria-labelledby="pnd-heading"
@@ -506,21 +587,32 @@ export default function PlanetNetworkDashboard() {
         />
       </div>
 
-      {/* ── Star-field background ── */}
+      {/* ── Star-field background (interactive) ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-        {PARTICLES.map((p) => (
-          <div
-            key={p.id}
-            className="absolute rounded-full bg-white"
-            style={{
-              left: `${p.x}%`,
-              top:  `${p.y}%`,
-              width:  `${p.size}px`,
-              height: `${p.size}px`,
-              opacity: p.opacity,
-            }}
-          />
-        ))}
+        {PARTICLES.map((p) => {
+          const offset = {
+            x: (mousePos.x - 0.5) * 20,
+            y: (mousePos.y - 0.5) * 20,
+          }
+          return (
+            <motion.div
+              key={p.id}
+              className="absolute rounded-full bg-white"
+              animate={{
+                x: offset.x,
+                y: offset.y,
+              }}
+              transition={{ type: 'spring', stiffness: 50, damping: 30 }}
+              style={{
+                left: `${p.x}%`,
+                top:  `${p.y}%`,
+                width:  `${p.size}px`,
+                height: `${p.size}px`,
+                opacity: p.opacity,
+              }}
+            />
+          )
+        })}
       </div>
 
       {/* ── Content ── */}
@@ -610,24 +702,25 @@ export default function PlanetNetworkDashboard() {
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                   style={{
-                    background: 'rgba(6, 12, 30, 0.88)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(96, 165, 250, 0.18)',
-                    borderRadius: 16,
-                    padding: '14px 16px',
+                    background: 'rgba(6, 12, 30, 0.92)',
+                    backdropFilter: 'blur(24px)',
+                    WebkitBackdropFilter: 'blur(24px)',
+                    border: '1px solid rgba(96, 165, 250, 0.2)',
+                    borderRadius: 18,
+                    padding: '16px 14px',
+                    boxShadow: '0 8px 32px rgba(0, 113, 227, 0.08)',
                   }}
                 >
                   <div
-                    className="w-7 h-7 rounded-lg flex items-center justify-center mb-2"
-                    style={{ background: 'rgba(96, 165, 250, 0.15)' }}
+                    className="w-8 h-8 rounded-lg flex items-center justify-center mb-2"
+                    style={{ background: 'rgba(96, 165, 250, 0.18)' }}
                   >
-                    <card.Icon className="w-3.5 h-3.5 text-[#7dd3fc]" />
+                    <card.Icon className="w-4 h-4 text-[#60a5fa]" />
                   </div>
-                  <p className="text-white text-[11px] font-bold mb-1 leading-tight">{card.title}</p>
-                  <p className="text-white/60 text-[10px] leading-relaxed">{card.desc}</p>
+                  <p className="text-white text-[12px] font-bold mb-1 leading-tight">{card.title}</p>
+                  <p className="text-white/65 text-[11px] leading-relaxed">{card.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -635,18 +728,23 @@ export default function PlanetNetworkDashboard() {
 
           {/* ── Right: planet + floating cards ── */}
           <div className="flex items-center justify-center">
-            <div
+            <motion.div
               className="relative"
-              style={{ width: 'min(540px, 92vw)', height: 'min(540px, 92vw)' }}
+              style={{
+                width: 'min(600px, 95vw)',
+                height: 'min(600px, 95vw)',
+              }}
+              animate={{ scale }}
+              transition={{ type: 'spring', stiffness: 100, damping: 30 }}
             >
-              {/* Corner cards (desktop only — hidden on mobile via FloatingCard) */}
+              {/* Position cards (desktop only — hidden on mobile via FloatingCard) */}
               {CARDS.map((card) => (
                 <FloatingCard
                   key={card.id}
                   Icon={card.Icon}
                   title={card.title}
                   desc={card.desc}
-                  corner={card.corner}
+                  position={card.position}
                   delay={card.delay}
                   floatDelay={card.floatDelay}
                   reduced={reduced}
@@ -661,7 +759,7 @@ export default function PlanetNetworkDashboard() {
                 transition={{ duration: 1.15, ease: [0.23, 1, 0.32, 1] }}
                 className="w-full h-full relative"
               >
-                <GlobeSVG hovered={hovered} onHover={setHovered} reduced={reduced} />
+                <GlobeSVG hovered={hovered} onHover={setHovered} reduced={reduced} mousePos={mousePos} />
 
                 {/* City tooltip */}
                 <AnimatePresence>
@@ -671,7 +769,7 @@ export default function PlanetNetworkDashboard() {
                   })()}
                 </AnimatePresence>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
 
         </div>
