@@ -3,7 +3,7 @@
 import { useState, useId } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Globe, Smartphone, LayoutDashboard, Bot, type LucideIcon } from 'lucide-react'
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -42,40 +42,48 @@ const ARCS: [string, string, number][] = [
   ['tokyo',    'tijuana',  4.2],
 ]
 
-const CARDS = [
+const CARDS: {
+  id: string
+  Icon: LucideIcon
+  title: string
+  desc: string
+  corner: 'tl' | 'tr' | 'bl' | 'br'
+  delay: number
+  floatDelay: string
+}[] = [
   {
     id: 'web',
-    emoji: '🌐',
+    Icon: Globe,
     title: 'Páginas web',
     desc: 'Sitios modernos para negocios que quieren vender más y verse profesionales.',
-    corner: 'tl' as const,
+    corner: 'tl',
     delay: 0.5,
     floatDelay: '0s',
   },
   {
     id: 'apps',
-    emoji: '📱',
+    Icon: Smartphone,
     title: 'Apps móviles',
     desc: 'Aplicaciones Android y iOS pensadas para conectar con tus clientes.',
-    corner: 'tr' as const,
+    corner: 'tr',
     delay: 0.65,
     floatDelay: '1.2s',
   },
   {
     id: 'sistemas',
-    emoji: '⚙️',
+    Icon: LayoutDashboard,
     title: 'Sistemas admin.',
     desc: 'Control de ventas, inventario, clientes, reportes y operaciones.',
-    corner: 'bl' as const,
+    corner: 'bl',
     delay: 0.8,
     floatDelay: '2.4s',
   },
   {
     id: 'ia',
-    emoji: '🤖',
+    Icon: Bot,
     title: 'Automatización IA',
     desc: 'Procesos inteligentes para ahorrar tiempo y mejorar resultados.',
-    corner: 'br' as const,
+    corner: 'br',
     delay: 0.95,
     floatDelay: '3.6s',
   },
@@ -389,7 +397,7 @@ function CityTooltip({ city }: { city: City }) {
           <span className="w-1.5 h-1.5 rounded-full bg-[#7dd3fc] flex-shrink-0" />
           <p className="text-white text-sm font-bold tracking-tight">{city.name}</p>
         </div>
-        <p className="text-white/48 text-xs leading-snug mb-2 pl-3.5">{city.tagline}</p>
+        <p className="text-white/65 text-xs leading-snug mb-2 pl-3.5">{city.tagline}</p>
         <p className="text-[#7dd3fc] text-[10px] font-semibold tracking-wide pl-3.5">{city.services}</p>
       </div>
     </motion.div>
@@ -406,7 +414,7 @@ const CORNER_POS: Record<string, string> = {
 }
 
 function FloatingCard({
-  emoji,
+  Icon,
   title,
   desc,
   corner,
@@ -414,7 +422,7 @@ function FloatingCard({
   floatDelay,
   reduced,
 }: {
-  emoji: string
+  Icon: LucideIcon
   title: string
   desc: string
   corner: keyof typeof CORNER_POS
@@ -433,17 +441,22 @@ function FloatingCard({
       className={`hidden lg:block absolute z-10 w-44 ${CORNER_POS[corner] ?? ''} ${reduced ? '' : 'pnd-float'}`}
       style={{
         animationDelay: floatDelay,
-        background: 'rgba(6, 12, 30, 0.80)',
+        background: 'rgba(6, 12, 30, 0.88)',
         backdropFilter: 'blur(24px)',
         WebkitBackdropFilter: 'blur(24px)',
-        border: '1px solid rgba(96, 165, 250, 0.16)',
+        border: '1px solid rgba(96, 165, 250, 0.20)',
         borderRadius: 18,
         padding: '14px 16px',
       }}
     >
-      <span className="text-2xl mb-2.5 block leading-none">{emoji}</span>
+      <div
+        className="w-8 h-8 rounded-xl flex items-center justify-center mb-3"
+        style={{ background: 'rgba(96, 165, 250, 0.15)' }}
+      >
+        <Icon className="w-4 h-4 text-[#7dd3fc]" />
+      </div>
       <p className="text-white text-[12px] font-bold mb-1.5 leading-tight">{title}</p>
-      <p className="text-white/38 text-[10px] leading-relaxed">{desc}</p>
+      <p className="text-white/60 text-[10px] leading-relaxed">{desc}</p>
     </motion.div>
   )
 }
@@ -549,7 +562,7 @@ export default function PlanetNetworkDashboard() {
             </h2>
 
             {/* Subtitle */}
-            <p className="text-lg text-white/42 leading-relaxed mb-10 max-w-[480px]">
+            <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-[480px]">
               Un ecosistema digital para crear páginas web, apps móviles, sistemas
               administrativos, tiendas en línea y automatizaciones con IA desde una
               sola visión tecnológica.
@@ -584,7 +597,7 @@ export default function PlanetNetworkDashboard() {
                   }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full bg-[#7dd3fc] flex-shrink-0" />
-                  <span className="text-white/55 text-sm font-medium">{m.label}</span>
+                  <span className="text-white/75 text-sm font-medium">{m.label}</span>
                 </div>
               ))}
             </div>
@@ -599,17 +612,22 @@ export default function PlanetNetworkDashboard() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
                   style={{
-                    background: 'rgba(6, 12, 30, 0.80)',
+                    background: 'rgba(6, 12, 30, 0.88)',
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(96, 165, 250, 0.14)',
+                    border: '1px solid rgba(96, 165, 250, 0.18)',
                     borderRadius: 16,
                     padding: '14px 16px',
                   }}
                 >
-                  <span className="text-xl mb-2 block leading-none">{card.emoji}</span>
+                  <div
+                    className="w-7 h-7 rounded-lg flex items-center justify-center mb-2"
+                    style={{ background: 'rgba(96, 165, 250, 0.15)' }}
+                  >
+                    <card.Icon className="w-3.5 h-3.5 text-[#7dd3fc]" />
+                  </div>
                   <p className="text-white text-[11px] font-bold mb-1 leading-tight">{card.title}</p>
-                  <p className="text-white/38 text-[10px] leading-relaxed">{card.desc}</p>
+                  <p className="text-white/60 text-[10px] leading-relaxed">{card.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -625,7 +643,7 @@ export default function PlanetNetworkDashboard() {
               {CARDS.map((card) => (
                 <FloatingCard
                   key={card.id}
-                  emoji={card.emoji}
+                  Icon={card.Icon}
                   title={card.title}
                   desc={card.desc}
                   corner={card.corner}
