@@ -165,10 +165,9 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-[100dvh] overflow-hidden"
-      style={{ background: '#07080D' }}
+      className="relative min-h-[100dvh] overflow-hidden hero-bg"
     >
-      {/* Background glows */}
+      {/* Background glows — se mezclan con la imagen de fondo */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div
           className="absolute top-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full opacity-[0.18] blur-3xl"
@@ -190,7 +189,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24" style={{ position: 'relative', zIndex: 1 }}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100dvh-144px)]">
           {/* LEFT */}
           <div className="flex flex-col justify-center">

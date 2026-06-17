@@ -46,7 +46,7 @@ const tiles = [
 
 export default function HomeServices() {
   return (
-    <section id="servicios" style={{ background: '#F7F4EF' }}>
+    <section id="servicios" className="services-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12">
         <motion.div
           initial={{ opacity: 0, y: 12 }}

@@ -15,7 +15,7 @@ export default function Contact() {
   const waQuoteUrl = getWhatsAppUrl('Hola, quiero cotizar un proyecto con Vorantheus.')
   const waContactUrl = getWhatsAppUrl()
   return (
-    <section id="contacto" style={{ background: '#1C1B18' }}>
+    <section id="contacto" className="cta-bg" style={{ background: 'linear-gradient(135deg, #1C1B18 0%, #2A2925 100%)' }}>
 
       {/* Big CTA band */}
       <div className="border-t border-white/[0.06]">

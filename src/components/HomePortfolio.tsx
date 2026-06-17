@@ -17,7 +17,7 @@ const featured = portfolioItems.slice(0, 2)
 
 export default function HomePortfolio() {
   return (
-    <section className="section-dark border-t border-white/[0.06]">
+    <section className="section-dark border-t border-white/[0.06] portfolio-bg">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12 flex items-end justify-between">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
