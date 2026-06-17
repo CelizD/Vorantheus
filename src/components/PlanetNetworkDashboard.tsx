@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useId, useRef, useEffect } from 'react'
+import React, { useState, useId, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, Globe, Smartphone, LayoutDashboard, Bot, type LucideIcon } from 'lucide-react'
@@ -352,7 +352,7 @@ function GlobeSVG({
             role="button"
             aria-label={`${city.name} — ${city.tagline}`}
             tabIndex={0}
-            onKeyDown={(e) => {
+            onKeyDown={(e: React.KeyboardEvent<SVGGElement>) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault()
                 onHover(active ? null : city.id)
