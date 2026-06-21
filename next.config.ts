@@ -4,23 +4,26 @@ import type { NextConfig } from 'next'
 // Scoped to the third parties this site actually loads:
 //   - Google Analytics / Tag Manager (analytics)
 //   - Calendly (popup scheduling widget — script, css, iframe)
+//   - Vercel Live Feedback (preview/deployment toolbar)
 // 'unsafe-inline' is required for script-src because Next.js injects inline
 // hydration/bootstrap scripts and the GA consent + gtag config snippets run
 // inline. Nonces are not viable here since most pages are statically
 // prerendered. 'unsafe-inline' on style-src covers Tailwind/inline styles and
 // Framer Motion's runtime style injection.
+const developmentScriptPolicy = process.env.NODE_ENV !== 'production' ? " 'unsafe-eval'" : ''
+
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "form-action 'self'",
   "frame-ancestors 'self'",
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://assets.calendly.com",
-  "style-src 'self' 'unsafe-inline' https://assets.calendly.com",
-  "img-src 'self' data: blob: https://*.calendly.com https://www.googletagmanager.com https://www.google-analytics.com",
+  `script-src 'self' 'unsafe-inline'${developmentScriptPolicy} https://www.googletagmanager.com https://assets.calendly.com https://vercel.live`,
+  "style-src 'self' 'unsafe-inline' https://assets.calendly.com https://vercel.live",
+  "img-src 'self' data: blob: https://*.calendly.com https://www.googletagmanager.com https://www.google-analytics.com https://vercel.live https://*.vercel.live",
   "font-src 'self' data: https://assets.calendly.com",
-  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://calendly.com https://*.calendly.com",
-  "frame-src https://calendly.com https://*.calendly.com",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://calendly.com https://*.calendly.com https://vercel.live https://*.vercel.live wss://vercel.live wss://*.vercel.live",
+  "frame-src https://calendly.com https://*.calendly.com https://vercel.live https://*.vercel.live",
   'upgrade-insecure-requests',
 ].join('; ')
 
