@@ -5,7 +5,6 @@ const ABBREV: Record<string, string> = {
   'Firebase':     'FB',
   'MySQL':        'MY',
   'MongoDB':      'MG',
-  'NestJS':       'NE',
   'Express.js':   'EX',
   'Docker':       'DK',
   'AWS':          'AWS',
@@ -21,7 +20,6 @@ const ABBREV: Record<string, string> = {
   'FastAPI':      'FA',
   'Redis':        'RD',
   'Google Cloud': 'GC',
-  'Azure':        'AZ',
   'Cloudflare':   'CF',
   'GitHub Actions': 'GA',
   'Grafana':      'GF',
@@ -31,13 +29,32 @@ const ABBREV: Record<string, string> = {
   'Notion':       'NO',
   'Postman':      'PM',
   'Swagger':      'SW',
-  'Playwright':   'PW',
   'n8n':          'N8',
   'PayPal':       'PP',
   'Conekta':      'CK',
   'Shopify':      'SH',
   'WordPress':    'WP',
   'WooCommerce':  'WC',
+  'Angular':      'NG',
+  'Vue.js':       'VU',
+  'Laravel':      'LV',
+  'Spring Boot':  'SB',
+  'GraphQL':      'GQ',
+  'Socket.IO':    'SO',
+  'Prisma':       'PR',
+  'Kubernetes':   'K8',
+  'Terraform':    'TF',
+  'Nginx':        'NX',
+  'Google Analytics': 'GA',
+  'Electron':     'EL',
+  'Capacitor':    'CP',
+  'Strapi':       'SP',
+  'JavaScript':   'JS',
+  '.NET':         'NET',
+  'PHP':          'PHP',
+  'Cypress':      'CY',
+  'Jest':         'JT',
+  'Vitest':       'VT',
 }
 
 function TechIcon({ name }: { name: string }) {
@@ -212,12 +229,6 @@ function TechIcon({ name }: { name: string }) {
           <circle cx="22" cy="15.5" r="4.5" fill="currentColor" />
         </svg>
       )
-    case 'NestJS':
-      return (
-        <svg viewBox="0 0 32 32" fill="currentColor" className={cls} aria-hidden>
-          <path d="M19.5 4C14.5 4 11 8 10 11c-1-1.5-2.5-2-4-1.5L4.5 11c2-.5 3.5.5 3.5 3C8 18 11.5 22 16 23c.5.5.5 1 0 1.5L14 27l2 1 2-1-2-2.5c4-1 7.5-5 7.5-9.5 0-3-1.5-5-4-6 0 0 3 0 4.5 2.5C24 10 22 4 19.5 4z" />
-        </svg>
-      )
     case 'Express.js':
       return (
         <svg viewBox="0 0 32 32" fill="none" className={cls} aria-hidden>
@@ -245,7 +256,6 @@ const marqueeTechnologyNames = [
   'TypeScript',
   'Tailwind CSS',
   'Node.js',
-  'NestJS',
   'Express.js',
   'Python',
   'Django',
@@ -259,7 +269,6 @@ const marqueeTechnologyNames = [
   'Docker',
   'AWS',
   'Google Cloud',
-  'Azure',
   'Vercel',
   'Cloudflare',
   'GitHub',
@@ -272,8 +281,6 @@ const marqueeTechnologyNames = [
   'Figma',
   'Postman',
   'Swagger',
-  'Playwright',
-  'OpenAI',
   'n8n',
   'Stripe',
   'Mercado Pago',
@@ -282,6 +289,31 @@ const marqueeTechnologyNames = [
   'Shopify',
   'WordPress',
   'WooCommerce',
+  'OpenAI',
+  'React Native',
+  'Kotlin',
+  'Swift',
+  'Flutter',
+  'Angular',
+  'Vue.js',
+  'Laravel',
+  'Spring Boot',
+  'GraphQL',
+  'Socket.IO',
+  'Prisma',
+  'Kubernetes',
+  'Terraform',
+  'Nginx',
+  'Google Analytics',
+  'Electron',
+  'Capacitor',
+  'Strapi',
+  'JavaScript',
+  '.NET',
+  'PHP',
+  'Cypress',
+  'Jest',
+  'Vitest',
 ] as const
 
 const techList = marqueeTechnologyNames

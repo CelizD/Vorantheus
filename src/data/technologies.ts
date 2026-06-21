@@ -722,46 +722,6 @@ export const technologies: Technology[] = [
     ],
   },
   {
-    name: 'NestJS',
-    slug: 'nestjs',
-    tagline: 'El framework de Node.js para backends empresariales estructurados.',
-    description: [
-      'NestJS es un framework progresivo de Node.js para construir APIs y backends escalables, testables y bien estructurados. Usa TypeScript de forma nativa y aplica los patrones de arquitectura empresarial — inyección de dependencias, módulos, decoradores — que hacen que el código sea organizado y mantenible a largo plazo.',
-      'Inspirado en Angular, NestJS proporciona una estructura clara para proyectos grandes donde múltiples desarrolladores trabajan en paralelo. Su integración con Prisma, TypeORM, GraphQL, WebSockets y microservicios lo convierte en la columna vertebral de backends complejos.',
-    ],
-    useCases: [
-      'APIs REST y GraphQL para aplicaciones de escala empresarial',
-      'Microservicios y arquitecturas distribuidas',
-      'Backends con múltiples desarrolladores y equipos',
-      'Sistemas que requieren testing exhaustivo y CI/CD',
-    ],
-    whyWeUseIt:
-      'NestJS nos da estructura y disciplina en proyectos backend complejos. La inyección de dependencias facilita las pruebas, los módulos organizan el código por dominio de negocio y la integración nativa con TypeScript garantiza calidad a largo plazo.',
-    businessBenefits: [
-      'Código backend organizado y mantenible a largo plazo',
-      'Fácil de extender con nuevas funcionalidades sin romper lo existente',
-      'Integración nativa con bases de datos, autenticación y colas',
-      'Testing automatizado integrado en la arquitectura',
-    ],
-    vorantheusCases: [
-      'APIs de sistemas administrativos complejos con múltiples módulos',
-      'Backends de plataformas SaaS con autenticación y multi-tenancy',
-      'Microservicios para procesamiento de pagos y notificaciones',
-    ],
-    examples: [
-      {
-        title: 'API central de plataforma de logística',
-        description:
-          'Backend con módulos para pedidos, rutas, conductores, clientes y facturación. Cada módulo es independiente y testeable, lo que permite actualizar uno sin afectar los demás.',
-      },
-      {
-        title: 'Servicio de procesamiento de pagos',
-        description:
-          'Microservicio NestJS que orquesta pagos con Stripe y Mercado Pago, maneja reintentos, webhooks y conciliación de transacciones con alta confiabilidad.',
-      },
-    ],
-  },
-  {
     name: 'Express.js',
     slug: 'express',
     tagline: 'El framework minimalista que pone en marcha tu API al instante.',
@@ -1222,31 +1182,6 @@ export const technologies: Technology[] = [
     ],
   }),
   createTechnology({
-    name: 'Azure',
-    slug: 'azure',
-    tagline: 'Nube empresarial para sistemas, datos e integraciones Microsoft.',
-    summary:
-      'Azure es la plataforma cloud de Microsoft para alojar aplicaciones, bases de datos, servicios empresariales, automatizaciones e infraestructura segura.',
-    bestFor: 'una empresa trabaja con ecosistema Microsoft o necesita infraestructura cloud empresarial con controles sólidos',
-    useCases: [
-      'Aplicaciones empresariales y APIs',
-      'Bases de datos administradas',
-      'Integración con Microsoft 365 y Entra ID',
-      'Infraestructura para empresas con compliance',
-    ],
-    businessBenefits: [
-      'Integración natural con herramientas Microsoft',
-      'Infraestructura preparada para empresas',
-      'Controles de seguridad y acceso avanzados',
-      'Escalabilidad bajo demanda',
-    ],
-    vorantheusCases: [
-      'Portales internos para empresas',
-      'Integraciones con identidad corporativa',
-      'Servicios backend desplegados en nube Microsoft',
-    ],
-  }),
-  createTechnology({
     name: 'Cloudflare',
     slug: 'cloudflare',
     tagline: 'Seguridad, velocidad y protección para sitios modernos.',
@@ -1472,31 +1407,6 @@ export const technologies: Technology[] = [
     ],
   }),
   createTechnology({
-    name: 'Playwright',
-    slug: 'playwright',
-    tagline: 'Pruebas automatizadas para flujos reales de usuario.',
-    summary:
-      'Playwright es una herramienta de pruebas end-to-end para verificar aplicaciones web en navegadores reales como Chromium, Firefox y WebKit.',
-    bestFor: 'un producto necesita validar flujos críticos como cotización, login, compra o formularios antes de publicar',
-    useCases: [
-      'Pruebas end-to-end de páginas web',
-      'Validación de formularios y checkouts',
-      'Capturas visuales en desktop y móvil',
-      'Automatización de regresiones críticas',
-    ],
-    businessBenefits: [
-      'Menos riesgo al publicar cambios',
-      'Flujos importantes verificados automáticamente',
-      'Mayor confianza en formularios y ventas',
-      'Detección temprana de errores visuales o funcionales',
-    ],
-    vorantheusCases: [
-      'Pruebas de formularios de cotización',
-      'Validación de rutas dinámicas',
-      'Revisión responsive de páginas clave',
-    ],
-  }),
-  createTechnology({
     name: 'n8n',
     slug: 'n8n',
     tagline: 'Automatización visual para conectar herramientas y procesos.',
@@ -1645,6 +1555,226 @@ export const technologies: Technology[] = [
       'Integraciones de pago y envío en WordPress',
       'Optimización técnica de tiendas existentes',
     ],
+  }),
+  createTechnology({
+    name: 'Angular',
+    slug: 'angular',
+    tagline: 'Framework frontend completo para aplicaciones empresariales.',
+    summary:
+      'Angular es un framework de Google para construir aplicaciones web robustas con arquitectura estructurada, TypeScript, formularios avanzados, rutas y herramientas integradas.',
+    bestFor: 'una aplicación web requiere estructura estricta, módulos claros y escalabilidad para equipos grandes',
+    useCases: ['Dashboards empresariales', 'Portales internos', 'Aplicaciones SPA complejas', 'Sistemas con formularios avanzados'],
+    businessBenefits: ['Arquitectura consistente', 'Buen mantenimiento a largo plazo', 'Ideal para equipos grandes', 'Herramientas integradas desde el inicio'],
+    vorantheusCases: ['Aplicaciones internas empresariales', 'Paneles administrativos complejos', 'Portales con permisos por rol'],
+  }),
+  createTechnology({
+    name: 'Vue.js',
+    slug: 'vuejs',
+    tagline: 'Framework frontend progresivo para interfaces rápidas y flexibles.',
+    summary:
+      'Vue.js es un framework JavaScript para construir interfaces reactivas, componentes reutilizables y aplicaciones web modernas con una curva de aprendizaje ligera.',
+    bestFor: 'el proyecto necesita una interfaz moderna, rápida de desarrollar y fácil de mantener',
+    useCases: ['Landing pages interactivas', 'Dashboards ligeros', 'Aplicaciones web progresivas', 'Componentes embebidos en sitios existentes'],
+    businessBenefits: ['Desarrollo ágil', 'Interfaz moderna y reactiva', 'Fácil adopción en proyectos existentes', 'Buen equilibrio entre simplicidad y potencia'],
+    vorantheusCases: ['Interfaces comerciales ligeras', 'Componentes interactivos', 'Paneles web con ciclos de desarrollo cortos'],
+  }),
+  createTechnology({
+    name: 'Laravel',
+    slug: 'laravel',
+    tagline: 'Framework PHP moderno para sistemas web productivos.',
+    summary:
+      'Laravel es un framework PHP para crear aplicaciones web, APIs, paneles administrativos y sistemas con autenticación, base de datos y colas de trabajo.',
+    bestFor: 'un negocio necesita un sistema web estable con panel administrativo, lógica de negocio y desarrollo eficiente',
+    useCases: ['Sistemas administrativos', 'Portales de clientes', 'APIs para apps', 'Backends con panel de gestión'],
+    businessBenefits: ['Desarrollo rápido y ordenado', 'Ecosistema maduro', 'Buen soporte para aplicaciones de negocio', 'Costos accesibles de mantenimiento'],
+    vorantheusCases: ['Sistemas internos para pymes', 'Portales con usuarios y roles', 'APIs y paneles administrativos'],
+  }),
+  createTechnology({
+    name: 'Spring Boot',
+    slug: 'spring-boot',
+    tagline: 'Backend Java para sistemas empresariales de alta confiabilidad.',
+    summary:
+      'Spring Boot es un framework Java que simplifica la creación de APIs, microservicios y sistemas empresariales seguros, escalables y mantenibles.',
+    bestFor: 'una empresa necesita backend robusto, integración con sistemas corporativos o arquitectura enterprise',
+    useCases: ['APIs empresariales', 'Microservicios', 'Integraciones bancarias o corporativas', 'Sistemas con alta disponibilidad'],
+    businessBenefits: ['Alta confiabilidad', 'Ecosistema enterprise probado', 'Seguridad y escalabilidad', 'Ideal para proyectos críticos'],
+    vorantheusCases: ['Backends corporativos', 'Integraciones con sistemas legacy', 'Servicios empresariales escalables'],
+  }),
+  createTechnology({
+    name: 'GraphQL',
+    slug: 'graphql',
+    tagline: 'APIs flexibles para pedir exactamente los datos necesarios.',
+    summary:
+      'GraphQL es un lenguaje de consulta para APIs que permite al frontend solicitar solo los datos que necesita, reduciendo respuestas excesivas y endpoints duplicados.',
+    bestFor: 'una aplicación tiene múltiples vistas, clientes o necesidades de datos que cambian frecuentemente',
+    useCases: ['APIs para web y móvil', 'Dashboards con datos compuestos', 'Plataformas con múltiples clientes', 'Integraciones frontend-backend complejas'],
+    businessBenefits: ['Menos llamadas innecesarias', 'Mayor flexibilidad para nuevas pantallas', 'Contratos de datos claros', 'Mejor experiencia en apps móviles'],
+    vorantheusCases: ['Plataformas SaaS', 'Apps móviles conectadas a APIs', 'Dashboards con múltiples fuentes de datos'],
+  }),
+  createTechnology({
+    name: 'Socket.IO',
+    slug: 'socket-io',
+    tagline: 'Comunicación en tiempo real para apps interactivas.',
+    summary:
+      'Socket.IO permite comunicación bidireccional en tiempo real entre cliente y servidor para chats, notificaciones, dashboards live y colaboración.',
+    bestFor: 'el producto necesita actualizaciones instantáneas sin recargar la página',
+    useCases: ['Chats y mensajería', 'Notificaciones en vivo', 'Dashboards en tiempo real', 'Seguimiento de pedidos o ubicaciones'],
+    businessBenefits: ['Experiencia más inmediata', 'Menos actualizaciones manuales', 'Mayor visibilidad operativa', 'Interacciones colaborativas en vivo'],
+    vorantheusCases: ['Sistemas con notificaciones live', 'Paneles operativos en tiempo real', 'Flujos de pedidos y seguimiento'],
+  }),
+  createTechnology({
+    name: 'Prisma',
+    slug: 'prisma',
+    tagline: 'Acceso a base de datos con tipos seguros y desarrollo ágil.',
+    summary:
+      'Prisma es un ORM moderno para Node.js y TypeScript que simplifica consultas, migraciones y modelos de datos con tipos automáticos.',
+    bestFor: 'un backend TypeScript necesita trabajar con base de datos de forma segura, clara y mantenible',
+    useCases: ['APIs con PostgreSQL o MySQL', 'Sistemas administrativos', 'Modelado de datos', 'Migraciones controladas'],
+    businessBenefits: ['Menos errores en consultas', 'Desarrollo más rápido', 'Modelos de datos claros', 'Mantenimiento más seguro'],
+    vorantheusCases: ['APIs para sistemas internos', 'Modelos de negocio relacionales', 'Backends TypeScript con base de datos'],
+  }),
+  createTechnology({
+    name: 'Kubernetes',
+    slug: 'kubernetes',
+    tagline: 'Orquestación de contenedores para productos que necesitan escalar.',
+    summary:
+      'Kubernetes administra contenedores en producción, distribuye carga, reinicia servicios fallidos y permite desplegar aplicaciones escalables.',
+    bestFor: 'una plataforma tiene múltiples servicios, alto tráfico o necesidades avanzadas de disponibilidad',
+    useCases: ['Microservicios', 'APIs de alto tráfico', 'Infraestructura multi-servicio', 'Deploys escalables en cloud'],
+    businessBenefits: ['Alta disponibilidad', 'Escalabilidad automática', 'Deploys más controlados', 'Menor dependencia de un solo servidor'],
+    vorantheusCases: ['Arquitecturas cloud avanzadas', 'Servicios backend contenedorizados', 'Plataformas con crecimiento progresivo'],
+  }),
+  createTechnology({
+    name: 'Terraform',
+    slug: 'terraform',
+    tagline: 'Infraestructura como código para despliegues repetibles.',
+    summary:
+      'Terraform permite definir infraestructura cloud con código, versionarla y recrearla de forma consistente en AWS, Google Cloud, Cloudflare y otros proveedores.',
+    bestFor: 'un proyecto necesita infraestructura controlada, documentada y replicable entre ambientes',
+    useCases: ['Infraestructura cloud', 'Ambientes staging y producción', 'DNS y redes', 'Automatización de recursos'],
+    businessBenefits: ['Menos configuración manual', 'Infraestructura documentada', 'Cambios trazables', 'Ambientes más consistentes'],
+    vorantheusCases: ['Configuración cloud para clientes', 'Automatización de infraestructura', 'Deploys reproducibles'],
+  }),
+  createTechnology({
+    name: 'Nginx',
+    slug: 'nginx',
+    tagline: 'Servidor web y proxy para rendimiento y control de tráfico.',
+    summary:
+      'Nginx es un servidor web y reverse proxy usado para servir sitios, balancear tráfico, manejar SSL, cachear contenido y proteger servicios backend.',
+    bestFor: 'una aplicación necesita controlar tráfico, publicar APIs o mejorar rendimiento en infraestructura propia',
+    useCases: ['Reverse proxy para APIs', 'Servidor web', 'Balanceo de carga', 'SSL y reglas de red'],
+    businessBenefits: ['Mejor rendimiento', 'Mayor control de despliegue', 'Protección de servicios internos', 'Infraestructura más flexible'],
+    vorantheusCases: ['Publicación de APIs', 'Configuración de servidores', 'Optimización de tráfico web'],
+  }),
+  createTechnology({
+    name: 'Google Analytics',
+    slug: 'google-analytics',
+    tagline: 'Medición para entender visitas, conversiones y comportamiento.',
+    summary:
+      'Google Analytics permite medir tráfico, eventos, conversiones y comportamiento de usuarios para tomar mejores decisiones comerciales.',
+    bestFor: 'un sitio necesita saber qué canales, páginas y botones generan oportunidades reales',
+    useCases: ['Medición de visitas', 'Eventos de formularios y CTAs', 'Análisis de campañas', 'Reportes de conversión'],
+    businessBenefits: ['Decisiones basadas en datos', 'Mejor lectura del embudo comercial', 'Optimización de campañas', 'Visibilidad sobre leads'],
+    vorantheusCases: ['Tracking de cotizaciones', 'Eventos de WhatsApp y paquetes', 'Medición de páginas de servicios'],
+  }),
+  createTechnology({
+    name: 'Electron',
+    slug: 'electron',
+    tagline: 'Aplicaciones de escritorio usando tecnologías web.',
+    summary:
+      'Electron permite crear apps de escritorio para Windows, macOS y Linux usando JavaScript, HTML y CSS, con acceso a funciones del sistema.',
+    bestFor: 'un negocio necesita una app de escritorio conectada a sistemas web o procesos locales',
+    useCases: ['Apps de escritorio internas', 'Herramientas administrativas', 'Sistemas conectados a hardware local', 'Clientes desktop para plataformas web'],
+    businessBenefits: ['Una base tecnológica para varios sistemas', 'Integración con procesos locales', 'Distribución en escritorio', 'Experiencia dedicada para equipos internos'],
+    vorantheusCases: ['Herramientas internas de operación', 'Apps desktop conectadas a APIs', 'Sistemas con necesidades locales'],
+  }),
+  createTechnology({
+    name: 'Capacitor',
+    slug: 'capacitor',
+    tagline: 'Apps móviles nativas a partir de proyectos web modernos.',
+    summary:
+      'Capacitor permite convertir aplicaciones web en apps iOS y Android con acceso a funcionalidades nativas como cámara, archivos, notificaciones y almacenamiento.',
+    bestFor: 'un producto web necesita llegar a tiendas móviles sin rehacer toda la app desde cero',
+    useCases: ['Apps móviles híbridas', 'MVPs para iOS y Android', 'Acceso a funciones nativas', 'Reutilización de código web'],
+    businessBenefits: ['Menor costo de desarrollo móvil', 'Salida más rápida a tiendas', 'Reutilización del frontend existente', 'Acceso a capacidades nativas'],
+    vorantheusCases: ['Apps móviles para clientes con plataforma web', 'MVPs móviles', 'Extensiones móviles de sistemas administrativos'],
+  }),
+  createTechnology({
+    name: 'Strapi',
+    slug: 'strapi',
+    tagline: 'CMS headless para administrar contenido con APIs modernas.',
+    summary:
+      'Strapi es un CMS headless open-source que permite administrar contenido y exponerlo mediante APIs para sitios, apps y plataformas.',
+    bestFor: 'el cliente necesita editar contenido desde un panel mientras el frontend se mantiene moderno y personalizado',
+    useCases: ['Sitios con contenido administrable', 'Blogs headless', 'Catálogos y landing pages', 'APIs de contenido para apps'],
+    businessBenefits: ['Contenido editable sin tocar código', 'Frontend libre y personalizado', 'API lista para web y móvil', 'Escalable para múltiples canales'],
+    vorantheusCases: ['Sitios corporativos administrables', 'Blogs conectados a Next.js', 'Catálogos con CMS'],
+  }),
+  createTechnology({
+    name: 'JavaScript',
+    slug: 'javascript',
+    tagline: 'El lenguaje base de la web moderna.',
+    summary:
+      'JavaScript es el lenguaje principal del navegador y una pieza central para crear interfaces, APIs, automatizaciones y aplicaciones modernas.',
+    bestFor: 'un proyecto requiere interactividad web, integraciones o desarrollo full-stack flexible',
+    useCases: ['Interfaces web', 'APIs con Node.js', 'Automatizaciones', 'Integraciones con servicios externos'],
+    businessBenefits: ['Ecosistema enorme', 'Desarrollo web rápido', 'Compatible con todos los navegadores', 'Base para stacks modernos'],
+    vorantheusCases: ['Sitios interactivos', 'Automatizaciones web', 'Integraciones frontend-backend'],
+  }),
+  createTechnology({
+    name: '.NET',
+    slug: 'dotnet',
+    tagline: 'Plataforma Microsoft para aplicaciones empresariales robustas.',
+    summary:
+      '.NET es una plataforma de Microsoft para crear APIs, aplicaciones web, servicios empresariales y software de alto rendimiento con C#.',
+    bestFor: 'una empresa necesita sistemas sólidos, integraciones Microsoft o backend enterprise con soporte a largo plazo',
+    useCases: ['APIs empresariales', 'Sistemas internos', 'Integraciones Microsoft', 'Aplicaciones de alto rendimiento'],
+    businessBenefits: ['Ecosistema empresarial maduro', 'Alto rendimiento', 'Buen soporte corporativo', 'Ideal para integraciones Microsoft'],
+    vorantheusCases: ['Backends empresariales', 'Integraciones con sistemas Microsoft', 'APIs para operación interna'],
+  }),
+  createTechnology({
+    name: 'PHP',
+    slug: 'php',
+    tagline: 'Lenguaje web maduro para sitios, CMS y sistemas comerciales.',
+    summary:
+      'PHP es un lenguaje ampliamente usado en la web, especialmente en WordPress, WooCommerce, Laravel y sistemas empresariales existentes.',
+    bestFor: 'un proyecto trabaja con CMS, e-commerce o sistemas existentes basados en PHP',
+    useCases: ['WordPress y WooCommerce', 'Aplicaciones Laravel', 'APIs web', 'Mantenimiento de sistemas existentes'],
+    businessBenefits: ['Amplia disponibilidad de talento', 'Ecosistema maduro', 'Buena opción para CMS y e-commerce', 'Mantenimiento accesible'],
+    vorantheusCases: ['Mejoras en sitios WordPress', 'Tiendas WooCommerce', 'Sistemas Laravel'],
+  }),
+  createTechnology({
+    name: 'Cypress',
+    slug: 'cypress',
+    tagline: 'Pruebas end-to-end para validar experiencias web críticas.',
+    summary:
+      'Cypress es una herramienta de testing para automatizar flujos web, validar formularios, revisar interacciones y reducir regresiones.',
+    bestFor: 'una página o aplicación necesita verificar flujos importantes antes de publicar cambios',
+    useCases: ['Pruebas de formularios', 'Flujos de compra', 'Regresión visual funcional', 'Validación de páginas críticas'],
+    businessBenefits: ['Menos errores en producción', 'Mayor confianza al publicar', 'Flujos comerciales protegidos', 'QA más eficiente'],
+    vorantheusCases: ['Pruebas de cotización', 'Validación de checkouts', 'Automatización de flujos clave'],
+  }),
+  createTechnology({
+    name: 'Jest',
+    slug: 'jest',
+    tagline: 'Pruebas unitarias confiables para JavaScript y TypeScript.',
+    summary:
+      'Jest es un framework de pruebas para validar funciones, componentes y lógica de negocio en proyectos JavaScript y TypeScript.',
+    bestFor: 'un proyecto necesita probar lógica crítica y evitar regresiones durante mantenimiento',
+    useCases: ['Pruebas unitarias', 'Pruebas de componentes', 'Validación de utilidades', 'Cobertura de lógica de negocio'],
+    businessBenefits: ['Mayor estabilidad del código', 'Cambios más seguros', 'Menos errores repetidos', 'Mantenimiento más confiable'],
+    vorantheusCases: ['Pruebas de lógica de cotización', 'Validación de helpers', 'Cobertura de componentes críticos'],
+  }),
+  createTechnology({
+    name: 'Vitest',
+    slug: 'vitest',
+    tagline: 'Testing moderno y rápido para proyectos Vite y TypeScript.',
+    summary:
+      'Vitest es un framework de pruebas rápido compatible con el ecosistema moderno de frontend, ideal para unit tests y lógica TypeScript.',
+    bestFor: 'un proyecto necesita pruebas veloces, modernas y fáciles de integrar con herramientas actuales',
+    useCases: ['Pruebas unitarias rápidas', 'Testing de utilidades', 'Validación de componentes', 'CI para proyectos frontend'],
+    businessBenefits: ['Ejecución rápida de pruebas', 'Mejor feedback para desarrollo', 'Menos fricción en CI', 'Compatible con TypeScript moderno'],
+    vorantheusCases: ['Pruebas de utilidades frontend', 'Validación de lógica de UI', 'Pipelines de calidad en proyectos modernos'],
   }),
 ]
 
