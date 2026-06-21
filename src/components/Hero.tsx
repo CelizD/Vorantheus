@@ -5,14 +5,6 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle, Zap } from 'lucide-react'
 import CalendlyButton from '@/components/CalendlyButton'
 import MagneticButton from '@/components/MagneticButton'
-import AnimatedCounter from '@/components/AnimatedCounter'
-
-const stats = [
-  { value: '50+', label: 'Proyectos completados' },
-  { value: '98%', label: 'Clientes satisfechos' },
-  { value: '24h', label: 'Tiempo de respuesta' },
-  { value: '3+', label: 'Años de experiencia' },
-]
 
 const features = [
   'Diseño personalizado a tu marca',
@@ -275,21 +267,6 @@ export default function Hero() {
                 Ver servicios
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.52 }}
-              className="mt-16 pt-8 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-6"
-            >
-              {stats.map((s) => (
-                <div key={s.label} className="flex flex-col gap-1">
-                  <AnimatedCounter value={s.value} className="text-3xl font-black text-white" />
-                  <span className="text-xs text-white/25 leading-snug">{s.label}</span>
-                </div>
-              ))}
             </motion.div>
           </div>
 
