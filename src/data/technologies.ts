@@ -10,6 +10,55 @@ export type Technology = {
   examples: { title: string; description: string }[]
 }
 
+type TechnologyTemplate = {
+  name: string
+  slug: string
+  tagline: string
+  summary: string
+  bestFor: string
+  useCases: string[]
+  businessBenefits: string[]
+  vorantheusCases: string[]
+}
+
+function createTechnology({
+  name,
+  slug,
+  tagline,
+  summary,
+  bestFor,
+  useCases,
+  businessBenefits,
+  vorantheusCases,
+}: TechnologyTemplate): Technology {
+  return {
+    name,
+    slug,
+    tagline,
+    description: [
+      summary,
+      `${name} forma parte de un stack profesional cuando el proyecto necesita estabilidad, claridad técnica y una base preparada para crecer sin rehacer todo desde cero.`,
+    ],
+    useCases,
+    whyWeUseIt:
+      `Usamos ${name} cuando ${bestFor}. Nos permite entregar soluciones más ordenadas, mantenibles y alineadas con objetivos reales de negocio.`,
+    businessBenefits,
+    vorantheusCases,
+    examples: [
+      {
+        title: `${name} en proyectos comerciales`,
+        description:
+          `Aplicamos ${name} para construir soluciones digitales que reducen fricción operativa, mejoran la experiencia del usuario y facilitan el crecimiento del negocio.`,
+      },
+      {
+        title: `${name} para operación interna`,
+        description:
+          `Integramos ${name} en flujos, sistemas o herramientas internas donde la empresa necesita procesos más claros, automatizados y confiables.`,
+      },
+    ],
+  }
+}
+
 export const technologies: Technology[] = [
   {
     name: 'React',
@@ -1072,6 +1121,531 @@ export const technologies: Technology[] = [
       },
     ],
   },
+  createTechnology({
+    name: 'Django',
+    slug: 'django',
+    tagline: 'Framework backend robusto para productos con lógica de negocio seria.',
+    summary:
+      'Django es un framework de Python para construir aplicaciones web seguras, estructuradas y escalables con panel administrativo, autenticación, ORM y buenas prácticas integradas.',
+    bestFor: 'un backend necesita seguridad, estructura y velocidad de desarrollo sin sacrificar mantenibilidad',
+    useCases: [
+      'Sistemas administrativos y portales internos',
+      'Aplicaciones con panel de administración avanzado',
+      'APIs para productos web y móviles',
+      'Plataformas con permisos, usuarios y flujos de negocio',
+    ],
+    businessBenefits: [
+      'Lanzamiento más rápido gracias a herramientas integradas',
+      'Arquitectura ordenada para mantenimiento a largo plazo',
+      'Seguridad madura para usuarios, sesiones y permisos',
+      'Ideal para sistemas con datos y reglas de negocio complejas',
+    ],
+    vorantheusCases: [
+      'Backends para sistemas administrativos',
+      'Paneles internos con permisos por rol',
+      'APIs para apps móviles y plataformas web',
+    ],
+  }),
+  createTechnology({
+    name: 'FastAPI',
+    slug: 'fastapi',
+    tagline: 'APIs rápidas en Python con documentación automática.',
+    summary:
+      'FastAPI es un framework moderno de Python para crear APIs veloces, tipadas y fáciles de documentar, ideal para servicios backend, integraciones e inteligencia artificial.',
+    bestFor: 'el proyecto requiere APIs rápidas, validación clara de datos o integración con modelos de IA en Python',
+    useCases: [
+      'APIs para aplicaciones web y móviles',
+      'Servicios de IA y procesamiento de datos',
+      'Microservicios ligeros y de alto rendimiento',
+      'Integraciones con sistemas externos',
+    ],
+    businessBenefits: [
+      'APIs rápidas y documentadas desde el inicio',
+      'Menos errores gracias a validación automática',
+      'Excelente conexión con ecosistemas de IA y datos',
+      'Escalable para servicios independientes',
+    ],
+    vorantheusCases: [
+      'Servicios de IA conectados a plataformas web',
+      'APIs internas para automatizaciones',
+      'Procesamiento de datos y documentos',
+    ],
+  }),
+  createTechnology({
+    name: 'Redis',
+    slug: 'redis',
+    tagline: 'Velocidad para caché, sesiones y procesos en tiempo real.',
+    summary:
+      'Redis es una base de datos en memoria usada para acelerar aplicaciones, manejar sesiones, colas de trabajo, límites de uso y datos temporales de alta velocidad.',
+    bestFor: 'una plataforma necesita responder rápido, evitar sobrecarga de base de datos o coordinar procesos en segundo plano',
+    useCases: [
+      'Caché de consultas y respuestas frecuentes',
+      'Sesiones de usuario y tokens temporales',
+      'Colas de tareas y procesamiento asíncrono',
+      'Rate limiting para proteger APIs',
+    ],
+    businessBenefits: [
+      'Aplicaciones más rápidas para el usuario final',
+      'Menor carga sobre bases de datos principales',
+      'Mejor estabilidad ante picos de tráfico',
+      'Procesos en segundo plano más confiables',
+    ],
+    vorantheusCases: [
+      'Caché para dashboards y reportes',
+      'Rate limiting en APIs públicas',
+      'Colas para notificaciones y automatizaciones',
+    ],
+  }),
+  createTechnology({
+    name: 'Google Cloud',
+    slug: 'google-cloud',
+    tagline: 'Infraestructura cloud con datos, IA y escalabilidad global.',
+    summary:
+      'Google Cloud es la plataforma de nube de Google para hospedar aplicaciones, bases de datos, APIs, analítica, inteligencia artificial e infraestructura escalable.',
+    bestFor: 'el negocio requiere infraestructura cloud confiable, servicios de datos o integración avanzada con IA',
+    useCases: [
+      'Hosting de aplicaciones y APIs',
+      'Almacenamiento y procesamiento de datos',
+      'Servicios de IA, visión y lenguaje',
+      'Infraestructura para productos escalables',
+    ],
+    businessBenefits: [
+      'Infraestructura global administrada',
+      'Servicios avanzados de datos e inteligencia artificial',
+      'Escalabilidad sin comprar servidores propios',
+      'Integración sólida con herramientas empresariales',
+    ],
+    vorantheusCases: [
+      'Deploy de APIs y servicios backend',
+      'Procesamiento de datos para reportes',
+      'Integraciones con servicios de IA de Google',
+    ],
+  }),
+  createTechnology({
+    name: 'Azure',
+    slug: 'azure',
+    tagline: 'Nube empresarial para sistemas, datos e integraciones Microsoft.',
+    summary:
+      'Azure es la plataforma cloud de Microsoft para alojar aplicaciones, bases de datos, servicios empresariales, automatizaciones e infraestructura segura.',
+    bestFor: 'una empresa trabaja con ecosistema Microsoft o necesita infraestructura cloud empresarial con controles sólidos',
+    useCases: [
+      'Aplicaciones empresariales y APIs',
+      'Bases de datos administradas',
+      'Integración con Microsoft 365 y Entra ID',
+      'Infraestructura para empresas con compliance',
+    ],
+    businessBenefits: [
+      'Integración natural con herramientas Microsoft',
+      'Infraestructura preparada para empresas',
+      'Controles de seguridad y acceso avanzados',
+      'Escalabilidad bajo demanda',
+    ],
+    vorantheusCases: [
+      'Portales internos para empresas',
+      'Integraciones con identidad corporativa',
+      'Servicios backend desplegados en nube Microsoft',
+    ],
+  }),
+  createTechnology({
+    name: 'Cloudflare',
+    slug: 'cloudflare',
+    tagline: 'Seguridad, velocidad y protección para sitios modernos.',
+    summary:
+      'Cloudflare ofrece CDN, DNS, protección DDoS, reglas de seguridad, cacheo y herramientas edge para mejorar la velocidad y seguridad de sitios web.',
+    bestFor: 'un sitio necesita cargar rápido, protegerse mejor y tener una capa de red confiable',
+    useCases: [
+      'CDN para sitios web y archivos estáticos',
+      'DNS administrado y protección DDoS',
+      'Reglas de firewall y seguridad web',
+      'Optimización de rendimiento global',
+    ],
+    businessBenefits: [
+      'Sitios más rápidos para usuarios de distintas regiones',
+      'Mayor protección contra ataques comunes',
+      'Menos carga sobre servidores de origen',
+      'Mejor disponibilidad del sitio',
+    ],
+    vorantheusCases: [
+      'Protección de sitios corporativos',
+      'Optimización de velocidad en landing pages',
+      'Configuración de DNS y seguridad web',
+    ],
+  }),
+  createTechnology({
+    name: 'GitHub Actions',
+    slug: 'github-actions',
+    tagline: 'Automatización de pruebas, builds y despliegues desde GitHub.',
+    summary:
+      'GitHub Actions permite automatizar flujos de CI/CD: correr lint, tests, builds, despliegues y tareas repetitivas cada vez que cambia el código.',
+    bestFor: 'el equipo necesita publicar cambios con menos pasos manuales y mayor control de calidad',
+    useCases: [
+      'CI/CD para sitios y aplicaciones',
+      'Ejecución automática de lint, tests y build',
+      'Deploys a Vercel, AWS u otros servicios',
+      'Automatizaciones de mantenimiento del repositorio',
+    ],
+    businessBenefits: [
+      'Publicaciones más seguras y repetibles',
+      'Menos errores humanos en deploys',
+      'Detección temprana de fallos técnicos',
+      'Mejor trazabilidad de cambios',
+    ],
+    vorantheusCases: [
+      'Pipelines de calidad para proyectos web',
+      'Deploys automáticos por rama',
+      'Validación de builds antes de publicar',
+    ],
+  }),
+  createTechnology({
+    name: 'Grafana',
+    slug: 'grafana',
+    tagline: 'Dashboards para entender la salud de tus sistemas.',
+    summary:
+      'Grafana es una plataforma de visualización para métricas, logs y datos operativos que permite crear dashboards claros sobre el estado de una aplicación.',
+    bestFor: 'una plataforma necesita visibilidad técnica y operativa para detectar problemas antes de que afecten al cliente',
+    useCases: [
+      'Dashboards de rendimiento y disponibilidad',
+      'Monitoreo de APIs, servidores y bases de datos',
+      'Visualización de métricas de negocio',
+      'Alertas sobre incidentes técnicos',
+    ],
+    businessBenefits: [
+      'Mayor visibilidad sobre sistemas críticos',
+      'Detección temprana de fallos',
+      'Mejor toma de decisiones con datos',
+      'Menos tiempo investigando incidentes',
+    ],
+    vorantheusCases: [
+      'Monitoreo de APIs y servicios backend',
+      'Dashboards para infraestructura cloud',
+      'Paneles internos de métricas técnicas',
+    ],
+  }),
+  createTechnology({
+    name: 'Prometheus',
+    slug: 'prometheus',
+    tagline: 'Métricas confiables para monitorear infraestructura y servicios.',
+    summary:
+      'Prometheus es una herramienta de monitoreo y alertas diseñada para recopilar métricas de aplicaciones, APIs, servidores y contenedores.',
+    bestFor: 'un sistema necesita métricas técnicas consistentes y alertas automáticas ante comportamiento anormal',
+    useCases: [
+      'Monitoreo de servicios backend',
+      'Alertas de disponibilidad y rendimiento',
+      'Métricas de infraestructura y contenedores',
+      'Observabilidad para sistemas distribuidos',
+    ],
+    businessBenefits: [
+      'Menor tiempo de respuesta ante incidentes',
+      'Datos técnicos confiables para mantenimiento',
+      'Alertas antes de que el problema escale',
+      'Base sólida para observabilidad profesional',
+    ],
+    vorantheusCases: [
+      'Monitoreo de APIs críticas',
+      'Métricas de contenedores Docker',
+      'Alertas de rendimiento y disponibilidad',
+    ],
+  }),
+  createTechnology({
+    name: 'Sentry',
+    slug: 'sentry',
+    tagline: 'Errores visibles antes de que se conviertan en pérdidas.',
+    summary:
+      'Sentry es una plataforma de monitoreo de errores y rendimiento que ayuda a detectar fallos en frontend, backend y aplicaciones móviles.',
+    bestFor: 'el producto necesita detectar, priorizar y resolver errores reales de usuarios con rapidez',
+    useCases: [
+      'Monitoreo de errores en producción',
+      'Seguimiento de performance y lentitud',
+      'Alertas para fallos críticos',
+      'Diagnóstico con contexto técnico del usuario',
+    ],
+    businessBenefits: [
+      'Errores detectados antes de que muchos clientes los reporten',
+      'Diagnóstico más rápido para correcciones',
+      'Mayor estabilidad del producto',
+      'Mejor experiencia para usuarios finales',
+    ],
+    vorantheusCases: [
+      'Monitoreo de sitios Next.js',
+      'Seguimiento de errores en APIs',
+      'Alertas para formularios y flujos críticos',
+    ],
+  }),
+  createTechnology({
+    name: 'Jira',
+    slug: 'jira',
+    tagline: 'Gestión de proyectos para equipos con procesos claros.',
+    summary:
+      'Jira es una herramienta de gestión de proyectos usada para organizar tareas, sprints, bugs, prioridades y entregas en equipos de software.',
+    bestFor: 'un proyecto necesita seguimiento formal, priorización clara y comunicación ordenada entre cliente y equipo',
+    useCases: [
+      'Backlogs y sprints de desarrollo',
+      'Seguimiento de bugs y solicitudes',
+      'Gestión de prioridades por etapa',
+      'Reportes de avance para stakeholders',
+    ],
+    businessBenefits: [
+      'Mayor claridad sobre qué se está construyendo',
+      'Mejor control de prioridades y tiempos',
+      'Menos pérdida de información entre reuniones',
+      'Seguimiento trazable de tareas y decisiones',
+    ],
+    vorantheusCases: [
+      'Gestión de proyectos medianos y grandes',
+      'Seguimiento de incidencias y mejoras',
+      'Organización de sprints de desarrollo',
+    ],
+  }),
+  createTechnology({
+    name: 'Notion',
+    slug: 'notion',
+    tagline: 'Documentación viva para proyectos, procesos y decisiones.',
+    summary:
+      'Notion es una herramienta flexible para documentar proyectos, procesos, bases de conocimiento, calendarios, tareas y decisiones en un solo lugar.',
+    bestFor: 'el cliente necesita documentación clara, centralizada y fácil de mantener durante el proyecto',
+    useCases: [
+      'Documentación de procesos y requerimientos',
+      'Bases de conocimiento internas',
+      'Roadmaps y seguimiento ligero de tareas',
+      'Manuales de uso para equipos',
+    ],
+    businessBenefits: [
+      'Información centralizada y fácil de consultar',
+      'Menos dependencia de mensajes sueltos',
+      'Mejor transferencia de conocimiento',
+      'Documentación útil después de entregar el proyecto',
+    ],
+    vorantheusCases: [
+      'Documentación de proyectos para clientes',
+      'Manuales de uso de sistemas internos',
+      'Organización de requerimientos y entregables',
+    ],
+  }),
+  createTechnology({
+    name: 'Postman',
+    slug: 'postman',
+    tagline: 'Pruebas y documentación práctica para APIs.',
+    summary:
+      'Postman es una herramienta para probar APIs, organizar colecciones de endpoints, documentar integraciones y validar flujos antes de conectarlos a una app.',
+    bestFor: 'el proyecto depende de APIs internas o externas que deben probarse y documentarse con claridad',
+    useCases: [
+      'Pruebas manuales y automatizadas de APIs',
+      'Documentación de endpoints',
+      'Validación de integraciones externas',
+      'Colecciones compartidas entre equipos',
+    ],
+    businessBenefits: [
+      'Integraciones más claras y menos propensas a error',
+      'Pruebas rápidas antes de publicar cambios',
+      'Mejor comunicación entre backend y frontend',
+      'Documentación técnica reutilizable',
+    ],
+    vorantheusCases: [
+      'Pruebas de APIs para sistemas administrativos',
+      'Validación de webhooks de pagos',
+      'Documentación de endpoints para clientes',
+    ],
+  }),
+  createTechnology({
+    name: 'Swagger',
+    slug: 'swagger',
+    tagline: 'Documentación de APIs clara, navegable y mantenible.',
+    summary:
+      'Swagger, basado en OpenAPI, permite describir APIs con contratos formales que pueden explorarse, probarse y compartirse fácilmente.',
+    bestFor: 'una API necesita documentación confiable para clientes, integraciones o equipos internos',
+    useCases: [
+      'Documentación interactiva de APIs REST',
+      'Contratos técnicos para integraciones',
+      'Pruebas de endpoints desde navegador',
+      'Generación de clientes y tipos a partir de OpenAPI',
+    ],
+    businessBenefits: [
+      'Menos confusión al integrar sistemas',
+      'Documentación técnica siempre disponible',
+      'Mejor colaboración con terceros',
+      'Reducción de errores por contratos ambiguos',
+    ],
+    vorantheusCases: [
+      'Documentación de APIs para apps móviles',
+      'Contratos de integración con terceros',
+      'APIs internas para plataformas empresariales',
+    ],
+  }),
+  createTechnology({
+    name: 'Playwright',
+    slug: 'playwright',
+    tagline: 'Pruebas automatizadas para flujos reales de usuario.',
+    summary:
+      'Playwright es una herramienta de pruebas end-to-end para verificar aplicaciones web en navegadores reales como Chromium, Firefox y WebKit.',
+    bestFor: 'un producto necesita validar flujos críticos como cotización, login, compra o formularios antes de publicar',
+    useCases: [
+      'Pruebas end-to-end de páginas web',
+      'Validación de formularios y checkouts',
+      'Capturas visuales en desktop y móvil',
+      'Automatización de regresiones críticas',
+    ],
+    businessBenefits: [
+      'Menos riesgo al publicar cambios',
+      'Flujos importantes verificados automáticamente',
+      'Mayor confianza en formularios y ventas',
+      'Detección temprana de errores visuales o funcionales',
+    ],
+    vorantheusCases: [
+      'Pruebas de formularios de cotización',
+      'Validación de rutas dinámicas',
+      'Revisión responsive de páginas clave',
+    ],
+  }),
+  createTechnology({
+    name: 'n8n',
+    slug: 'n8n',
+    tagline: 'Automatización visual para conectar herramientas y procesos.',
+    summary:
+      'n8n es una plataforma de automatización que permite conectar aplicaciones, APIs, bases de datos e IA mediante flujos visuales y lógica personalizada.',
+    bestFor: 'un negocio quiere automatizar tareas repetitivas sin construir un sistema completo desde cero',
+    useCases: [
+      'Automatización de leads y seguimiento',
+      'Sincronización entre CRM, hojas de cálculo y correo',
+      'Flujos con IA y webhooks',
+      'Alertas y reportes automáticos',
+    ],
+    businessBenefits: [
+      'Ahorro de tiempo en tareas repetitivas',
+      'Procesos más ordenados y medibles',
+      'Menos errores de captura manual',
+      'Integraciones rápidas entre herramientas existentes',
+    ],
+    vorantheusCases: [
+      'Automatizaciones para leads de formularios',
+      'Flujos con IA para clasificar solicitudes',
+      'Reportes automáticos para equipos comerciales',
+    ],
+  }),
+  createTechnology({
+    name: 'PayPal',
+    slug: 'paypal',
+    tagline: 'Pagos globales con una marca conocida por los compradores.',
+    summary:
+      'PayPal es una plataforma de pagos en línea usada globalmente para aceptar pagos con saldo, tarjeta y cuentas PayPal de forma rápida.',
+    bestFor: 'una tienda o plataforma necesita ofrecer un método de pago reconocido para clientes nacionales e internacionales',
+    useCases: [
+      'E-commerce con clientes internacionales',
+      'Pagos únicos por servicios digitales',
+      'Checkout alternativo a tarjeta directa',
+      'Cobros en múltiples monedas',
+    ],
+    businessBenefits: [
+      'Más confianza para compradores internacionales',
+      'Método de pago adicional en checkout',
+      'Menos fricción para clientes que ya usan PayPal',
+      'Cobros digitales sin infraestructura bancaria compleja',
+    ],
+    vorantheusCases: [
+      'Tiendas en línea con pagos globales',
+      'Servicios digitales con checkout rápido',
+      'Integraciones de pago como método secundario',
+    ],
+  }),
+  createTechnology({
+    name: 'Conekta',
+    slug: 'conekta',
+    tagline: 'Pagos en México con tarjetas, OXXO y métodos locales.',
+    summary:
+      'Conekta es una pasarela de pagos enfocada en México que permite aceptar tarjetas, pagos en efectivo, SPEI y métodos locales para e-commerce y servicios.',
+    bestFor: 'un negocio mexicano necesita aceptar pagos locales con una integración enfocada en el mercado nacional',
+    useCases: [
+      'Checkout para tiendas mexicanas',
+      'Pagos en efectivo y transferencia',
+      'Cobros de servicios y reservas',
+      'Integraciones de pago con sistemas propios',
+    ],
+    businessBenefits: [
+      'Métodos de pago adaptados al cliente mexicano',
+      'Mayor flexibilidad para cobrar en línea',
+      'Integración con flujos de e-commerce',
+      'Alternativa local a pasarelas internacionales',
+    ],
+    vorantheusCases: [
+      'Tiendas en línea para negocios mexicanos',
+      'Pagos de servicios con referencia',
+      'Integración de checkout en plataformas propias',
+    ],
+  }),
+  createTechnology({
+    name: 'Shopify',
+    slug: 'shopify',
+    tagline: 'Comercio electrónico listo para vender con menos fricción.',
+    summary:
+      'Shopify es una plataforma de e-commerce que permite crear tiendas en línea, administrar productos, inventario, pagos y pedidos sin construir todo desde cero.',
+    bestFor: 'un negocio quiere vender rápido en línea con una base estable y herramientas comerciales ya resueltas',
+    useCases: [
+      'Tiendas en línea de productos físicos o digitales',
+      'Catálogos con inventario y variantes',
+      'Integración con pasarelas de pago y envíos',
+      'Automatización comercial para e-commerce',
+    ],
+    businessBenefits: [
+      'Lanzamiento rápido de tienda en línea',
+      'Administración sencilla para el equipo',
+      'Ecosistema amplio de integraciones',
+      'Menor costo inicial frente a un e-commerce desde cero',
+    ],
+    vorantheusCases: [
+      'Tiendas para marcas que quieren vender rápido',
+      'Configuración de temas y experiencia de compra',
+      'Integraciones con pagos, envíos y analítica',
+    ],
+  }),
+  createTechnology({
+    name: 'WordPress',
+    slug: 'wordpress',
+    tagline: 'CMS flexible para sitios administrables y contenido frecuente.',
+    summary:
+      'WordPress es el CMS más usado del mundo para crear sitios administrables, blogs, páginas corporativas y proyectos donde el cliente necesita editar contenido con facilidad.',
+    bestFor: 'el sitio requiere administración de contenido frecuente y un panel conocido por equipos no técnicos',
+    useCases: [
+      'Sitios corporativos administrables',
+      'Blogs y portales de contenido',
+      'Landing pages con editor visual',
+      'Sitios con plugins y funcionalidades comunes',
+    ],
+    businessBenefits: [
+      'El equipo puede editar contenido sin desarrollador',
+      'Amplio ecosistema de plugins y temas',
+      'Buena opción para contenido frecuente',
+      'Costos iniciales accesibles en proyectos sencillos',
+    ],
+    vorantheusCases: [
+      'Sitios informativos administrables',
+      'Blogs empresariales',
+      'Migraciones y mejoras de sitios existentes',
+    ],
+  }),
+  createTechnology({
+    name: 'WooCommerce',
+    slug: 'woocommerce',
+    tagline: 'E-commerce sobre WordPress para tiendas administrables.',
+    summary:
+      'WooCommerce es el plugin de comercio electrónico más popular para WordPress, usado para vender productos, gestionar inventario, pagos y envíos desde un CMS conocido.',
+    bestFor: 'un negocio ya usa WordPress o necesita una tienda administrable con control amplio de contenido',
+    useCases: [
+      'Tiendas en línea sobre WordPress',
+      'Catálogos con productos, variantes y cupones',
+      'Integración con pasarelas de pago',
+      'E-commerce con blog y contenido SEO',
+    ],
+    businessBenefits: [
+      'Control completo de contenido y tienda en un solo panel',
+      'Gran ecosistema de extensiones',
+      'Flexible para tiendas pequeñas y medianas',
+      'Buena combinación entre SEO y venta en línea',
+    ],
+    vorantheusCases: [
+      'Tiendas administrables para negocios locales',
+      'Integraciones de pago y envío en WordPress',
+      'Optimización técnica de tiendas existentes',
+    ],
+  }),
 ]
 
 export function getTechnology(slug: string): Technology | undefined {

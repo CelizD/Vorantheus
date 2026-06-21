@@ -17,6 +17,27 @@ const ABBREV: Record<string, string> = {
   'Figma':        'FG',
   'Kotlin':       'KT',
   'Swift':        'SW',
+  'Django':       'DJ',
+  'FastAPI':      'FA',
+  'Redis':        'RD',
+  'Google Cloud': 'GC',
+  'Azure':        'AZ',
+  'Cloudflare':   'CF',
+  'GitHub Actions': 'GA',
+  'Grafana':      'GF',
+  'Prometheus':   'PR',
+  'Sentry':       'SE',
+  'Jira':         'JI',
+  'Notion':       'NO',
+  'Postman':      'PM',
+  'Swagger':      'SW',
+  'Playwright':   'PW',
+  'n8n':          'N8',
+  'PayPal':       'PP',
+  'Conekta':      'CK',
+  'Shopify':      'SH',
+  'WordPress':    'WP',
+  'WooCommerce':  'WC',
 }
 
 function TechIcon({ name }: { name: string }) {
@@ -218,7 +239,55 @@ function TechIcon({ name }: { name: string }) {
   }
 }
 
-const techList = technologies.map((t) => ({ name: t.name, slug: t.slug }))
+const marqueeTechnologyNames = [
+  'Next.js',
+  'React',
+  'TypeScript',
+  'Tailwind CSS',
+  'Node.js',
+  'NestJS',
+  'Express.js',
+  'Python',
+  'Django',
+  'FastAPI',
+  'Supabase',
+  'PostgreSQL',
+  'MySQL',
+  'MongoDB',
+  'Redis',
+  'Firebase',
+  'Docker',
+  'AWS',
+  'Google Cloud',
+  'Azure',
+  'Vercel',
+  'Cloudflare',
+  'GitHub',
+  'GitHub Actions',
+  'Grafana',
+  'Prometheus',
+  'Sentry',
+  'Jira',
+  'Notion',
+  'Figma',
+  'Postman',
+  'Swagger',
+  'Playwright',
+  'OpenAI',
+  'n8n',
+  'Stripe',
+  'Mercado Pago',
+  'PayPal',
+  'Conekta',
+  'Shopify',
+  'WordPress',
+  'WooCommerce',
+] as const
+
+const techList = marqueeTechnologyNames
+  .map((name) => technologies.find((tech) => tech.name === name))
+  .filter((tech): tech is (typeof technologies)[number] => Boolean(tech))
+  .map((tech) => ({ name: tech.name, slug: tech.slug }))
 
 export default function TechMarquee() {
   const loop = [...techList, ...techList]
