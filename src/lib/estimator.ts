@@ -28,8 +28,8 @@ export function formatMXN(n: number): string {
   })
 }
 
-export function roundTo500(n: number): number {
-  return Math.round(n / 500) * 500
+export function roundTo5000(n: number): number {
+  return Math.round(n / 5000) * 5000
 }
 
 /**
@@ -50,7 +50,7 @@ export function calcEstimate(args: {
   const addMax = selected.reduce((sum, f) => sum + f.add[1], 0)
 
   return {
-    min: roundTo500((projectType.base[0] + addMin) * urgency.multiplier),
-    max: roundTo500((projectType.base[1] + addMax) * urgency.multiplier),
+    min: roundTo5000((projectType.base[0] + addMin) * urgency.multiplier),
+    max: roundTo5000((projectType.base[1] + addMax) * urgency.multiplier),
   }
 }

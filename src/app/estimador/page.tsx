@@ -97,8 +97,8 @@ export default function EstimadorPage() {
   const estimate = calcEstimate({ projectType, features, selectedFeatures, urgency })
 
   const urgencyBadge: Record<string, string> = {
-    urgente: '+30%',
-    normal: '+10%',
+    urgente: '+35%',
+    normal: '+12%',
     calma: '',
   }
   const urgencyBadgeColor: Record<string, string> = {
@@ -122,7 +122,8 @@ export default function EstimadorPage() {
             Estima el costo de<br className="hidden sm:block" /> tu proyecto.
           </h1>
           <p className="mt-5 text-base sm:text-lg text-white/55 leading-relaxed max-w-xl mx-auto">
-            Responde 3 preguntas y obtén un rango de precio orientativo en segundos.
+            Responde 3 preguntas y obtén un rango orientativo basado en proyectos
+            profesionales actuales, no en precios de plantilla.
           </p>
         </div>
       </section>
@@ -183,7 +184,8 @@ export default function EstimadorPage() {
                       <ArrowRight className="w-4 h-4" />
                     </button>
                     <p className="text-xs text-muted leading-relaxed max-w-xs">
-                      Los precios son orientativos y varían según los requerimientos específicos.
+                      Rangos de referencia 2026 para México. No incluyen IVA, licencias,
+                      tiendas de apps ni mantenimiento mensual.
                     </p>
                   </div>
                 </div>
@@ -378,7 +380,7 @@ export default function EstimadorPage() {
                     <span className="text-2xl sm:text-3xl ml-1 font-bold">MXN</span>
                   </motion.p>
                   <p className="text-xs text-muted mt-2">
-                    precio estimado sin IVA &bull; sin compromiso
+                    rango de mercado 2026 sin IVA &bull; sujeto a alcance técnico
                   </p>
 
                   {/* Summary tags */}
@@ -429,8 +431,9 @@ export default function EstimadorPage() {
 
                   {/* Disclaimer */}
                   <p className="mt-8 text-xs text-muted leading-relaxed max-w-sm mx-auto">
-                    Este estimado es orientativo. El costo real depende de los requerimientos
-                    específicos de tu proyecto. La cotización exacta es gratuita y sin compromiso.
+                    Este estimado contempla una primera versión profesional con descubrimiento,
+                    UI/UX, desarrollo, pruebas y despliegue. El costo real depende del alcance,
+                    integraciones, plataforma, seguridad y operación esperada.
                   </p>
                 </div>
               </motion.div>
