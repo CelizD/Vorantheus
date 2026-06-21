@@ -164,7 +164,7 @@ h1, h2 {
 }
 
 .animate-marquee {
-  animation: marquee-scroll 35s linear infinite;
+  animation: marquee-scroll 80s linear infinite;
 }
 
 .marquee-mask {
