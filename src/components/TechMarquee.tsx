@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { technologies } from '@/data/technologies'
+import { technologyLogos } from '@/data/technologyLogos'
 
 const ABBREV: Record<string, string> = {
   AWS: 'AWS',
@@ -15,74 +16,8 @@ const ABBREV: Record<string, string> = {
   n8n: 'N8',
 }
 
-const TECHNOLOGY_LOGOS: Record<string, string> = {
-  React: 'react.svg',
-  'Next.js': 'nextdotjs.svg',
-  TypeScript: 'typescript.svg',
-  'Tailwind CSS': 'tailwindcss.svg',
-  'Node.js': 'nodedotjs.svg',
-  'Express.js': 'expressdotcom.svg',
-  Python: 'python.svg',
-  Django: 'django.svg',
-  FastAPI: 'fastapi.svg',
-  Supabase: 'supabase.svg',
-  PostgreSQL: 'postgresql.svg',
-  MySQL: 'mysql.svg',
-  MongoDB: 'mongodb.svg',
-  Redis: 'redis.svg',
-  Firebase: 'firebase.svg',
-  Docker: 'docker.svg',
-  AWS: 'aws.svg',
-  'Google Cloud': 'googlecloud.svg',
-  Vercel: 'vercel.svg',
-  Cloudflare: 'cloudflare.svg',
-  GitHub: 'github.svg',
-  'GitHub Actions': 'githubactions.svg',
-  Grafana: 'grafana.svg',
-  Prometheus: 'prometheus.svg',
-  Sentry: 'sentry.svg',
-  Jira: 'jira.svg',
-  Notion: 'notion.svg',
-  Figma: 'figma.svg',
-  Postman: 'postman.svg',
-  Swagger: 'swagger.svg',
-  n8n: 'n8n.svg',
-  Stripe: 'stripe.svg',
-  'Mercado Pago': 'mercadopago.svg',
-  PayPal: 'paypal.svg',
-  Conekta: 'conekta.svg',
-  Shopify: 'shopify.svg',
-  WordPress: 'wordpress.svg',
-  WooCommerce: 'woocommerce.svg',
-  OpenAI: 'openai.svg',
-  'React Native': 'ReactNative.svg',
-  Kotlin: 'kotlin.svg',
-  Swift: 'swift.svg',
-  Flutter: 'flutter.svg',
-  Angular: 'angular.svg',
-  'Vue.js': 'vuedotjs.svg',
-  Laravel: 'laravel.svg',
-  'Spring Boot': 'springboot.svg',
-  GraphQL: 'graphql.svg',
-  'Socket.IO': 'socketdotio.svg',
-  Prisma: 'prisma.svg',
-  Kubernetes: 'kubernetes.svg',
-  Terraform: 'terraform.svg',
-  Nginx: 'nginx.svg',
-  'Google Analytics': 'googleanalytics.svg',
-  Electron: 'electron.svg',
-  Capacitor: 'capacitor.svg',
-  Strapi: 'strapi.svg',
-  JavaScript: 'javascript.svg',
-  '.NET': 'dotnet.svg',
-  PHP: 'php.svg',
-  Cypress: 'cypress.svg',
-  Jest: 'jest.svg',
-  Vitest: 'vitest.svg',
-}
-
 function TechLogo({ name }: { name: string }) {
-  const logo = TECHNOLOGY_LOGOS[name]
+  const logo = technologyLogos[name]
 
   if (!logo) {
     return (
